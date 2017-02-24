@@ -15,6 +15,30 @@ ActiveRecord::Schema.define(version: 20170223235910) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "episodes", force: :cascade do |t|
+    t.string   "name",                     null: false
+    t.text     "description"
+    t.string   "sharable_link", limit: 10, null: false
+    t.integer  "host_id"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  create_table "guests", force: :cascade do |t|
+    t.string   "name",       limit: 50, null: false
+    t.integer  "episode_id"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  create_table "tracks", force: :cascade do |t|
+    t.integer  "recordable_id"
+    t.string   "recordable_type", limit: 10
+    t.string   "s3_string"
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
