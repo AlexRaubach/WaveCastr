@@ -20,5 +20,9 @@
 # Ignore Byebug command history file.
 .byebug_history
 
+#Ignore MAC OS folder settings file
+.DS_Store
+
 #Ignore Secret keys
 /config/secrets.yml
+

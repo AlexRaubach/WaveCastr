@@ -1,24 +1,26 @@
-# README
+# WaveCastr
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
 
-Things you may want to cover:
 
-* Ruby version
+## Development Resources
 
-* System dependencies
 
-* Configuration
+Our database schema:
 
-* Database creation
+![schema](/public/schema.png?raw=true)
 
-* Database initialization
+Initial wireframe page designs:
 
-* How to run the test suite
+![index](/public/index.png?raw=true)
 
-* Services (job queues, cache servers, search engines, etc.)
+![dashboard](/public/dashboard.png?raw=true)
 
-* Deployment instructions
+![lobby](/public/lobby.png?raw=true)
 
-* ...
+
+
+
+
+## License
+
+This project is released under a GNU General Public License v3.0. For more information, please consult the [license file](/license.txt).
