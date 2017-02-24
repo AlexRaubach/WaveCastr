@@ -15,7 +15,7 @@ RSpec.describe Episode, type: :model do
     end 
 
     it "creates sharable_link on save" do
-      episode.save
+      user.episodes << episode
       expect(episode.sharable_link).to be_instance_of(String)
     end
 
