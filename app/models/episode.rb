@@ -1,5 +1,6 @@
 class Episode < ApplicationRecord
   before_save :assign_sharable_link, on: :create
+  belongs_to :host, class_name: "User"
   has_many :guests
   validates :name, presence: true
 
