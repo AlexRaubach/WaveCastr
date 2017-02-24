@@ -18,4 +18,13 @@ RSpec.describe Episode, type: :model do
     end
 
   end
+
+  context "associations" do
+
+    it "has many guests" do
+      guest = episode.guests.build(name: "Oliver")
+      expect(episode.guests).to include(guest)
+    end
+
+  end
 end
