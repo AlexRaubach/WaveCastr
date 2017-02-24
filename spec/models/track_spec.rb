@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe Track, type: :model do
-  
+
+  let(:user) { User.create(email: "oliver@gmail.com", password: "password") } 
   let(:episode) { Episode.create(name: "My podcast", description: "My first one!") }
   let(:guest) { episode.guests.new(name: "Oliver") }
   let(:track) { Track.new(recordable_id: 1, recordable_type: "Guest", s3_string: "secret") }
@@ -21,9 +22,14 @@ RSpec.describe Track, type: :model do
   end
 
   context "associations" do
-    it "belongs to a guest" do
+    it "can belong to a guest" do
       track.recordable = guest
       expect(track.recordable).to be_instance_of(Guest)
+    end
+
+    it "can belong to a user" do
+      track.recordable = user
+      expect(track.recordable).to be_instance_of(User)
     end
   end
 
