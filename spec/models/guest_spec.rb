@@ -20,4 +20,14 @@ RSpec.describe Guest, type: :model do
     end
 
   end
+
+  context "validations" do
+
+    it "must have name" do
+      guest.episode = episode
+      guest.name = nil
+      expect(guest).to be_invalid
+    end
+
+  end
 end
