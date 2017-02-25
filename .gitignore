@@ -23,6 +23,5 @@
 #Ignore MAC OS folder settings file
 .DS_Store
 
-#Ignore Secret keys
-/config/secrets.yml
-
+# Ignore application configuration
+/config/application.yml
