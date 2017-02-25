@@ -13,12 +13,12 @@ RSpec.describe EpisodesController, type: :controller do
 
     it "returns 200 if user is logged in" do
       sign_in user
-      get :show, params: { sharable_link: episode.sharable_link }
+      get :show, params: { id: episode.id, sharable_link: episode.sharable_link }
       expect(response).to have_http_status :success
     end
 
     it "returns 302 if user is not logged in" do
-      get :show, params: { sharable_link: episode.sharable_link }
+      get :show, params: { id: episode.id, sharable_link: episode.sharable_link }
       expect(response).to have_http_status :found
     end
 
