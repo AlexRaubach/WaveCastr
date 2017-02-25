@@ -1,6 +1,6 @@
 <div class="row">
   <aside class="col-md-6 well" id="episode-list">
-    <%= render @user.episodes %>
+    <%= render current_user.episodes %>
   </aside>
   <main class="col-md-6 well">
     <button id="present-new-episode-modal" class="btn btn-primary btn-block" data-toggle="modal" data-target="#new-episode-modal">

@@ -6,12 +6,12 @@ class EpisodesController < ApplicationController
   end
 
   def create
-    @episode = Episode.new(episode_params)
+    @episode = current_user.episodes.build(episode_params)
     if @episode.save
-      redirect_to episode_path(episode)
+      redirect_to episode_path(@episode, sharable_link: @episode.sharable_link)
     else
       flash[:error] = @episode.errors.full_messages.first
-      redirect_to episode_path(episode)
+      redirect_to user_path(current_user)
     end
   end
 
@@ -20,6 +20,9 @@ class EpisodesController < ApplicationController
     redirect_to user_path(current_user)
   end
 
-
+  private
+    def episode_params
+      params.require(:episode).permit(:name, :description)
+    end
 
 end
