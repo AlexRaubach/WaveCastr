@@ -33,6 +33,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'bootstrap'
+gem "figaro"
 
 
 # Use Capistrano for deployment
