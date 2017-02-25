@@ -8,7 +8,7 @@ class EpisodesController < ApplicationController
   def create
     @episode = current_user.episodes.build(episode_params)
     if @episode.save
-      redirect_to episode_path(@episode)
+      redirect_to episode_path(@episode, sharable_link: @episode.sharable_link)
     else
       flash[:error] = @episode.errors.full_messages.first
       redirect_to user_path(current_user)
