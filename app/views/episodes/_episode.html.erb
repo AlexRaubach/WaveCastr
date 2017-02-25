@@ -1,1 +1,9 @@
-<li><%= link_to "#{episode.name}", episode_path(episode) %></li>
+<div class="episode panel panel-default">
+  <div class="panel-body">
+    <p>
+      <h3><%= link_to "#{episode.name}", episode_path(episode) %></h3>
+    </p>
+    <p><small><%= episode.created_at %></small></p>
+    <p><%= button_to "Delete", episode_path(episode), method: 'delete', class: "btn btn-danger" %></p>
+  </div>
+</div>
