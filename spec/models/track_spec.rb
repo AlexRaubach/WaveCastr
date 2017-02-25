@@ -2,9 +2,9 @@ require 'rails_helper'
 
 RSpec.describe Track, type: :model do
 
-  let(:user) { User.create(email: "oliver@gmail.com", password: "password") } 
-  let(:episode) { Episode.create(name: "My podcast", description: "My first one!") }
-  let(:guest) { episode.guests.new(name: "Oliver") }
+  let(:user) { create(:user) } 
+  let(:guest) { build(:guest) }
+  let(:episode) { build(:episode) } 
   let(:track) { Track.new(recordable_id: 1, recordable_type: "Guest", s3_string: "secret") }
 
   context "attributes" do

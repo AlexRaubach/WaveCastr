@@ -1,13 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Episode, type: :model do
-  let!(:episode) { Episode.new(name: "My podcast", description: "My first one!") }
-  let!(:user) { User.create!(email: "oliver@gmail.com", password: "password") }
+
+  let(:user) { create(:user) } 
+  let(:guest) { build(:guest) }
+  let(:episode) { build(:episode) } 
 
   context "attributes" do
 
     it "has a name" do
-      expect(episode.name).to eq "My podcast"
+      expect(episode.name).to eq "My test podcast"
     end
 
     it "has a description" do
