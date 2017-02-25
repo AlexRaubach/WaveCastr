@@ -37,6 +37,7 @@
   <h2>Log</h2>
   <pre id="log"></pre>
 
+  <script src="/recorder.min.js">
   <script>
     var recorder;
 
@@ -55,7 +56,7 @@
         numberOfChannels: parseInt(numberOfChannels.value, 10),
         bitRate: parseInt(bitRate.value,10),
         encoderSampleRate: parseInt(encoderSampleRate.value,10),
-        encoderPath: "../build/encoderWorker.min.js"
+        encoderPath: "/encoderWorker.min.js"
       });
 
       recorder.addEventListener( "start", function(e){
