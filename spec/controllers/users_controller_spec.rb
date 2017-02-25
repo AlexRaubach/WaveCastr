@@ -2,18 +2,17 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
 
-  let!(:user) { User.create!(email: "oliver@gmail.com", password: "password") }
+  let!(:user) { create(:user) }
 
-  # TODO: Controller tests
+  it "returns 200 when logged in" do
+    sign_in user
+    get :show, params: { id: user.id }
+    expect(response).to have_http_status :success
+  end
 
-  # it "returns 200 when logged in" do
-  #   session[:user_id] = user.id
-  #   get :show
-  #   expect(response).to have_http_status :success
-  # end
-
-  # it "returns 403 when not logged in" do
-  #   session.delete(:user_id)
-    
-  # end
+  it "returns redirect 302 when not logged in" do
+    get :show, params: { id: user.id }     
+    expect(response).to have_http_status :found
+    expect(response.location).to eq new_user_session_url
+  end
 end

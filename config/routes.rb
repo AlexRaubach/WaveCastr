@@ -5,7 +5,9 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
-  resources :episodes, only: [:create, :show]
+  resources :episodes, only: [:create, :show, :destroy]
+
+  get 'test', to: 'welcome#test'
 
   resources :welcome, only: [:show, :create]
 
