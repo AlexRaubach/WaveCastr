@@ -1,11 +1,15 @@
-<aside id="episode-list">
-  <ul>
-    <%= render @user.episodes %>
-  </ul>
-</aside>
-<main>
-  <button id="new-episode">New Episode</button>
-  <div id="episode-options">
-    Options
-  </div>
-</main>
+<div class="row">
+  <aside class="col-md-6 well" id="episode-list">
+    <ul>
+      <%= render @user.episodes %>
+    </ul>
+  </aside>
+  <main class="col-md-6 well">
+    <div id="episode-options">
+      <%= form_for @episode do |f| %>
+        <%= select_tag 'filetype', options_for_select(audio_filetypes) %>
+        <%= f.submit 'New Episode', class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </main>
+</div>
