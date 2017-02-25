@@ -7,6 +7,6 @@ class Episode < ApplicationRecord
 
   private
     def assign_sharable_link
-      self.sharable_link = SecureRandom.hex(4)
+      self.sharable_link ||= SecureRandom.hex(4)
     end
 end
