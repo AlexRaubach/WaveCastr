@@ -24,6 +24,23 @@ RSpec.describe EpisodesController, type: :controller do
 
   end
 
+  describe '#create' do
+
+    it "returns a 302 to show if successful" do
+      sign_in user
+      post :create, params: { episode: attributes_for(:episode) }
+      expect(response).to have_http_status :found
+    end
+
+    it "returns a 302 to user show with a flash if unsuccessful" do
+      sign_in user
+      post :create, params: { episode: { description: "My first one!" } }
+      expect(response).to have_http_status 302 
+      expect(flash[:error]).to eq "Name can't be blank"
+      expect(response.location).to eq user_url(user)
+    end
+  end
+
   describe '#delete' do
 
     it "returns 302 to dashboard if user logged in" do
