@@ -1,1 +1,8 @@
-<li><%= link_to "#{episode.name}", episode_path(episode) %></li>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <p>
+      <%= link_to "#{episode.name}", episode_path(episode) %>
+    </p>
+    <small><%= episode.created_at %></small>
+  </div>
+</div>
