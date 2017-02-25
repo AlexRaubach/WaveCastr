@@ -5,11 +5,26 @@
     </ul>
   </aside>
   <main class="col-md-6 well">
-    <div id="episode-options">
+  <button id="present-new-episode-modal" class="btn btn-primary btn-block" data-toggle="modal" data-target="#new-episode-modal">
+      New Episode
+    </button>
+  </main>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="new-episode-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">New Episode</h4>
+    </div>
+    <div class="modal-body">
       <%= form_for @episode do |f| %>
         <%= select_tag 'filetype', options_for_select(audio_filetypes) %>
-        <%= f.submit 'New Episode', class: "btn btn-primary" %>
+        <%= f.text_field :name, placeholder: "Episode name" %>
       <% end %>
     </div>
-  </main>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary" form="new_episode">Go</button>
+    </div>
+  </div>
 </div>
