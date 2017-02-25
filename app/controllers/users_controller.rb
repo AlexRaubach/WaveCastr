@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
-    def show
-      @user = current_user
-      @episode = Episode.new
-    end
+  before_action :authenticate_user!
+
+  def show
+    @user = current_user
+    @episode = Episode.new
+  end
 end
