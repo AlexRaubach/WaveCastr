@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe UsersController, type: :controller do
 
-  let!(:user) { User.create!(email: "oliver@gmail.com", password: "password") }
+  let!(:user) { create(:user) }
 
   it "returns 200 when logged in" do
     sign_in user

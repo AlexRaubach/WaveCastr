@@ -2,9 +2,7 @@ require 'rails_helper'
 
 RSpec.feature "New episodes", type: :feature do
 
-  let!(:user) do 
-    User.create!(email: "oliver@gmail.com", password: "password")
-  end
+  let!(:user) { create(:user) }
 
   before(:each) do
     visit('/users/sign_in')
