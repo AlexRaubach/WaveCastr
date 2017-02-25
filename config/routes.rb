@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users, only: [:show]
-  resources :episodes, only: [:create, :show]
+  resources :episodes, only: [:create, :show, :destroy]
 
   get 'test', to: 'welcome#test'
 
