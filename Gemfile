@@ -37,7 +37,6 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'bootstrap'
 
-
 gem 'listen', '~> 3.0.5'
 
 # Use Capistrano for deployment
