@@ -36,7 +36,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
 gem 'bootstrap'
-gem 'heroku_secrets'
+gem 'heroku_secrets', github: 'alexpeattie/heroku_secrets'
 
 gem 'listen', '~> 3.0.5'
 
