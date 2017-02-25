@@ -5,23 +5,21 @@ RSpec.describe Track, type: :model do
   let(:user) { User.create(email: "oliver@gmail.com", password: "password") } 
   let(:episode) { Episode.create(name: "My podcast", description: "My first one!") }
   let(:guest) { episode.guests.new(name: "Oliver") }
-  let(:track) { Track.new(recordable_id: 1, recordable_type: "Guest", s3_string: "secret") }
+  let(:track) { Track.new(s3_string: "secret") }
 
   context "attributes" do
-    it "has a recordable id" do
-      expect(track.recordable_id).to eq 1
-    end
-
-    it "has a recordable type" do
-      expect(track.recordable_type).to eq "Guest"
-    end
-
     it "has an s3 string" do
       expect(track.s3_string).to eq "secret"
     end
   end
 
   context "associations" do
+
+    it "belongs to an episode" do
+      episode.tracks << track 
+      expect(episode.tracks).to include track
+    end
+
     it "can belong to a guest" do
       track.recordable = guest
       expect(track.recordable).to be_instance_of(Guest)
