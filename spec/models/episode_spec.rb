@@ -35,6 +35,12 @@ RSpec.describe Episode, type: :model do
       expect(episode.guests).to include(guest)
     end
 
+    it "has many tracks" do
+      track = Track.new(s3_string: "secret")
+      episode.tracks << track
+      expect(episode.tracks).to include track
+    end
+
   end
 
   context "validations" do
