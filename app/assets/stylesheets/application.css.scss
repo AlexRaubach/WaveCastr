@@ -17,9 +17,8 @@
 @import "bootstrap";
 
 
-* {
-  border: 1px solid red;
-}
+
+
 .header h1 a {
 	color: #06ABFE;
   font-size: 40px;
@@ -44,4 +43,19 @@
 .nav-pills {
   display: inline-block;
   margin-top: 20px;
+}
+
+.sub-main {
+  background: url("http://www.edisonresearch.com/wp-content/uploads/2014/11/microphone.jpg") no-repeat center center;
+  background-size: cover;
+  height:600px;
+}
+
+.heading h1{
+  color: #fff;
+  position: relative;
+  top:200px;
+  left:700px;
+  font-size:46px;
+  text-transform: uppercase;
 }
