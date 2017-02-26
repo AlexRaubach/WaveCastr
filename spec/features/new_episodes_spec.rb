@@ -16,5 +16,16 @@ RSpec.feature "New episodes", type: :feature do
   scenario "user clicks on new episode and is presented with a modal form" do
     click_on('New Episode')
     expect(page).to have_content('Go')
-  end 
+  end
+
+  scenario "user creates a new episode and sees herself as host" do
+    click_on('New Episode')
+    within('#new_episode') do
+      fill_in 'episode[name]', with: 'Test Episode'
+    end
+    within('.modal-footer') do
+      click_button('Go')
+    end
+    expect(page).to have_content("Host: #{user.name}")
+  end
 end
