@@ -17,7 +17,7 @@ class EpisodesController < ApplicationController
   end
 
   def destroy
-    Episode.find(params[:id]).destroy
+    Episode.find_by(sharable_link: params[:sharable_link]).destroy
     redirect_to user_path(current_user)
   end
 
