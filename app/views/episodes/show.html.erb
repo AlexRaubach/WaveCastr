@@ -1,10 +1,22 @@
 <div id="guest-list">
   <%= render @episode.guests %>
-  <button id="start/stop">Start/Stop</button>
+  <button id="present-share-link-modal" class="btn btn-primary" data-toggle="modal" data-target="#share-link-modal">Share Link</button>
 </div>
 <div id="chat-box">
   <!-- Chat will go here -->
 </div>
 <div id="track-list">
   <!-- Download buttons for host will be visible here if recording has stopped -->
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="share-link-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Share Link</h4>
+    </div>
+    <div class="modal-body">
+      <p>Share this link with your guests: <%= "http://localhost:3000/episodes/#{@episode.sharable_link}" %></p>
+    </div>
+  </div>
 </div>
