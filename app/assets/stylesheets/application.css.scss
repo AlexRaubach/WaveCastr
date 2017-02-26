@@ -15,3 +15,33 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+
+* {
+  border: 1px solid red;
+}
+.header h1 a {
+	color: #06ABFE;
+  font-size: 40px;
+  text-decoration: none;
+}
+
+.header h1 a:visited {
+  color: #06ABFE;
+}
+
+.header h1 a:hover {
+  color: #06ABFE;
+}
+
+
+
+.header h1 {
+  display: inline-block;
+}
+
+
+.nav-pills {
+  display: inline-block;
+  margin-top: 20px;
+}
