@@ -44,6 +44,8 @@
   </div>
 </div>
 
+<%= render "aws_s3_upload_form.html.erb" %>
+
 <% if (!current_user || !current_user.host?(@episode)) && !session[:guest_id] %>
   <script>
     $(window).load(function() {
@@ -51,3 +53,4 @@
     });
   </script>
 <% end %>
+
