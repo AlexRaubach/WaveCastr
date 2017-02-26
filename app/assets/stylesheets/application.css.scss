@@ -46,7 +46,7 @@
 }
 
 .sub-main {
-  background: url("http://www.edisonresearch.com/wp-content/uploads/2014/11/microphone.jpg") no-repeat center center;
+  background: url("podcast.jpg") no-repeat center center;
   background-size: cover;
   height:500px;
 }
@@ -62,7 +62,11 @@
 
 
 .slide-container {
+  margin-top: 40px;
+}
 
+.slide-container h2 {
+  text-align: center;
 }
 
 .mySlides {

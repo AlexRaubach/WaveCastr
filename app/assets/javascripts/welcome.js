@@ -29,23 +29,41 @@ $(document).ready(function(){
   $(".next").click(function(){
     var $active = $(".slide-container div.active");
     var $next = $active.next();
-
-    $next.addClass('active');
-    $active.removeClass("active");
+    if (checkLast() == false){
+      $next.addClass('active');
+      $active.removeClass("active");
+    }
   });
 
   $(".prev").click(function(){
     var $active = $(".slide-container div.active");
     var $prev = $active.prev();
-
-    $prev.addClass('active');
-    $active.removeClass('active');
+    if (checkFirst() == false){
+      $prev.addClass('active');
+      $active.removeClass('active');
+    }
 
   })
+  function checkLast(){
+    var check = false;
+    var slides = $(".slide-container");
+    if (slides.find('div:last').hasClass("active") == true){
+      check = true;
+    }
+    return check;
+  }
 
-
-
+    function checkFirst(){
+    var check = false;
+    var slides = $(".slide-container");
+    if (slides.find('div:first').hasClass("active") == true){
+      check = true;
+    }
+    return check;
+  }
 })
+
+
 
 
 
