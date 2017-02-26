@@ -1,33 +1,76 @@
-<div id="guest-list">
-  <%= render @episode.guests %>
 
+<div class=buttons>
   <button id="init">init</button>
   <button id="start" disabled>start</button>
   <button id="pause" disabled>pause</button>
   <button id="resume" disabled>resume</button>
   <button id="stopButton" disabled>stop</button>
-
 </div>
 
-<div id="chat-box">
-  <!-- Chat will go here -->
+
+
+<div class="row">
+  <div class="col-md-6" id="guest-list">
+    <%= render partial: 'users/host', locals: { host: @episode.host } %>
+    <%= render @episode.guests %>
+    <% if user_signed_in? && current_user.host?(@episode) %>
+      <button id="present-share-link-modal" class="btn btn-primary" data-toggle="modal" data-target="#share-link-modal">Share Link</button>
+    <% end %>
+  </div>
+  <div id="chat-box">
+    <!-- Chat will go here -->
+  </div>
+  <div id="track-list">
+      <ul id="recordingslist">
+    <!-- Download buttons for host will be visible here if recording has stopped -->
+    </ul>
 </div>
-<div id="track-list">
-  <ul id="recordingslist">
-  <!-- Download buttons for host will be visible here if recording has stopped -->
-  </ul>
+
+<!-- Share Link Modal -->
+<div class="modal fade" id="share-link-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Share Link</h4>
+    </div>
+    <div class="modal-body">
+      <p>Share this link with your guests: <%= "http://localhost:3000/episodes/#{@episode.sharable_link}" %></p>
+    </div>
+  </div>
+</div>
+
+<!-- Register Guest Modal -->
+<div class="modal fade" id="register-guest-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Register Guest</h4>
+    </div>
+    <div class="modal-body">
+      <%= form_for @guest do |f| %>
+        <%= hidden_field :guest, :episode_id, value: @episode.id %>
+        <%= f.text_field :name, placeholder: "Enter your name" %>
+      <% end %>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary" form="new_guest">Register</button>
+    </div>
+  </div>
+
 </div>
 
 <pre id="log"></pre>
 
 <%= render "aws_s3_upload_form.html.erb" %>
 
+
 <script src="/recorder.min.js"></script>
 
 
+<% if (!current_user || !current_user.host?(@episode)) && !session[:guest_id] %>
   <script>
-
+    $(window).load(function() {
+      $('#register-guest-modal').modal('show');
+    });
   </script>
-
+<% end %>
 
 
