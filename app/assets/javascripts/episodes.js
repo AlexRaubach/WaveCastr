@@ -1,6 +1,6 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
-
+function sendToS3(fileToUpload) {
 $(function() {
   $('.directUpload').find("input:file").each(function(i, elem) {
     var fileInput    = $(elem);
@@ -10,7 +10,8 @@ $(function() {
     var barContainer = $("<div class='progress'></div>").append(progressBar);
     fileInput.after(barContainer);
     fileInput.fileupload({
-      fileInput:       fileInput,
+
+      fileInput:       fileToUpload,
       url:             form.data('url'),
       type:            'POST',
       autoUpload:       true,
@@ -33,5 +34,5 @@ $(function() {
     // })
   })
 });
-
+}
 // }
