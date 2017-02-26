@@ -11,7 +11,7 @@
   <!-- Download buttons for host will be visible here if recording has stopped -->
 </div>
 
-<!-- Modal -->
+<!-- Share Link Modal -->
 <div class="modal fade" id="share-link-modal">
   <div class="modal-content">
     <div class="modal-header">
@@ -22,3 +22,28 @@
     </div>
   </div>
 </div>
+
+<!-- Register Guest Modal -->
+<div class="modal fade" id="register-guest-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Register Guest</h4>
+    </div>
+    <div class="modal-body">
+      <%= form_for @guest do |f| %>
+        <%= f.text_field :name, placeholder: "Enter your name" %>
+      <% end %>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary" form="new_guest">Register</button>
+    </div>
+  </div>
+</div>
+
+<% if !current_user %>
+  <script>
+    $(window).load(function() {
+      $('#register-guest-modal').modal('show');
+    });
+  </script>
+<% end %>
