@@ -78,7 +78,7 @@
       });
 
       recorder.addEventListener( "dataAvailable", function(e){
-        var dataBlob = new Blob( [e.detail], { type: 'audio/ogg' } );
+        dataBlob = new Blob( [e.detail], { type: 'audio/ogg' } );
         var fileName = new Date().toISOString() + ".ogg";
         var url = URL.createObjectURL( dataBlob );
 
@@ -96,7 +96,8 @@
         li.appendChild(audio);
 
         recordingslist.appendChild(li);
-
+        debugger;
+        sendToS3(dataBlob)
       });
 
       recorder.initStream();
