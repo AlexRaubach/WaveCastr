@@ -2,6 +2,7 @@
 // All this logic will automatically be available in application.js.
 
 
+
 $(document).ready(function(){
 
   $(function() {
@@ -62,9 +63,5 @@ $(document).ready(function(){
     return check;
   }
 })
-
-
-
-
 
 
