@@ -17,11 +17,6 @@ RSpec.describe EpisodesController, type: :controller do
       expect(response).to have_http_status :success
     end
 
-    it "returns 302 if user is not logged in" do
-      get :show, params: { id: episode.id, sharable_link: episode.sharable_link }
-      expect(response).to have_http_status :found
-    end
-
   end
 
   describe '#create' do
@@ -45,13 +40,13 @@ RSpec.describe EpisodesController, type: :controller do
 
     it "returns 302 to dashboard if user logged in" do
       sign_in user
-      delete :destroy, params: { id: episode.id }
+      delete :destroy, params: { sharable_link: episode.sharable_link }
       expect(response).to have_http_status :found
       expect(response.location).to eq user_url(user)
     end
 
     it "returns a 302 if user not logged in" do
-      delete :destroy, params: { id: episode.id }
+      delete :destroy, params: { sharable_link: episode.sharable_link }
       expect(response).to have_http_status :found
       expect(response.location).to eq new_user_session_url
     end
