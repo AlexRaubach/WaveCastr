@@ -1,3 +1,14 @@
+
+<div class=buttons>
+  <button id="init">init</button>
+  <button id="start" disabled>start</button>
+  <button id="pause" disabled>pause</button>
+  <button id="resume" disabled>resume</button>
+  <button id="stopButton" disabled>stop</button>
+</div>
+
+
+
 <div class="row">
   <div class="col-md-6" id="guest-list">
     <%= render partial: 'users/host', locals: { host: @episode.host } %>
@@ -10,8 +21,9 @@
     <!-- Chat will go here -->
   </div>
   <div id="track-list">
+      <ul id="recordingslist">
     <!-- Download buttons for host will be visible here if recording has stopped -->
-  </div>
+    </ul>
 </div>
 
 <!-- Share Link Modal -->
@@ -42,9 +54,16 @@
       <button type="submit" class="btn btn-primary" form="new_guest">Register</button>
     </div>
   </div>
+
 </div>
 
+<pre id="log"></pre>
+
 <%= render "aws_s3_upload_form.html.erb" %>
+
+
+<script src="/recorder.min.js"></script>
+
 
 <% if (!current_user || !current_user.host?(@episode)) && !session[:guest_id] %>
   <script>
@@ -53,4 +72,5 @@
     });
   </script>
 <% end %>
+
 

@@ -1,5 +1,6 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
+
 // $(document).ready(function(){
 //   $('form').on('submit', function(event){
 //     event.preventDefault();
@@ -34,7 +35,6 @@
 //     fileInput.after(barContainer);
 //     input = fileInput
 //     console.log(input);
-
 //     console.log(form.data('url'))
 //     console.log(form.data('form-data'))
 //     fileInput.fileupload({
@@ -51,16 +51,20 @@
 //   .bind('fileuploaddone', function (e, data) {
 //     var link = document.createElement('a');
 //     link.href = data._response.result.documentElement.children[0].textContent;
+
 //     var pathname =  link.pathname;
 //     console.log(pathname);
 //     console.log(link.href);
 //     console.log("Success");
+
 //     // $.ajax({
 //     //   url: //this can post the link back to the file on S3 to the database
 //     //   method: "POST"
 //     //   data: pathname
 //     // })
 //   })
+
 // };
 
 // }
+
