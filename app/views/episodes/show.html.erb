@@ -1,11 +1,10 @@
 <div class="row">
   <div class="col-md-6" id="guest-list">
     <%= render partial: 'users/host', locals: { host: @episode.host } %>
-    <%= render @episode.guests %>
-    <% if user_signed_in? && current_user.host?(@episode) %>
-      <button id="present-share-link-modal" class="btn btn-primary" data-toggle="modal" data-target="#share-link-modal">Share Link</button>
-    <% end %>
   </div>
+  <% if user_signed_in? && current_user.host?(@episode) %>
+    <button id="present-share-link-modal" class="btn btn-primary" data-toggle="modal" data-target="#share-link-modal">Share Link</button>
+  <% end %>
   <div id="chat-box">
     <!-- Chat will go here -->
   </div>
@@ -44,12 +43,23 @@
   </div>
 </div>
 
-<%= render "aws_s3_upload_form.html.erb" %>
-
-<% if (!current_user || !current_user.host?(@episode)) && !session[:guest_id] %>
+<% if (!current_user || !current_user.host?(@episode)) && !session[:guest_name] %>
   <script>
     $(window).load(function() {
       $('#register-guest-modal').modal('show');
+
+      $('#new_guest').on('submit', function(e) {
+        e.preventDefault();
+        var formData = $(this).serialize();
+        $.ajax({ data: formData, method: this.method, url: this.action })
+          .done(function(response) {
+            $('input[name="guest[name]"]').val('');
+            $('#register-guest-modal').modal('hide');
+          })
+          .fail(function(error) {
+            console.log(error);
+          });
+      });
     });
   </script>
 <% end %>

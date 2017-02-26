@@ -2,8 +2,12 @@ class GuestsController < ApplicationController
   def create
     guest = Guest.new(guest_params)
     if guest.save
-      session[:guest_id] = guest.id
-      redirect_to episode_path(sharable_link: guest.episode.sharable_link)
+      session[:guest_name] = guest.name
+      ActionCable.server.broadcast 'appearances',
+        guest: guest.name
+      head :ok
+    else
+      head 422
     end
   end
 
