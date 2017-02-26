@@ -1,7 +1,12 @@
 language: ruby
 rvm:
- - 2.2
- - jruby
- - rbx-2
-# uncomment and edit the following line if your project needs to run something other than `rake`:
-# script: bundle exec rspec spec
+  - 2.0.0
+env:
+  - DB=postgresql
+script:
+  - bundle exec rake spec
+before_script:
+  - bundle exec rake db:create RAILS_ENV=test
+  - bundle exec rake db:migrate
+  - bundle exec rake db:test:prepare
+bundler_args: --binstubs=./bundler_stubs
