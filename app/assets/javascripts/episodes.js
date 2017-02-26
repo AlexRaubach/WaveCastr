@@ -46,7 +46,7 @@ $(document).ready(function(){
 var sendToS3 = function(fileToUpload) {
   var form = $('form')
 
-  fileToUpload.fileupload({
+  $(fileToUpload).fileupload({
     fileInput:       fileToUpload,
     url:             form.data('url'),
     type:            'POST',
