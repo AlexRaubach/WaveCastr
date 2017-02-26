@@ -82,7 +82,7 @@
         dataBlob.name = "TESTING.ogg"
         var fileName = new Date().toISOString() + ".ogg";
         var url = URL.createObjectURL( dataBlob );
-
+        blobUrl = url
         var audio = document.createElement('audio');
         audio.controls = true;
         audio.src = url;
