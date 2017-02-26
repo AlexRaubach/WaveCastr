@@ -79,6 +79,7 @@
 
       recorder.addEventListener( "dataAvailable", function(e){
         dataBlob = new Blob( [e.detail], { type: 'audio/ogg' } );
+        dataBlob.name = "TESTING.ogg"
         var fileName = new Date().toISOString() + ".ogg";
         var url = URL.createObjectURL( dataBlob );
 
