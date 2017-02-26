@@ -19,7 +19,19 @@ $(function() {
       dataType:         'XML',  // S3 returns XML if success_action_status is set to 201
       replaceFileInput: false
     });
-  });
+  })
+  .bind('fileuploaddone', function (e, data) {
+    var link = document.createElement('a');
+    link.href = data._response.result.documentElement.children[0].textContent;
+    var pathname =  link.pathname
+    console.log(pathname)
+    console.log(link.href)
+    // $.ajax({
+    //   url: //this can post the link back to the file on S3 to the database
+    //   method: "POST"
+    //   data: pathname
+    // })
+  })
 });
 
 // }
