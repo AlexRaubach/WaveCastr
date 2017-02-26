@@ -1,6 +1,6 @@
 class EpisodesController < ApplicationController
   before_action :set_s3_direct_post, only: [:create]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:create, :destroy]
 
   def show
     @episode = Episode.find_by(sharable_link: params[:sharable_link])
