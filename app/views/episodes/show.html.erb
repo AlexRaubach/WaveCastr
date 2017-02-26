@@ -4,6 +4,7 @@
     <%= render @episode.guests %>
     <% if user_signed_in? && current_user.host?(@episode) %>
       <button id="present-share-link-modal" class="btn btn-primary" data-toggle="modal" data-target="#share-link-modal">Share Link</button>
+      <%= render "test" %>
     <% end %>
   </div>
   <div id="chat-box">
@@ -43,8 +44,6 @@
     </div>
   </div>
 </div>
-
-<%= render "aws_s3_upload_form.html.erb" %>
 
 <% if (!current_user || !current_user.host?(@episode)) && !session[:guest_id] %>
   <script>
