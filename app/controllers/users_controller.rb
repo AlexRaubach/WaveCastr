@@ -4,4 +4,6 @@ class UsersController < ApplicationController
   def show
     @episode = Episode.new
   end
+
+
 end
