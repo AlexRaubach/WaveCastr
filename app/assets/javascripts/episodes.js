@@ -48,7 +48,7 @@ var sendToS3 = function(fileToUpload) {
 
   $(fileToUpload).fileupload({
     fileInput:       fileToUpload,
-    url:             blobUrl,
+    url:             form.data('url'),
     type:            'POST',
     autoUpload:       true,
     formData:         form.data('form-data'),
