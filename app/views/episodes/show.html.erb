@@ -1,14 +1,17 @@
-<div id="guest-list">
-  <%= render @episode.guests %>
-  <% if user_signed_in? && current_user.host?(@episode) %>
-    <button id="present-share-link-modal" class="btn btn-primary" data-toggle="modal" data-target="#share-link-modal">Share Link</button>
-  <% end %>
-</div>
-<div id="chat-box">
-  <!-- Chat will go here -->
-</div>
-<div id="track-list">
-  <!-- Download buttons for host will be visible here if recording has stopped -->
+<div class="row">
+  <div class="col-md-6" id="guest-list">
+    <%= render partial: 'users/host', locals: { host: @episode.host } %>
+    <%= render @episode.guests %>
+    <% if user_signed_in? && current_user.host?(@episode) %>
+      <button id="present-share-link-modal" class="btn btn-primary" data-toggle="modal" data-target="#share-link-modal">Share Link</button>
+    <% end %>
+  </div>
+  <div id="chat-box">
+    <!-- Chat will go here -->
+  </div>
+  <div id="track-list">
+    <!-- Download buttons for host will be visible here if recording has stopped -->
+  </div>
 </div>
 
 <!-- Share Link Modal -->
@@ -31,6 +34,7 @@
     </div>
     <div class="modal-body">
       <%= form_for @guest do |f| %>
+        <%= hidden_field :guest, :episode_id, value: @episode.id %>
         <%= f.text_field :name, placeholder: "Enter your name" %>
       <% end %>
     </div>
@@ -40,7 +44,7 @@
   </div>
 </div>
 
-<% if !current_user %>
+<% if (!current_user || !current_user.host?(@episode)) && !session[:guest_id] %>
   <script>
     $(window).load(function() {
       $('#register-guest-modal').modal('show');

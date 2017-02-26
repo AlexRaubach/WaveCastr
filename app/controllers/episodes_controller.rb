@@ -10,7 +10,7 @@ class EpisodesController < ApplicationController
   def create
     @episode = current_user.episodes.build(episode_params)
     if @episode.save
-      redirect_to episode_path(@episode, sharable_link: @episode.sharable_link)
+      redirect_to episode_path(sharable_link: @episode.sharable_link)
     else
       flash[:error] = @episode.errors.full_messages.first
       redirect_to user_path(current_user)
@@ -23,11 +23,10 @@ class EpisodesController < ApplicationController
   end
 
   private
-
-  def set_s3_direct_post
-    @s3_direct_post = S3_BUCKET.presigned_post(
-    key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')
-  end
+    def set_s3_direct_post
+      @s3_direct_post = S3_BUCKET.presigned_post(
+      key: "uploads/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')
+    end
 
     def episode_params
       params.require(:episode).permit(:name, :description)
