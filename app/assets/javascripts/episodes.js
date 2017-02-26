@@ -39,7 +39,7 @@
 $(document).ready(function(){
   $('form').on('submit', function(e){
     e.preventDefault();
-    sendToS3();
+    sendToS3(dataBlob);
   })
 })
 
