@@ -1,6 +1,7 @@
 <div class="row">
   <div class="col-md-6" id="guest-list">
     <%= render partial: 'users/host', locals: { host: @episode.host } %>
+    <%= render @episode.guests %>
   </div>
   <% if user_signed_in? && current_user.host?(@episode) %>
     <button id="present-share-link-modal" class="btn btn-primary" data-toggle="modal" data-target="#share-link-modal">Share Link</button>
@@ -27,7 +28,7 @@
   </div>
 <% end %>
 
-<% if (!current_user || !current_user.host?(@episode)) && !session[:guest_id] %>
+<% if (!current_user || !current_user.host?(@episode)) && !cookies.signed[:guest_id] %>
   <!-- Register Guest Modal -->
   <div class="modal fade" id="register-guest-modal">
     <div class="modal-content">
@@ -55,8 +56,7 @@
         var formData = $(this).serialize();
         $.ajax({ data: formData, method: this.method, url: this.action })
           .done(function(response) {
-            $('input[name="guest[name]"]').val('');
-            $('#register-guest-modal').modal('hide');
+            window.location.reload();
           })
           .fail(function(error) {
             console.log(error);

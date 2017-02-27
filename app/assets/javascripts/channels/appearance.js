@@ -1,11 +1,21 @@
+$(document).ready(function() {
+
 App.appearance = App.cable.subscriptions.create("AppearancesChannel", {
   received: function(data) {
-    var guestTemplate = this.renderGuest(data);
-    $("#guest-list").append(guestTemplate);
+    switch (data.action) {
+      case 'signin':
+        console.log("Signing in " + data.guest + '...');
+        var guestTemplate = this.renderGuest(data);
+        $("#guest-list").append(guestTemplate);
+        break;
+      case 'signout':
+        console.log('Signing out ' + data.guest + '...');
+        $('#guest-' + data.guest_id).remove();
+    }
   },
 
   renderGuest: function(data) {
-    return `<div class="guest panel panel-default">
+    return `<div id="guest-${data.guest_id}" class="guest panel panel-default">
               <div class="panel-body">
                 <p>
                   <h3>${data.guest}</h3>
@@ -13,4 +23,6 @@ App.appearance = App.cable.subscriptions.create("AppearancesChannel", {
               </div>
             </div>`
   }
+});
+
 });
