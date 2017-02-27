@@ -15,14 +15,15 @@
     <!-- Download buttons for host will be visible here if recording has stopped -->
     </ul>
 </div>
-
-<div class=buttons>
-  <button id="init">init</button>
-  <button id="start" disabled>start</button>
-  <button id="pause" disabled>pause</button>
-  <button id="resume" disabled>resume</button>
-  <button id="stopButton" disabled>stop</button>
-</div>
+<% if user_signed_in? && current_user.host?(@episode) %>
+  <div class=buttons>
+    <button id="init">init</button>
+    <button id="start" disabled>start</button>
+    <button id="pause" disabled>pause</button>
+    <button id="resume" disabled>resume</button>
+    <button id="stopButton" disabled>stop</button>
+  </div>
+<% end %>
 
  <pre id="log"></pre>
 
