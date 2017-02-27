@@ -7,17 +7,14 @@
   <button id="stopButton" disabled>stop</button>
 </div>
 
-
-
 <div class="row">
   <div class="col-md-6" id="guest-list">
     <%= render partial: 'users/host', locals: { host: @episode.host } %>
     <%= render @episode.guests %>
-    <% if user_signed_in? && current_user.host?(@episode) %>
-      <button id="present-share-link-modal" class="btn btn-primary" data-toggle="modal" data-target="#share-link-modal">Share Link</button>
-      <%= render "test" %>
-    <% end %>
   </div>
+  <% if user_signed_in? && current_user.host?(@episode) %>
+    <button id="present-share-link-modal" class="btn btn-primary" data-toggle="modal" data-target="#share-link-modal">Share Link</button>
+  <% end %>
   <div id="chat-box">
     <!-- Chat will go here -->
   </div>
@@ -27,53 +24,12 @@
     </ul>
 </div>
 
-<!-- Share Link Modal -->
-<div class="modal fade" id="share-link-modal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h4 class="modal-title">Share Link</h4>
-    </div>
-    <div class="modal-body">
-      <p>Share this link with your guests: <%= "http://localhost:3000/episodes/#{@episode.sharable_link}" %></p>
-    </div>
-  </div>
-</div>
+<% if user_signed_in? && current_user.host?(@episode) %>
+  <%= render '/episodes/modals/share_link' %>
+<% end %>
 
-<!-- Register Guest Modal -->
-<div class="modal fade" id="register-guest-modal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h4 class="modal-title">Register Guest</h4>
-    </div>
-    <div class="modal-body">
-      <%= form_for @guest do |f| %>
-        <%= hidden_field :guest, :episode_id, value: @episode.id %>
-        <%= f.text_field :name, placeholder: "Enter your name" %>
-      <% end %>
-    </div>
-    <div class="modal-footer">
-      <button type="submit" class="btn btn-primary" form="new_guest">Register</button>
-    </div>
-  </div>
-
-</div>
-
-
-<pre id="log"></pre>
-
-<%= render "aws_s3_upload_form.html.erb" %>
-
-
-<script src="/recorder.min.js"></script>
-
-
-
-<% if (!current_user || !current_user.host?(@episode)) && !session[:guest_id] %>
-  <script>
-    $(window).load(function() {
-      $('#register-guest-modal').modal('show');
-    });
-  </script>
+<% if (!current_user || !current_user.host?(@episode)) && !cookies.signed[:guest_id] %>
+  <%= render '/episodes/modals/register_guest' %>
 <% end %>
 
 
