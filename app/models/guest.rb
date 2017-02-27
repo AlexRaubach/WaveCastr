@@ -8,7 +8,7 @@ class Guest < ApplicationRecord
   private
     def sign_out_guest
       puts "Signing out guest..."
-      ActionCable.server.broadcast 'appearances',
+      ActionCable.server.broadcast "appearances_#{self.episode.sharable_link}",
         guest: self.name,
         guest_id: self.id,
         action: 'signout'
