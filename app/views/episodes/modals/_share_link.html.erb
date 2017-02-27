@@ -1,0 +1,11 @@
+<!-- Share Link Modal -->
+<div class="modal fade" id="share-link-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Share Link</h4>
+    </div>
+    <div class="modal-body">
+      <p>Share this link with your guests: <%= text_field :episode, :sharable_link, readonly: true, size: 40, value: episode_url(sharable_link: @episode.sharable_link) %></p>
+    </div>
+  </div>
+</div>

@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   mount JasmineRails::Engine => '/specs' if defined?(JasmineRails)
-  mount ActionCable.server => '/cable'
 
   root to: 'welcome#index'
   devise_for :users
@@ -12,5 +11,7 @@ Rails.application.routes.draw do
   get 'test', to: 'welcome#test'
 
   resources :welcome, only: [:show, :create]
+
+  mount ActionCable.server => '/cable'
 
 end
