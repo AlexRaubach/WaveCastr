@@ -17,6 +17,20 @@
 @import "bootstrap";
 
 
+.show-options {
+  margin-top: 20px;
+}
+
+.commands, .recordings, .logs{
+  display: none;
+}
+
+.picked {
+  display: block;
+}
+
+
+
 
 
 .header h1 a {
@@ -47,7 +61,7 @@
 
 .sub-main {
   background: url("podcast.jpg") no-repeat center center;
-  background-size: cover;
+  background-size: cover
   height:500px;
 }
 
@@ -76,3 +90,4 @@
 .active {
   display: block;
 }
+
