@@ -93,7 +93,6 @@ $(document).ready(function(){
 
   $("#input").keyup(function(e) {
     if (e.which === 13) {
-      console.log("works");
       pubnub.publish({channel : channel, message : input.value, x: (input.value='')});
     }
   })
