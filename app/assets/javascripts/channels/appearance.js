@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
-App.appearance = App.cable.subscriptions.create("AppearancesChannel", {
+var lobby = window.location.pathname.replace(/\/episodes\//, "");
+App.appearance = App.cable.subscriptions.create({channel: "AppearancesChannel", lobby: lobby}, {
   received: function(data) {
     switch (data.action) {
       case 'signin':
