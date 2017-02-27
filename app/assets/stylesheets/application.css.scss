@@ -1,0 +1,93 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+ */
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+.show-options {
+  margin-top: 20px;
+}
+
+.commands, .recordings, .logs{
+  display: none;
+}
+
+.picked {
+  display: block;
+}
+
+
+
+
+
+.header h1 a {
+	color: #06ABFE;
+  font-size: 40px;
+  text-decoration: none;
+}
+
+.header h1 a:visited {
+  color: #06ABFE;
+}
+
+.header h1 a:hover {
+  color: #06ABFE;
+}
+
+
+
+.header h1 {
+  display: inline-block;
+}
+
+
+.nav-pills {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.sub-main {
+  background: url("podcast.jpg") no-repeat center center;
+  background-size: cover;
+  height: 500px;
+}
+
+.heading h1{
+  color: #fff;
+  position: relative;
+  top:200px;
+  left:700px;
+  font-size:46px;
+  text-transform: uppercase;
+}
+
+
+.slide-container {
+  margin-top: 40px;
+}
+
+.slide-container h2 {
+  text-align: center;
+}
+
+.mySlides {
+  display: none;
+}
+
+.active {
+  display: block;
+}
+
