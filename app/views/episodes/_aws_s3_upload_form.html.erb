@@ -1,12 +1,6 @@
-<h1>testing</h1>
 
 
 <%= form_for(@episode, html: { class: 'directUpload', data: { 'form-data' => (@s3_direct_post.fields), 'url' => @s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } }) do |f| %>
-
-<div class="field">
-  <%= f.label :upload_url %><br>
-  <%= f.file_field :upload_url %>
-</div>
 
 
 <% end %>

@@ -1,6 +1,6 @@
 class EpisodesController < ApplicationController
 
-  before_action :set_s3_direct_post, only: [:create]
+  before_action :set_s3_direct_post, only: [:create, :show]
   before_action :authenticate_user!, only: [:create, :destroy]
 
   def show
