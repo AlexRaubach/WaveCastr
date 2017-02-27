@@ -1,18 +1,20 @@
 <div class="header">
-  <h1><a href="/">WavCastr</a> </h1>
-  <ul class="nav-bar">
-    <% if user_signed_in? %>
-      <li><%= link_to current_user.name, user_path(current_user) %></li>
-      <li>
-      <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-      </li>
-    <% else %>
-      <li>
-        <%= link_to('Register', new_user_registration_path)  %>
-      </li>
-      <li>
-      <%= link_to('Login', new_user_session_path)  %>
-      </li>
-    <% end %>
-  </ul>
+  <div class="container">
+    <h1><a href="/">WaveCastr</a> </h1>
+    <ul class="nav nav-pills pull-right">
+      <% if user_signed_in? %>
+        <li><%= link_to current_user.name, user_path(current_user) %></li>
+        <li>
+        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+        </li>
+      <% else %>
+        <li>
+          <%= link_to('Register', new_user_registration_path)  %>
+        </li>
+        <li>
+        <%= link_to('Login', new_user_session_path)  %>
+        </li>
+      <% end %>
+    </ul>
+  </div>  
 </div>

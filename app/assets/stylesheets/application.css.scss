@@ -15,3 +15,64 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+
+
+
+.header h1 a {
+	color: #06ABFE;
+  font-size: 40px;
+  text-decoration: none;
+}
+
+.header h1 a:visited {
+  color: #06ABFE;
+}
+
+.header h1 a:hover {
+  color: #06ABFE;
+}
+
+
+
+.header h1 {
+  display: inline-block;
+}
+
+
+.nav-pills {
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.sub-main {
+  background: url("podcast.jpg") no-repeat center center;
+  background-size: cover;
+  height:500px;
+}
+
+.heading h1{
+  color: #fff;
+  position: relative;
+  top:200px;
+  left:700px;
+  font-size:46px;
+  text-transform: uppercase;
+}
+
+
+.slide-container {
+  margin-top: 40px;
+}
+
+.slide-container h2 {
+  text-align: center;
+}
+
+.mySlides {
+  display: none;
+}
+
+.active {
+  display: block;
+}
