@@ -1,10 +1,10 @@
 class EpisodesController < ApplicationController
 
-  before_action :set_s3_direct_post, only: [:create, :show]
   before_action :authenticate_user!, only: [:create, :destroy]
 
   def show
     @episode = Episode.find_by(sharable_link: params[:sharable_link])
+    set_s3_direct_post(@episode)
     @guest = Guest.new
   end
 
@@ -24,9 +24,9 @@ class EpisodesController < ApplicationController
   end
 
   private
-    def set_s3_direct_post
+    def set_s3_direct_post(episode)
       @s3_direct_post = S3_BUCKET.presigned_post(
-        key: "wavecastr/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')
+        key: "wavecastr/#{episode.host.name}/episode_#{episode.sharable_link}/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')
     end
 
     def episode_params
