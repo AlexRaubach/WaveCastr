@@ -67,14 +67,39 @@
 // };
 
 $(document).ready(function(){
+  // function $(id) { return document.getElementById(id); }
   $(".btn-group button").click(function(){
     var choice = this.innerHTML;
     $(".show-options").children().hide();
     switchDiv(choice);
-
   })
 
+
+  var pubnub = new PubNub({
+  subscribeKey: "sub-c-d4379b4c-fc95-11e6-ba92-02ee2ddab7fe",
+  publishKey: "pub-c-d4381d4f-440f-4eef-b35c-5bc6e23b2d78"
+  });
+  var box = document.getElementById('box');
+  var input = document.getElementById('input');
+  var channel = 'test';
+
+  pubnub.addListener({
+    message: function(obj) {
+        box.innerHTML = (''+obj.message).replace( /[<>]/g, '' ) + '<br>' + box.innerHTML
+    }});
+
+  pubnub.subscribe({channels:[channel]});
+
+
+  $("#input").keyup(function(e) {
+    if (e.which === 13) {
+      console.log("works");
+      pubnub.publish({channel : channel, message : input.value, x: (input.value='')});
+    }
+  })
 })
+
+
 
 function switchDiv(choice){
   switch (choice){
@@ -93,5 +118,5 @@ function switchDiv(choice){
   }
 }
 
-// }
+
 
