@@ -1,0 +1,35 @@
+<!-- Register Guest Modal -->
+<div class="modal fade" id="register-guest-modal">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title">Register Guest</h4>
+    </div>
+    <div class="modal-body">
+      <%= form_for @guest do |f| %>
+        <%= hidden_field :guest, :episode_id, value: @episode.id %>
+        <%= f.text_field :name, placeholder: "Enter your name" %>
+      <% end %>
+    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary" form="new_guest">Register</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(window).load(function() {
+    $('#register-guest-modal').modal('show');
+
+    $('#new_guest').on('submit', function(e) {
+      e.preventDefault();
+      var formData = $(this).serialize();
+      $.ajax({ data: formData, method: this.method, url: this.action })
+        .done(function(response) {
+          window.location.reload();
+        })
+        .fail(function(error) {
+          console.log(error);
+        });
+    });
+  });
+</script>
