@@ -1,8 +1,8 @@
 class Episode < ApplicationRecord
   before_save :assign_sharable_link, on: :create
   belongs_to :host, class_name: "User"
-  has_many :guests
-  has_many :tracks
+  has_many :guests, dependent: :destroy
+  has_many :tracks, dependent: :destroy
   validates :name, presence: true
 
   private
