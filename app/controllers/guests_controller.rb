@@ -2,7 +2,7 @@ class GuestsController < ApplicationController
   def create
     guest = Guest.new(guest_params)
     if guest.save
-      session[:guest_name] = guest.name
+      session[:guest_id] = guest.id
       ActionCable.server.broadcast 'appearances',
         guest: guest.name
       head :ok
