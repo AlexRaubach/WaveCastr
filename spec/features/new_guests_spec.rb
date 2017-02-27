@@ -8,16 +8,17 @@ RSpec.feature "New guests", type: :feature do
   before(:each) do
     user.episodes << episode
     user.save
-    visit episode_url(sharable_link: episode.sharable_link)
   end
 
   scenario "guest visits episode and sees modal to register" do
+    visit episode_url(sharable_link: episode.sharable_link)
     within "#register-guest-modal" do
       expect(page).to have_content "Register Guest"
     end
   end
 
-  scenario "guest registers name and sees host name and episode name" do
+  scenario "guest registers name and sees host name and episode name", js: true do
+    visit episode_url(sharable_link: episode.sharable_link)
     within "#register-guest-modal" do
       fill_in 'guest[name]', with: 'Alex'
       click_button 'Register'
