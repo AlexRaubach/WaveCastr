@@ -2,8 +2,15 @@ class GuestsController < ApplicationController
   def create
     guest = Guest.new(guest_params)
     if guest.save
-      session[:guest_id] = guest.id
-      redirect_to episode_path(sharable_link: guest.episode.sharable_link)
+      puts "Setting guest id cookie..."
+      cookies.signed[:guest_id] = guest.id
+      ActionCable.server.broadcast "appearances_#{guest.episode.sharable_link}",
+        guest: guest.name,
+        guest_id: guest.id,
+        action: 'signin'
+      head :ok
+    else
+      head 422
     end
   end
 
