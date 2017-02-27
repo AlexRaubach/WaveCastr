@@ -1,13 +1,13 @@
 <div class="btn-group">
-  <button type="button" class="btn btn-primary">Settings</button>
-  <button type="button" class="btn btn-primary">Commands</button>
-  <button type="button" class="btn btn-primary">Recordings</button>
-  <button type="button" class="btn btn-primary">Logs</button>
+  <button type="button" class="btn btn-primary">settings</button>
+  <button type="button" class="btn btn-primary">commands</button>
+  <button type="button" class="btn btn-primary">recordings</button>
+  <button type="button" class="btn btn-primary">logs</button>
 </div>
 
 <div class="show-options">
-  <div class="settings fade">
-  <div>
+  <div class="settings picked">
+    <div>
       <label>monitorGain</label>
       <input id="monitorGain" type="number" value="0" />
     </div>
@@ -23,21 +23,36 @@
     </div>
   </div>
 
-<div>
+  <div class="commands">
+    <h2>Commands</h2>
+    <button id="init">init</button>
+    <button id="start" disabled>start</button>
+    <button id="pause" disabled>pause</button>
+    <button id="resume" disabled>resume</button>
+    <button id="stopButton" disabled>stop</button>
+  </div>
+
+  <div class="recordings">
+    <h2>Recordings</h2>
+    <ul id="recordingslist"></ul>
+  </div>
+
+  <div class="logs">
+    <h2>Log</h2>
+    <pre id="log"></pre>
+  </div>
+
+</div>  
 
 
-  <h2>Commands</h2>
-  <button id="init">init</button>
-  <button id="start" disabled>start</button>
-  <button id="pause" disabled>pause</button>
-  <button id="resume" disabled>resume</button>
-  <button id="stopButton" disabled>stop</button>
+
+<!-- 
 
   <h2>Recordings</h2>
   <ul id="recordingslist"></ul>
 
   <h2>Log</h2>
-  <pre id="log"></pre>
+  <pre id="log"></pre> -->
 
   <!-- <script src="/recorder.min.js"> -->
 
@@ -136,4 +151,3 @@
   <p>Before you enable monitoring, make sure to either plug in headphones or turn the volume down.</p>
   <p>This ogg opus implementation does not support more than 2 channels.</p>
 
-  <h2>Options</h2>

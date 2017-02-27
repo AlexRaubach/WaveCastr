@@ -16,8 +16,15 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-button {
-  border: none;
-  background-color: none;
+.show-options {
+  margin-top: 20px;
+}
+
+.commands, .recordings, .logs{
+  display: none;
+}
+
+.picked {
+  display: block;
 }
 
