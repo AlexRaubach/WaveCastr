@@ -31,20 +31,24 @@
 
 
 
-
+.header logo {
+  position: relative;
+  top: -20px;
+}
 
 .header h1 a {
-	color: #06ABFE;
-  font-size: 40px;
+	color: #418BE4;
+  font-size: 60px;
   text-decoration: none;
+  margin-top: 10px;
 }
 
 .header h1 a:visited {
-  color: #06ABFE;
+  color: #418BE4;
 }
 
 .header h1 a:hover {
-  color: #06ABFE;
+  color: #418BE4;
 }
 
 
@@ -60,7 +64,7 @@
 }
 
 .sub-main {
-  background: url("podcast.jpg") no-repeat center center;
+  background: url("/podcast.jpg") no-repeat center center;
   background-size: cover;
   height: 500px;
 }
