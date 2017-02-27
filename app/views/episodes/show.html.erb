@@ -15,11 +15,12 @@
     <%= render @episode.guests %>
     <% if user_signed_in? && current_user.host?(@episode) %>
       <button id="present-share-link-modal" class="btn btn-primary" data-toggle="modal" data-target="#share-link-modal">Share Link</button>
-      <%= render "test" %>
+<!--       <%= render "test" %> -->
     <% end %>
   </div>
-  <div id="chat-box">
-    <!-- Chat will go here -->
+  <div id="chat-container">
+    <div><input id="input" placeholder="type here"/></div>
+    <div id="box"></div>
   </div>
   <div id="track-list">
       <ul id="recordingslist">
@@ -61,12 +62,8 @@
 
 <pre id="log"></pre>
 
-<div class="chat container">
-  <div><input id="input" placeholder="type here"></div>
-  <div id="box"><p>testing</p></div>
-</div>
 
-<script src="/recorder.min.js"></script>
+<!-- <script src="/recorder.min.js"></script> -->
 
 
 
