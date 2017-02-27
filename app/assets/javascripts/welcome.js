@@ -72,3 +72,7 @@ var pubnub = new PubNub({
 var box = PUBNUB.$('box'), input = PUBNUB.$('input'), channel = 'chat';
 debugger;
 
+
+
+
+
