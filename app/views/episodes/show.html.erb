@@ -27,7 +27,7 @@
   </div>
 <% end %>
 
-<% if (!current_user || !current_user.host?(@episode)) && !session[:guest_name] %>
+<% if (!current_user || !current_user.host?(@episode)) && !session[:guest_id] %>
   <!-- Register Guest Modal -->
   <div class="modal fade" id="register-guest-modal">
     <div class="modal-content">
