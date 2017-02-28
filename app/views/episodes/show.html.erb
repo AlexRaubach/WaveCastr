@@ -40,7 +40,7 @@
   <%= render '/episodes/modals/share_link' %>
 <% end %>
 
-<% if (!current_user || !current_user.host?(@episode)) && !cookies.signed[:guest_id] %>
+<% if (!current_user || !current_user.host?(@episode)) && !@episode.guest_ids.include?(cookies.signed[:guest_id]) %>
   <%= render '/episodes/modals/register_guest' %>
 <% end %>
 
