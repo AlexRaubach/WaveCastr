@@ -1,4 +1,5 @@
 class Track < ApplicationRecord
+  validates_presence_of :s3_string, :episode_id
   belongs_to :episode
 
 
