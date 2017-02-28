@@ -38,54 +38,19 @@
 <div class="row chat">
   <div class="col-md-12">
       <div id="chat-container">
-        <div><input id="input" placeholder="type here"/></div>
         <div id="box"></div>
       </div>
-  </div>
-</div>
-
-<button id="test">click me</button>
-
-<div class="row">
-  <div class="col-md-6">
-    <div class="chat_window">
-      <div class="top_menu">
-        <div class="title">
-          Chat
-        </div>
+      <div>
+        <input id="input" placeholder="type your message here"/>
+        <button id="send">Send</button>
       </div>
-      <ul class="messages"></ul>
-      <div class="bottom_wrapper clearfix">
-        <div class="message_input_wrapper">
-          <input class="message_input" placeholder="Type your message here...">
-        </div>
-        <div class="send_message">
-          <div class="icon"></div>
-          <div class="text">
-            Send
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="message_template">
-      <ul>
-        <li class="message">
-          <div class="avatar"></div>
-          <div class="text_wrapper">
-            <div class="text"></div>
-          </div>
-        </li>
-      </ul>
-    </div>
   </div>
 </div>
 
 
 
 
-
-
- <pre id="log"></pre>
+<!--  <pre id="log"></pre> -->
 
  <script src="/recorder.min.js"></script>
 
@@ -96,4 +61,6 @@
 <% if (!current_user || !current_user.host?(@episode)) && !cookies.signed[:guest_id] %>
   <%= render '/episodes/modals/register_guest' %>
 <% end %>
+
+
 
