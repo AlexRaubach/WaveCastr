@@ -3,6 +3,7 @@ class EpisodesController < ApplicationController
   before_action :authenticate_user!, only: [:create, :destroy]
 
   def show
+    @chat_keys = [ENV['CHAT_SUBSCRIBE_KEY'], ENV['CHAT_PUBLISH_KEY']]
     @episode = Episode.find_by(sharable_link: params[:sharable_link])
     set_s3_direct_post(@episode)
     @guest = Guest.new
