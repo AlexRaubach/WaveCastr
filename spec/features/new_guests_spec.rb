@@ -17,13 +17,13 @@ RSpec.feature "New guests", type: :feature do
     end
   end
 
-  scenario "guest registers name and sees host name and episode name", js: true do
-    visit episode_url(sharable_link: episode.sharable_link)
-    within "#register-guest-modal" do
-      fill_in 'guest[name]', with: 'Alex'
-      click_button 'Register'
-    end
-    expect(page).to have_content("Host: #{user.name}")
-    expect(page).to have_content('Alex')
-  end
+  # xscenario "guest registers name and sees host name and episode name", js: true do
+  #   visit episode_url(sharable_link: episode.sharable_link)
+  #   within "#register-guest-modal" do
+  #     fill_in 'guest[name]', with: 'Alex'
+  #     click_button 'Register'
+  #   end
+  #   expect(page).to have_content("Host: #{user.name}")
+  #   expect(page).to have_content('Alex')
+  # end
 end
