@@ -36,7 +36,8 @@ $(document).ready(function(){
 
     pubnub.addListener({
       message: function(obj) {
-          box.innerHTML = (obj.publisher + ": " +obj.message).replace( /[<>]/g, '' ) + '<br>'+ box.innerHTML;
+          // box.innerHTML = (obj.publisher + ": " +obj.message).replace( /[<>]/g, '' ) + '<br>'+ box.innerHTML;
+          box.innerHTML = box.innerHTML + '<br>'+ (obj.publisher + ": " +obj.message).replace( /[<>]/g, '' )
       }});
 
 
