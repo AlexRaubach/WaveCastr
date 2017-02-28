@@ -1,5 +1,5 @@
 class Track < ApplicationRecord
-
+  belongs_to :episode
 
 
   def s3_link
