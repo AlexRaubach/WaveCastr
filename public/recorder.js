@@ -28,13 +28,13 @@ document.addEventListener('initRecording', function(e) {
 function initRecording() {
 
   if (!Recorder.isRecordingSupported()) {
+    App.appearance.perform("update", {status: 'error'});
     return screenLogger("Recording features are not supported in your browser.");
   }
 
   recorder = new Recorder({
     // Settings like bitrate or sampleRate would go here
-    encoderPath: "/recorderjs/encoderWorker.min.js"
-  });
+    encoderPath: "/recorderjs/encoderWorker.min.js" });
 
   recorder.addEventListener( "start", function(e){
     addToChatBox('Recorder is started');
@@ -55,6 +55,9 @@ function initRecording() {
   recorder.addEventListener( "streamReady", function(e){
     stopButton.disabled = true;
     start.disabled = false;
+
+    App.appearance.perform("update", {status: 'ready'});
+//     screenLogger('Audio stream is ready.');
     addToChatBox('Audio stream is ready.');
   });
 
