@@ -7,8 +7,14 @@ class AppearancesChannel < ApplicationCable::Channel
     guest.destroy if guest
   end
 
-  def receive(data)
-    puts "AppearancesChannel is receiving data..."
-    ActionCable.server.broadcast("appearances_#{params[:lobby]}", data)
+  def update(data)
+    puts "Updating guest status..."
+    return unless guest
+    if guest.update_attributes(status: data['status'])
+      ActionCable.server.broadcast("appearances_#{params[:lobby]}",
+                                   guest: guest.name,
+                                   guest_id: guest.id,
+                                   status: guest.status)
+    end
   end
 end
