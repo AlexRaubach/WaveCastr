@@ -14,12 +14,19 @@
       <div id="chat-container">
         <div id="box"></div>
       </div>
-      <div>
-        <input id="input" placeholder="type your message here"/>
-        <button id="send">Send</button>
+      <div id="input-box">
+          <input id="input" placeholder="type your message here"/>
+          <button id="send">Send</button>
+        </div>
+      <div class="chat-start">
+        <p>Enter a username to begin chatting</p>
+        <input id="test">
+        <button id="click">click me</button>
       </div>
   </div>
 </div>
+
+
 
 
 <%= render '/episodes/aws_s3_upload_form' %>
@@ -48,8 +55,6 @@
   <%= render '/episodes/modals/register_guest' %>
 <% end %>
 
-<input id="test">
-<button id="click">click me</button>
 
 
 

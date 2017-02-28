@@ -89,6 +89,9 @@ $(document).ready(function(){
 
   $("#click").on("click",function() {
     username = document.getElementById("test").value;
+    $(".chat-start").toggle();
+    $("#chat-container").toggle();
+    $("#input-box").toggle();
     startChat();
   })
   function startChat(){
