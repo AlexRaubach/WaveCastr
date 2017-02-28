@@ -1,9 +1,7 @@
-
-
-<%= form_for(@episode, html: { class: 'directUpload', data: { 'form-data' => (@s3_direct_post.fields), 'url' => @s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } }) do |f| %>
-
-
+<%= form_for(@episode, html: { hidden: true, class: 'directUpload', data: { 
+	'form-data' => (@s3_direct_post.fields), 
+	'url' => @s3_direct_post.url,
+	'host' => URI.parse(@s3_direct_post.url).host } }) do |f| %>
+  <%= f.file_field :track %>
 <% end %>
 
-
-<form class ='directUpload' data-form-data='<%=@s3_direct_post.fields%>' data-url='<%=@s3_direct_post.url%>' data-host=''
