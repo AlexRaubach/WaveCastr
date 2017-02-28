@@ -16,13 +16,11 @@ App.appearance = App.cable.subscriptions.create({channel: "AppearancesChannel", 
   },
 
   renderGuest: function(data) {
-    return `<div id="guest-${data.guest_id}" class="guest panel panel-default">
-              <div class="panel-body">
-                <p>
-                  <h3>${data.guest}</h3>
-                </p>
-              </div>
-            </div>`
+    return '<div id="guest-' + data.guest_id + '" class="guest panel panel-default">' +
+              '<div class="panel-body">' + 
+                '<p><h3>' + data.guest + '</h3></p>' + 
+              '</div>' +
+            '</div>'
   }
 });
 
