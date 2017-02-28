@@ -1,7 +1,7 @@
 <div id="guest-<%= guest.id %>" class="guest panel panel-default">
   <div class="panel-body">
     <p>
-      <h3 <%= 'id=current_user' if cookies.signed[:guest_id] == guest.id %>><%= guest.name %></h3>
+    <h3 <%= 'id=current_user' if cookies.signed[:guest_id] == guest.id %>><div class="status-dot waiting"></div><%= guest.name %></h3>
     </p>
   </div>
 </div>

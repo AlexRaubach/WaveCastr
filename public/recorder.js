@@ -26,13 +26,14 @@ document.addEventListener('initRecording', function(e) {
 function initRecording() {
 
   if (!Recorder.isRecordingSupported()) {
+    var guest_id = parseInt($('#current_user').parent().parent().attr('id').replace(/guest-/, ''));
+    App.appearance.perform("receive", {guest: $('#current_user').text(), guest_id: guest_id, status: 'error'});
     return screenLogger("Recording features are not supported in your browser.");
   }
 
   recorder = new Recorder({
     // Settings like bitrate or sampleRate would go here
-    encoderPath: "/recorderjs/encoderWorker.min.js"
-  });
+    encoderPath: "/recorderjs/encoderWorker.min.js" });
 
   recorder.addEventListener( "start", function(e){
     screenLogger('Recorder is started');
@@ -53,6 +54,8 @@ function initRecording() {
   recorder.addEventListener( "streamReady", function(e){
     init.disabled = stopButton.disabled = true;
     start.disabled = false;
+    var guest_id = parseInt($('#current_user').parent().parent().attr('id').replace(/guest-/, ''));
+    App.appearance.perform("receive", {guest: $('#current_user').text(), guest_id: guest_id, status: 'ready'});
     screenLogger('Audio stream is ready.');
   });
 

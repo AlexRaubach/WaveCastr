@@ -10,6 +10,6 @@ class Guest < ApplicationRecord
       ActionCable.server.broadcast "appearances_#{self.episode.sharable_link}",
         guest: self.name,
         guest_id: self.id,
-        action: 'signout'
+        status: 'signout'
     end
 end

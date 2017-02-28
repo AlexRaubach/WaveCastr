@@ -1,3 +1,25 @@
 // Place all the styles related to the episodes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+div.status-dot {
+  display: inline-block;
+  vertical-align: top;
+  height: 20px;
+  width: 20px;
+  margin-right: 20px;
+  border-radius: 500px;
+  border: 1px solid black;
+}
+
+.status-dot.ready {
+  background-color: green;
+}
+
+.status-dot.waiting {
+  background-color: yellow;
+}
+
+.status-dot.error {
+  background-color: red;
+}
