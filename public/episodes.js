@@ -1,6 +1,9 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
+  var addToChatBox = function(string){
+    box.innerHTML = ("Host: " + string).replace( /[<>]/g, '' ) + '<br>'+ box.innerHTML;
+  }
 
 $(document).ready(function(){
   // function $(id) { return document.getElementById(id); }
@@ -22,6 +25,8 @@ $(document).ready(function(){
     $("#input-box").toggle();
     startChat();
   })
+
+
   function startChat(){
     var pubnub = new PubNub({
     subscribeKey: subscribeKey,
@@ -34,7 +39,6 @@ $(document).ready(function(){
 
     pubnub.addListener({
       message: function(obj) {
-        console.log(obj);
           box.innerHTML = (obj.publisher + ": " +obj.message).replace( /[<>]/g, '' ) + '<br>'+ box.innerHTML;
       }});
 
