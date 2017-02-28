@@ -3,28 +3,10 @@
   <div class="col-md-6" id="guest-list">
     <%= render partial: 'users/host', locals: { host: @episode.host } %>
     <%= render @episode.guests %>
-
     <% if user_signed_in? && current_user.host?(@episode) %>
       <button id="present-share-link-modal" class="btn btn-primary" data-toggle="modal" data-target="#share-link-modal">Share Link</button>
     <% end %>
-  </div>
 
-  <div id="track-list">
-      <ul id="recordingslist">
-    <!-- Download buttons for host will be visible here if recording has stopped -->
-    </ul>
-  <div class="col-md-6">
-    <% if user_signed_in? && current_user.host?(@episode) %>
-      <div class=buttons>
-        <button id="init">init</button>
-        <button id="start" disabled>start</button>
-        <button id="pause" disabled>pause</button>
-        <button id="resume" disabled>resume</button>
-        <button id="stopButton" disabled>stop</button>
-      </div>
-    <% end %>
-  </div>
-</div>
 
 <!-- <div class="row">
   <div class="col-md-12">
@@ -48,11 +30,23 @@
 </div>
 
 
+<%= render '/episodes/aws_s3_upload_form' %>
+
+<div id="record-buttons" <%= 'hidden' unless user_signed_in? && current_user.host?(@episode) %>>
+  <button id="init">init</button>
+  <button id="start" disabled>start</button>
+  <button id="pause" disabled>pause</button>
+  <button id="resume" disabled>resume</button>
+  <button id="stopButton" disabled>stop</button>
+</div>
+
+
 
 
 <!--  <pre id="log"></pre> -->
 
  <script src="/recorder.min.js"></script>
+
 
 <% if user_signed_in? && current_user.host?(@episode) %>
   <%= render '/episodes/modals/share_link' %>
