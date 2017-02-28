@@ -5,10 +5,13 @@ App.recorder = App.cable.subscriptions.create({channel: "RecorderChannel", lobby
   received: function(data) {
     switch (data.command) {
       case 'start':
-        $(start).trigger('click');
+        document.dispatchEvent(startEvent);
         break;
       case 'stop':
-        $(stopButton).trigger('click');
+        document.dispatchEvent(stopEvent);
+        break;
+      case 'init':
+        document.dispatchEvent(initEvent);
     }
   }
 });
