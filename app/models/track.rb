@@ -1,6 +1,6 @@
 class Track < ApplicationRecord
-  belongs_to :recordable, polymorphic: true
-  validates :recordable_type, presence: true
+  validates_presence_of :s3_string, :episode_id
+  belongs_to :episode
 
 
   def s3_link
