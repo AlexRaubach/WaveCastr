@@ -79,11 +79,12 @@ $(document).ready(function(){
   subscribeKey: "sub-c-d4379b4c-fc95-11e6-ba92-02ee2ddab7fe",
   publishKey: "pub-c-d4381d4f-440f-4eef-b35c-5bc6e23b2d78"
   });
+  //first chat box
   var box = document.getElementById('box');
   var input = document.getElementById('input');
   var userInput = document.getElementById('chat-name');
   var channel = window.location.pathname.replace(/\/episodes\//, "");
-  var username;
+
 
   pubnub.addListener({
     message: function(obj) {
@@ -100,24 +101,9 @@ $(document).ready(function(){
     }
   })
 
-  // $("#chat-name").keyup(function(e) {
-  //   if (e.which === 13) {
-  //     if (userInput.value != ''){
-  //       username = userInput.value;
-  //       $("#chat-config").toggle();
-  //       $("#chat-container").toggle();
-  //     }
-  //   }
-  // })
-
-  // $("#test").on("click", function(){
-  //   $.ajax({
-  //     action: "/guests",
-  //     type: "POST"
-  //   }).done(function(response){
-  //     console.log(response);
-  //   })
-  // })
+  $("#send").on('click', function() {
+    pubnub.publish({channel : channel, message : input.value, x: (input.value='')});
+  })
 })
 
 
