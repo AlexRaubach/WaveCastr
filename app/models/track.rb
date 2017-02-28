@@ -3,7 +3,20 @@ class Track < ApplicationRecord
   belongs_to :episode
 
 
-  def s3_link
+  def url
     S3_BUCKET.url.to_s + s3_string.to_s
   end
+
+  def name
+    s3_string.slice(/\__(.*)\__/)
+  end
+
+  def audio_format
+    s3_string.slice(/\.[0-9a-z]+$/i)
+  end
+
+
 end
+# all.each do |x|
+#   puts x.s3_string
+# end

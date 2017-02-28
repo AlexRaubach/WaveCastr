@@ -1,13 +1,19 @@
 <div class="row">
   <div class="col-md-6" id="guest-list">
     <%= render partial: 'users/host', locals: { host: @episode.host } %>
+
     <%= render @episode.guests %>
-    <% if user_signed_in? && current_user.host?(@episode) %>
+
+    <% if is_host?(@episode) %>
       <button id="present-share-link-modal" class="btn btn-primary" data-toggle="modal" data-target="#share-link-modal">Share Link</button>
     <% end %>
   </div>
+</div>
 
-
+      <!-- Download buttons for host will be visible here if recording has stopped -->
+  <div id="track-list">
+    <%= render 'tracks/episode_tracks.html.erb', locals: {episode: @episode} %>
+  </div>
 
   <div class="col-md-6">
       <div id="chat-container">
@@ -23,20 +29,16 @@
         <button id="click">click me</button>
       </div>
   </div>
-</div>
-
-
 
 
 <%= render '/episodes/aws_s3_upload_form' %>
-
 
 <!-- Information for saving of Tracks -->
 <script>
   var episodeId = "<%= @episode.id %>"
 </script>
 
-<div id="record-buttons" <%= 'hidden' unless user_signed_in? && current_user.host?(@episode) %>>
+<div id="record-buttons" <%= 'hidden' unless is_host?(@episode) %>>
   <button id="init">init</button>
   <button id="start" disabled>start</button>
 <!--   <button id="pause" disabled>pause</button>
@@ -54,7 +56,7 @@
  <script src="/recorder.js"></script>
 
 
-<% if user_signed_in? && current_user.host?(@episode) %>
+<% if is_host?(@episode) %>
   <%= render '/episodes/modals/share_link' %>
 <% end %>
 
