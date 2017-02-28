@@ -9,15 +9,7 @@ $(document).ready(function(){
     $(".show-options").children().hide();
     switchDiv(choice);
   })
-  // $('#new_guest').on('submit', function(e) {
-  //   e.preventDefault();
-  //   var form = document.forms[1];
-  //   var name = form.elements[3].value;
-  //   debugger;
-  // });
 
-
-  //first chat box
   var box = document.getElementById('box');
   var input = document.getElementById('input');
   var channel = window.location.pathname.replace(/\/episodes\//, "");
