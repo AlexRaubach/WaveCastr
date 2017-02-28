@@ -2,7 +2,7 @@
 // All this logic will automatically be available in application.js.
 
   var addToChatBox = function(string){
-    box.innerHTML = ("Host: " + string).replace( /[<>]/g, '' ) + '<br>'+ box.innerHTML;
+    box.innerHTML = ($('#current_user').text()+': ' + string).replace( /[<>]/g, '' ) + '<br>'+ box.innerHTML;
   }
 
 $(document).ready(function(){
@@ -16,15 +16,12 @@ $(document).ready(function(){
   var box = document.getElementById('box');
   var input = document.getElementById('input');
   var channel = window.location.pathname.replace(/\/episodes\//, "");
-  var username;
-
-  $("#click").on("click",function() {
-    username = document.getElementById("test").value;
-    $(".chat-start").toggle();
-    $("#chat-container").toggle();
-    $("#input-box").toggle();
+  var username = $('#current_user').text();
+    // $(".chat-start").toggle();
+    // $("#chat-container").toggle();
+    // $("#input-box").toggle();
     startChat();
-  })
+  // })
 
 
   function startChat(){
