@@ -2,7 +2,7 @@ class GuestsController < ApplicationController
   def create
     guest = Guest.new(guest_params)
     if guest.save
-      puts "Setting guest id cookie..."
+      cookies.signed[:guest_id] = guest.id
       ActionCable.server.broadcast "appearances_#{guest.episode.sharable_link}",
         guest: guest.name,
         guest_id: guest.id,

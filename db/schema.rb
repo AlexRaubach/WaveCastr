@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170225192414) do
+ActiveRecord::Schema.define(version: 20170228160250) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,11 +32,9 @@ ActiveRecord::Schema.define(version: 20170225192414) do
   end
 
   create_table "tracks", force: :cascade do |t|
-    t.integer  "recordable_id"
-    t.string   "recordable_type", limit: 10
     t.string   "s3_string"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer  "episode_id"
   end
 
