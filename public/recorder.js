@@ -10,9 +10,6 @@
       App.recorder.perform("receive", {command: 'init'});
     });
 
-    pause.addEventListener( "click", function(){ recorder.pause(); });
-    resume.addEventListener( "click", function(){ recorder.resume(); });
-
     var startEvent = new Event('startRecording');
     var stopEvent = new Event('stopRecording');
     var initEvent = new Event('initRecording');
@@ -40,26 +37,14 @@
 
       recorder.addEventListener( "start", function(e){
         screenLogger('Recorder is started');
-        init.disabled = start.disabled = resume.disabled = true;
-        pause.disabled = stopButton.disabled = false;
+        init.disabled = start.disabled = true;
+        stopButton.disabled = false;
       });
 
       recorder.addEventListener( "stop", function(e){
         screenLogger('Recorder is stopped');
         init.disabled = false;
-        pause.disabled = resume.disabled = stopButton.disabled = start.disabled = true;
-      });
-
-      recorder.addEventListener( "pause", function(e){
-        screenLogger('Recorder is paused');
-        init.disabled = pause.disabled = start.disabled = true;
-        resume.disabled = stopButton.disabled = false;
-      });
-
-      recorder.addEventListener( "resume", function(e){
-        screenLogger('Recorder is resuming');
-        init.disabled = start.disabled = resume.disabled = true;
-        pause.disabled = stopButton.disabled = false;
+        stopButton.disabled = start.disabled = true;
       });
 
       recorder.addEventListener( "streamError", function(e){
@@ -67,7 +52,7 @@
       });
 
       recorder.addEventListener( "streamReady", function(e){
-        init.disabled = pause.disabled = resume.disabled = stopButton.disabled = true;
+        init.disabled = stopButton.disabled = true;
         start.disabled = false;
         screenLogger('Audio stream is ready.');
       });
