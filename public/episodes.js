@@ -2,7 +2,7 @@
 // All this logic will automatically be available in application.js.
 
   var addToChatBox = function(string){
-    box.innerHTML = ("Host: " + string).replace( /[<>]/g, '' ) + '<br>'+ box.innerHTML;
+    box.innerHTML = ($('#current_user').text()+': ' + string).replace( /[<>]/g, '' ) + '<br>'+ box.innerHTML;
   }
 
 $(document).ready(function(){
