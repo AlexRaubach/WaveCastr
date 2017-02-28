@@ -26,14 +26,16 @@
 <div id="record-buttons" <%= 'hidden' unless user_signed_in? && current_user.host?(@episode) %>>
   <button id="init">init</button>
   <button id="start" disabled>start</button>
-  <button id="pause" disabled>pause</button>
-  <button id="resume" disabled>resume</button>
+<!--   <button id="pause" disabled>pause</button>
+  <button id="resume" disabled>resume</button> -->
   <button id="stopButton" disabled>stop</button>
 </div>
 
  <pre id="log"></pre>
 
- <script src="/recorder.min.js"></script>
+ <script src="/recorderjs/recorder.min.js"></script>
+
+ <script src="/recorder.js"></script>
 
 
 <% if user_signed_in? && current_user.host?(@episode) %>
