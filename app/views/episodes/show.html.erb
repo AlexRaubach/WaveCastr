@@ -1,29 +1,44 @@
 <div class="row">
   <div class="col-md-6" id="guest-list">
     <%= render partial: 'users/host', locals: { host: @episode.host } %>
+
     <%= render @episode.guests %>
+
+    <% if is_host?(@episode) %>
+      <button id="present-share-link-modal" class="btn btn-primary" data-toggle="modal" data-target="#share-link-modal">Share Link</button>
+    <% end %>
   </div>
-  <% if user_signed_in? && current_user.host?(@episode) %>
-    <button id="present-share-link-modal" class="btn btn-primary" data-toggle="modal" data-target="#share-link-modal">Share Link</button>
-  <% end %>
-  <div id="chat-box">
-    <!-- Chat will go here -->
-  </div>
-  <div id="track-list">
-    <ul id="recordingslist">
-      <!-- Download buttons for host will be visible here if recording has stopped -->
-    </ul>
 </div>
 
-<%= render '/episodes/aws_s3_upload_form' %>
+      <!-- Download buttons for host will be visible here if recording has stopped -->
+  <div id="track-list">
+    <%= render 'tracks/episode_tracks.html.erb', locals: {episode: @episode} %>
+  </div>
 
+  <div class="col-md-6">
+      <div id="chat-container">
+        <div id="box"></div>
+      </div>
+      <div id="input-box">
+          <input id="input" placeholder="type your message here"/>
+          <button id="send">Send</button>
+        </div>
+      <div class="chat-start">
+        <p>Enter a username to begin chatting</p>
+        <input id="test">
+        <button id="click">click me</button>
+      </div>
+  </div>
+
+
+<%= render '/episodes/aws_s3_upload_form' %>
 
 <!-- Information for saving of Tracks -->
 <script>
   var episodeId = "<%= @episode.id %>"
 </script>
 
-<div id="record-buttons" <%= 'hidden' unless user_signed_in? && current_user.host?(@episode) %>>
+<div id="record-buttons" <%= 'hidden' unless is_host?(@episode) %>>
   <button id="init">init</button>
   <button id="start" disabled>start</button>
 <!--   <button id="pause" disabled>pause</button>
@@ -31,14 +46,18 @@
   <button id="stopButton" disabled>stop</button>
 </div>
 
+
+
+
  <pre id="log"></pre>
 
+<script src="/episodes.js"></script>
  <script src="/recorderjs/recorder.min.js"></script>
 
  <script src="/recorder.js"></script>
 
 
-<% if user_signed_in? && current_user.host?(@episode) %>
+<% if is_host?(@episode) %>
   <%= render '/episodes/modals/share_link' %>
 <% end %>
 
@@ -46,4 +65,9 @@
   <%= render '/episodes/modals/register_guest' %>
 <% end %>
 
+<!-- Chat Keys -->
+<script>
+  var subscribeKey = "<%= @chat_keys[0] %>"
+  var publishKey = "<%= @chat_keys[1] %>"
+</script>
 
