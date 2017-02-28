@@ -53,7 +53,7 @@ function initRecording() {
   });
 
   recorder.addEventListener( "streamReady", function(e){
-    init.disabled = stopButton.disabled = true;
+    stopButton.disabled = true;
     start.disabled = false;
     addToChatBox('Audio stream is ready.');
   });
