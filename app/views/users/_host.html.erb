@@ -1,7 +1,7 @@
-<div class="host panel panel-default">
+<div id="host" class="panel panel-default">
   <div class="panel-body">
     <p>
-      <h3>Host: <%= host.name %></h3>
+    <h3 <%= 'id=current_user' if user_signed_in? && current_user.host?(@episode) %>><%= host.name %></h3>
     </p>
   </div>
 </div>

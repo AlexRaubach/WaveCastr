@@ -2,7 +2,6 @@
   <div class="col-md-6" id="guest-list">
     <%= render partial: 'users/host', locals: { host: @episode.host } %>
     <%= render @episode.guests %>
-
   </div>
   <% if user_signed_in? && current_user.host?(@episode) %>
     <button id="present-share-link-modal" class="btn btn-primary" data-toggle="modal" data-target="#share-link-modal">Share Link</button>
@@ -18,15 +17,13 @@
 
 <%= render '/episodes/aws_s3_upload_form' %>
 
-<% if user_signed_in? && current_user.host?(@episode) %>
-  <div class=buttons>
-    <button id="init">init</button>
-    <button id="start" disabled>start</button>
-    <button id="pause" disabled>pause</button>
-    <button id="resume" disabled>resume</button>
-    <button id="stopButton" disabled>stop</button>
-  </div>
-<% end %>
+<div id="record-buttons" <%= 'hidden' unless user_signed_in? && current_user.host?(@episode) %>>
+  <button id="init">init</button>
+  <button id="start" disabled>start</button>
+  <button id="pause" disabled>pause</button>
+  <button id="resume" disabled>resume</button>
+  <button id="stopButton" disabled>stop</button>
+</div>
 
  <pre id="log"></pre>
 
