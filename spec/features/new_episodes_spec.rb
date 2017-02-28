@@ -26,6 +26,6 @@ RSpec.feature "New episodes", type: :feature do
     within('.modal-footer') do
       click_button('Go')
     end
-    expect(page).to have_content("Host: #{user.name}")
+    expect(page).to have_content("#{user.name}")
   end
 end
