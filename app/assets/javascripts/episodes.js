@@ -96,18 +96,19 @@ $(document).ready(function(){
   })
   function startChat(){
     var pubnub = new PubNub({
-    subscribeKey: "sub-c-d4379b4c-fc95-11e6-ba92-02ee2ddab7fe",
-    publishKey: "pub-c-d4381d4f-440f-4eef-b35c-5bc6e23b2d78",
+    subscribeKey: subscribeKey,
+    publishKey: publishKey,
     uuid: username
     });
+    pubnub.subscribe({channels:[channel]});
+
+
 
     pubnub.addListener({
       message: function(obj) {
         console.log(obj);
           box.innerHTML = (obj.publisher + ": " +obj.message).replace( /[<>]/g, '' ) + '<br>'+ box.innerHTML;
       }});
-
-    pubnub.subscribe({channels:[channel]});
 
 
     $("#input").keyup(function(e) {
