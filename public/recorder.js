@@ -13,6 +13,7 @@ init.addEventListener( "click", function(){
 var startEvent = new Event('startRecording');
 var stopEvent = new Event('stopRecording');
 var initEvent = new Event('initRecording');
+
 document.addEventListener('startRecording', function(e) {
   recorder.start();
 });
@@ -22,6 +23,7 @@ document.addEventListener('stopRecording', function(e) {
 document.addEventListener('initRecording', function(e) {
   initRecording();
 });
+
 
 function initRecording() {
 
@@ -35,13 +37,13 @@ function initRecording() {
     encoderPath: "/recorderjs/encoderWorker.min.js" });
 
   recorder.addEventListener( "start", function(e){
-    screenLogger('Recorder is started');
+    addToChatBox('Recorder is started');
     init.disabled = start.disabled = true;
     stopButton.disabled = false;
   });
 
   recorder.addEventListener( "stop", function(e){
-    screenLogger('Recorder is stopped');
+    addToChatBox('Recorder is stopped');
     init.disabled = false;
     stopButton.disabled = start.disabled = true;
   });
@@ -51,15 +53,17 @@ function initRecording() {
   });
 
   recorder.addEventListener( "streamReady", function(e){
-    init.disabled = stopButton.disabled = true;
+    stopButton.disabled = true;
     start.disabled = false;
+
     App.appearance.perform("update", {status: 'ready'});
-    screenLogger('Audio stream is ready.');
+//     screenLogger('Audio stream is ready.');
+    addToChatBox('Audio stream is ready.');
   });
 
   recorder.addEventListener( "dataAvailable", function(e){
     var dataBlob = new Blob( [e.detail], { type: 'audio/ogg' } );
-    dataBlob.name = $('#current_user').text() + '_' + new Date().toISOString() + ".ogg";
+    dataBlob.name = "__" + $('#current_user').text() + '__' + new Date().toISOString() + ".ogg";
     var fileName = dataBlob.name;
     var url = URL.createObjectURL( dataBlob );
     var audio = document.createElement('audio');
@@ -92,21 +96,18 @@ function initRecording() {
     .done(function(response){
       var buckObjectUrl = $($(response).children().children()[0]).text();
       buckObjectUrl = buckObjectUrl.match(/\wavecastr(.*)/)[1]
-      console.log(buckObjectUrl);
-      console.log(episodeId);
 
       var newTrackData = {episode_id: episodeId, s3_string: buckObjectUrl };
-      console.log(newTrackData);
       $.ajax({
         url: "/tracks",
         method: "POST",
         data: newTrackData
       })
       .done(function(response){
-        console.log("success");
+        console.log("successful link save");
       })
       .fail(function(response){
-        console.log("fail");
+        console.log("failed link save");
       })
     })
   });
