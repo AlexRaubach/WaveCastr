@@ -1,3 +1,4 @@
+<p id="guest"> <%= @guest.name %> </p>
 <div class="row">
   <div class="col-md-6" id="guest-list">
     <%= render partial: 'users/host', locals: { host: @episode.host } %>
@@ -7,24 +8,81 @@
       <button id="present-share-link-modal" class="btn btn-primary" data-toggle="modal" data-target="#share-link-modal">Share Link</button>
     <% end %>
   </div>
-  <div id="chat-container">
-    <div><input id="input" placeholder="type here"/></div>
-    <div id="box"></div>
-  </div>
+
   <div id="track-list">
       <ul id="recordingslist">
     <!-- Download buttons for host will be visible here if recording has stopped -->
     </ul>
-</div>
-<% if user_signed_in? && current_user.host?(@episode) %>
-  <div class=buttons>
-    <button id="init">init</button>
-    <button id="start" disabled>start</button>
-    <button id="pause" disabled>pause</button>
-    <button id="resume" disabled>resume</button>
-    <button id="stopButton" disabled>stop</button>
+  <div class="col-md-6">
+    <% if user_signed_in? && current_user.host?(@episode) %>
+      <div class=buttons>
+        <button id="init">init</button>
+        <button id="start" disabled>start</button>
+        <button id="pause" disabled>pause</button>
+        <button id="resume" disabled>resume</button>
+        <button id="stopButton" disabled>stop</button>
+      </div>
+    <% end %>
   </div>
-<% end %>
+</div>
+
+<!-- <div class="row">
+  <div class="col-md-12">
+      <div id="chat-config">
+        <p>Enter a name to start chatting</p>
+        <div><input id="chat-name" placeholder="type here"/></div>
+      </div>
+  </div>
+</div> -->
+
+<div class="row chat">
+  <div class="col-md-12">
+      <div id="chat-container">
+        <div><input id="input" placeholder="type here"/></div>
+        <div id="box"></div>
+      </div>
+  </div>
+</div>
+
+<button id="test">click me</button>
+
+<div class="row">
+  <div class="col-md-6">
+    <div class="chat_window">
+      <div class="top_menu">
+        <div class="title">
+          Chat
+        </div>
+      </div>
+      <ul class="messages"></ul>
+      <div class="bottom_wrapper clearfix">
+        <div class="message_input_wrapper">
+          <input class="message_input" placeholder="Type your message here...">
+        </div>
+        <div class="send_message">
+          <div class="icon"></div>
+          <div class="text">
+            Send
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="message_template">
+      <ul>
+        <li class="message">
+          <div class="avatar"></div>
+          <div class="text_wrapper">
+            <div class="text"></div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+
+
 
 
  <pre id="log"></pre>
@@ -38,5 +96,4 @@
 <% if (!current_user || !current_user.host?(@episode)) && !cookies.signed[:guest_id] %>
   <%= render '/episodes/modals/register_guest' %>
 <% end %>
-
 

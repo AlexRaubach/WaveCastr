@@ -81,11 +81,14 @@ $(document).ready(function(){
   });
   var box = document.getElementById('box');
   var input = document.getElementById('input');
-  var channel = 'test';
+  var userInput = document.getElementById('chat-name');
+  var channel = window.location.pathname.replace(/\/episodes\//, "");
+  var username;
 
   pubnub.addListener({
     message: function(obj) {
-        box.innerHTML = (''+obj.message).replace( /[<>]/g, '' ) + '<br>' + box.innerHTML
+      console.log(obj);
+        box.innerHTML = ("" +obj.message).replace( /[<>]/g, '' ) + '<br>'+ box.innerHTML;
     }});
 
   pubnub.subscribe({channels:[channel]});
@@ -96,26 +99,28 @@ $(document).ready(function(){
       pubnub.publish({channel : channel, message : input.value, x: (input.value='')});
     }
   })
+
+  // $("#chat-name").keyup(function(e) {
+  //   if (e.which === 13) {
+  //     if (userInput.value != ''){
+  //       username = userInput.value;
+  //       $("#chat-config").toggle();
+  //       $("#chat-container").toggle();
+  //     }
+  //   }
+  // })
+
+  // $("#test").on("click", function(){
+  //   $.ajax({
+  //     action: "/guests",
+  //     type: "POST"
+  //   }).done(function(response){
+  //     console.log(response);
+  //   })
+  // })
 })
 
 
-
-function switchDiv(choice){
-  switch (choice){
-    case "settings":
-      $(".settings").show();
-      break;
-    case "commands":
-      $(".commands").show();
-      break;
-    case "recordings":
-      $(".recordings").show();
-      break;
-    case "logs":
-      $(".logs").show();
-      break;
-  }
-}
 
 
 
