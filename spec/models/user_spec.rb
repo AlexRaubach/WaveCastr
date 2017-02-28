@@ -13,9 +13,5 @@ RSpec.describe User, type: :model do
       expect(user.episodes).to include(episode)
     end
 
-    it "has many tracks" do
-      user.tracks << track
-      expect(user.tracks).to include(track)
-    end
   end
 end
