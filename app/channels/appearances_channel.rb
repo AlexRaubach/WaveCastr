@@ -4,6 +4,11 @@ class AppearancesChannel < ApplicationCable::Channel
   end
 
   def unsubscribed
-    guest.destroy
+    guest.destroy if guest
+  end
+
+  def receive(data)
+    puts "AppearancesChannel is receiving data..."
+    ActionCable.server.broadcast("appearances_#{params[:lobby]}", data)
   end
 end

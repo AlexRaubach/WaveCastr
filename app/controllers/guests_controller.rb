@@ -6,7 +6,7 @@ class GuestsController < ApplicationController
       ActionCable.server.broadcast "appearances_#{guest.episode.sharable_link}",
         guest: guest.name,
         guest_id: guest.id,
-        action: 'signin'
+        status: 'signin'
       head :ok
     else
       head 422
