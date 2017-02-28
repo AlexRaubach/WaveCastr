@@ -37,13 +37,13 @@ function initRecording() {
   });
 
   recorder.addEventListener( "start", function(e){
-    screenLogger('Recorder is started');
+    addToChatBox('Recorder is started');
     init.disabled = start.disabled = true;
     stopButton.disabled = false;
   });
 
   recorder.addEventListener( "stop", function(e){
-    screenLogger('Recorder is stopped');
+    addToChatBox('Recorder is stopped');
     init.disabled = false;
     stopButton.disabled = start.disabled = true;
   });
@@ -55,7 +55,7 @@ function initRecording() {
   recorder.addEventListener( "streamReady", function(e){
     init.disabled = stopButton.disabled = true;
     start.disabled = false;
-    screenLogger('Audio stream is ready.');
+    addToChatBox('Audio stream is ready.');
   });
 
   recorder.addEventListener( "dataAvailable", function(e){
