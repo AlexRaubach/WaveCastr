@@ -8,11 +8,11 @@ class Track < ApplicationRecord
   end
 
   def name
-    s3_string.match(/\__(.*)\__/)[1]
+    s3_string.slice(/\__(.*)\__/)
   end
 
   def audio_format
-    s3_string..match(/\.([0-9a-z]+)(?=[?#])|(?:[\w]+)$/)[0]
+    s3_string.slice(/\.[0-9a-z]+$/i)
   end
 
 
