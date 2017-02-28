@@ -55,9 +55,6 @@ GEM
       aws-sdk-core (= 2.7.15)
     aws-sigv4 (1.0.0)
     bcrypt (3.1.11)
-    bootstrap (4.0.0.alpha6)
-      autoprefixer-rails (>= 6.0.3)
-      sass (>= 3.4.19)
     bootstrap-sass (3.3.3)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
@@ -240,7 +237,6 @@ DEPENDENCIES
   aws-sdk
   aws-sdk-rails
   bcrypt (~> 3.1.7)
-  bootstrap
   bootstrap-sass
   byebug
   capybara
