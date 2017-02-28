@@ -93,21 +93,18 @@ function initRecording() {
     .done(function(response){
       var buckObjectUrl = $($(response).children().children()[0]).text();
       buckObjectUrl = buckObjectUrl.match(/\wavecastr(.*)/)[1]
-      console.log(buckObjectUrl);
-      console.log(episodeId);
 
       var newTrackData = {episode_id: episodeId, s3_string: buckObjectUrl };
-      console.log(newTrackData);
       $.ajax({
         url: "/tracks",
         method: "POST",
         data: newTrackData
       })
       .done(function(response){
-        console.log("success");
+        console.log("successful link save");
       })
       .fail(function(response){
-        console.log("fail");
+        console.log("failed link save");
       })
     })
   });
