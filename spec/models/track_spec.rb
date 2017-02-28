@@ -20,15 +20,6 @@ RSpec.describe Track, type: :model do
       expect(episode.tracks).to include track
     end
 
-    it "can belong to a guest" do
-      track.recordable = guest
-      expect(track.recordable).to be_instance_of(Guest)
-    end
-
-    it "can belong to a user" do
-      track.recordable = user
-      expect(track.recordable).to be_instance_of(User)
-    end
   end
 
 end

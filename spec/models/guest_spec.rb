@@ -22,11 +22,6 @@ RSpec.describe Guest, type: :model do
       expect(guest.episode).to eq episode
     end
 
-    it "has many tracks" do
-      guest.tracks << track
-      expect(guest.tracks).to include track 
-    end
-
   end
 
   context "validations" do

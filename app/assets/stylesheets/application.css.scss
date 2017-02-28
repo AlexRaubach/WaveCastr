@@ -95,3 +95,25 @@
   display: block;
 }
 
+#chat-container {
+  height: 200px;
+  width: 500px;
+  overflow: scroll;
+  display:none;
+}
+
+#input-box {
+  display: none;
+}
+#input {
+  width: 380px;
+  border-radius: 5px;
+}
+
+#send {
+  width:100px;
+}
+
+
+
+
