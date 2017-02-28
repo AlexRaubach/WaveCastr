@@ -31,6 +31,12 @@
 
 <%= render '/episodes/aws_s3_upload_form' %>
 
+
+<!-- Information for saving of Tracks -->
+<script>
+  var episodeId = "<%= @episode.id %>"
+</script>
+
 <div id="record-buttons" <%= 'hidden' unless user_signed_in? && current_user.host?(@episode) %>>
   <button id="init">init</button>
   <button id="start" disabled>start</button>
@@ -51,7 +57,7 @@
   <%= render '/episodes/modals/share_link' %>
 <% end %>
 
-<% if (!current_user || !current_user.host?(@episode)) && !cookies.signed[:guest_id] %>
+<% if (!current_user || !current_user.host?(@episode)) && !@episode.guest_ids.include?(cookies.signed[:guest_id]) %>
   <%= render '/episodes/modals/register_guest' %>
 <% end %>
 
