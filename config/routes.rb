@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :welcome, only: [:show, :create]
 
+  resources :tracks, only: [:create]
+
   mount ActionCable.server => '/cable'
 
 end
