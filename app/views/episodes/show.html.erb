@@ -6,19 +6,11 @@
     <% if user_signed_in? && current_user.host?(@episode) %>
       <button id="present-share-link-modal" class="btn btn-primary" data-toggle="modal" data-target="#share-link-modal">Share Link</button>
     <% end %>
-
-
-<!-- <div class="row">
-  <div class="col-md-12">
-      <div id="chat-config">
-        <p>Enter a name to start chatting</p>
-        <div><input id="chat-name" placeholder="type here"/></div>
-      </div>
   </div>
-</div> -->
 
-<div class="row chat">
-  <div class="col-md-12">
+
+
+  <div class="col-md-6">
       <div id="chat-container">
         <div id="box"></div>
       </div>
@@ -55,6 +47,9 @@
 <% if (!current_user || !current_user.host?(@episode)) && !cookies.signed[:guest_id] %>
   <%= render '/episodes/modals/register_guest' %>
 <% end %>
+
+<input id="test">
+<button id="click">click me</button>
 
 
 

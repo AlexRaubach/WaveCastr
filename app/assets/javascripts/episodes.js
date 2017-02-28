@@ -73,38 +73,52 @@ $(document).ready(function(){
     $(".show-options").children().hide();
     switchDiv(choice);
   })
+  // $('#new_guest').on('submit', function(e) {
+  //   e.preventDefault();
+  //   var form = document.forms[1];
+  //   var name = form.elements[3].value;
+  //   debugger;
+  // });
 
 
-  var pubnub = new PubNub({
-  subscribeKey: "sub-c-d4379b4c-fc95-11e6-ba92-02ee2ddab7fe",
-  publishKey: "pub-c-d4381d4f-440f-4eef-b35c-5bc6e23b2d78"
-  });
   //first chat box
   var box = document.getElementById('box');
   var input = document.getElementById('input');
-  var userInput = document.getElementById('chat-name');
   var channel = window.location.pathname.replace(/\/episodes\//, "");
+  var username;
+
+  $("#click").on("click",function() {
+    username = document.getElementById("test").value;
+    startChat();
+  })
+  function startChat(){
+    var pubnub = new PubNub({
+    subscribeKey: "sub-c-d4379b4c-fc95-11e6-ba92-02ee2ddab7fe",
+    publishKey: "pub-c-d4381d4f-440f-4eef-b35c-5bc6e23b2d78",
+    uuid: username
+    });
+
+    pubnub.addListener({
+      message: function(obj) {
+        console.log(obj);
+          box.innerHTML = (obj.publisher + ": " +obj.message).replace( /[<>]/g, '' ) + '<br>'+ box.innerHTML;
+      }});
+
+    pubnub.subscribe({channels:[channel]});
 
 
-  pubnub.addListener({
-    message: function(obj) {
-      console.log(obj);
-        box.innerHTML = ("" +obj.message).replace( /[<>]/g, '' ) + '<br>'+ box.innerHTML;
-    }});
+    $("#input").keyup(function(e) {
+      if (e.which === 13) {
+        pubnub.publish({channel : channel, message : input.value, x: (input.value='')});
+      }
+    })
 
-  pubnub.subscribe({channels:[channel]});
-
-
-  $("#input").keyup(function(e) {
-    if (e.which === 13) {
+    $("#send").on('click', function() {
       pubnub.publish({channel : channel, message : input.value, x: (input.value='')});
-    }
-  })
-
-  $("#send").on('click', function() {
-    pubnub.publish({channel : channel, message : input.value, x: (input.value='')});
-  })
+    })
+  }
 })
+
 
 
 
