@@ -3,7 +3,7 @@
     <%= render partial: 'users/host', locals: { host: @episode.host } %>
     <%= render @episode.guests %>
   </div>
-  <% if user_signed_in? && current_user.host?(@episode) %>
+  <% if is_host?(@episode) %>
     <button id="present-share-link-modal" class="btn btn-primary" data-toggle="modal" data-target="#share-link-modal">Share Link</button>
   <% end %>
   <div id="chat-box">
@@ -23,7 +23,7 @@
   var episodeId = "<%= @episode.id %>"
 </script>
 
-<div id="record-buttons" <%= 'hidden' unless user_signed_in? && current_user.host?(@episode) %>>
+<div id="record-buttons" <%= 'hidden' unless is_host?(@episode) %>>
   <button id="init">init</button>
   <button id="start" disabled>start</button>
   <button id="pause" disabled>pause</button>
@@ -36,7 +36,7 @@
  <script src="/recorder.min.js"></script>
 
 
-<% if user_signed_in? && current_user.host?(@episode) %>
+<% if is_host?(@episode) %>
   <%= render '/episodes/modals/share_link' %>
 <% end %>
 
