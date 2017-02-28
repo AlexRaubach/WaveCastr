@@ -3,7 +3,7 @@ class RecorderChannel < ApplicationCable::Channel
     stream_from "recorder_#{params[:lobby]}"
   end
 
-  def start(data)
+  def receive(data)
     ActionCable.server.broadcast("recorder_#{params[:lobby]}", data)
   end
 end
