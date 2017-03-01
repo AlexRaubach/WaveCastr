@@ -10,19 +10,23 @@
   </div>
 </div>
 
-      <!-- Download buttons for host will be visible here if recording has stopped -->
-  <div id="track-list">
-    <%= render 'tracks/episode_tracks.html.erb', locals: {episode: @episode} %>
-  </div>
+<ul id="recordingslist"></ul>
 
-  <div class="col-md-6">
-      <div id="chat-container">
-      </div>
-      <div id="input-box">
-          <input id="input" placeholder="type your message here"/>
-          <button id="send">Send</button>
-        </div>
+<% if is_host?(@episode) %>
+  <div id="track-list">
+    <%= render @episode.tracks %>
   </div>
+<% end %>
+
+<div class="col-md-6">
+  <div id="chat-container">
+    <div id="box"></div>
+  </div>
+  <div id="input-box">
+    <input id="input" placeholder="type your message here"/>
+    <button id="send">Send</button>
+  </div>
+</div>
 
 
 <%= render '/episodes/aws_s3_upload_form' %>
@@ -35,20 +39,14 @@
 <div id="record-buttons" <%= 'hidden' unless is_host?(@episode) %>>
   <button id="init">init</button>
   <button id="start" disabled>start</button>
-<!--   <button id="pause" disabled>pause</button>
-  <button id="resume" disabled>resume</button> -->
   <button id="stopButton" disabled>stop</button>
 </div>
 
-
-
-
- <pre id="log"></pre>
+<pre id="log"></pre>
 
 <script src="/episodes.js"></script>
- <script src="/recorderjs/recorder.min.js"></script>
-
- <script src="/recorder.js"></script>
+<script src="/recorderjs/recorder.min.js"></script>
+<script src="/recorder.js"></script>
 
 
 <% if is_host?(@episode) %>
