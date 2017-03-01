@@ -21,7 +21,7 @@ A website for recording high quality audio for podcasts or interviews. WaveCastr
 
 Our database schema:
 
-![schema](/public/schema.png?raw=true)
+<!-- ![schema](/public/schema.png?raw=true)
 
 Initial wireframe page designs:
 
@@ -29,7 +29,7 @@ Initial wireframe page designs:
 
 ![dashboard](/public/dashboard.png?raw=true)
 
-![lobby](/public/lobby.png?raw=true)
+![lobby](/public/lobby.png?raw=true) -->
 
 
 ## Contributing
