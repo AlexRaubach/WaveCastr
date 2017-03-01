@@ -17,11 +17,7 @@ $(document).ready(function(){
   var input = document.getElementById('input');
   var channel = window.location.pathname.replace(/\/episodes\//, "");
   var username = $('#current_user').text();
-    // $(".chat-start").toggle();
-    // $("#chat-container").toggle();
-    // $("#input-box").toggle();
-    startChat();
-  // })
+  startChat();
 
 
   function startChat(){
@@ -36,7 +32,6 @@ $(document).ready(function(){
 
     pubnub.addListener({
       message: function(obj) {
-          // box.innerHTML = (obj.publisher + ": " +obj.message).replace( /[<>]/g, '' ) + '<br>'+ box.innerHTML;
           box.innerHTML = box.innerHTML + '<br>'+ (obj.publisher + ": " +obj.message).replace( /[<>]/g, '' )
       }});
 
