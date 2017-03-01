@@ -13,7 +13,7 @@ $(document).ready(function(){
     switchDiv(choice);
   })
 
-  var box = document.getElementById('box');
+  var box = document.getElementById('chat-container');
   var input = document.getElementById('input');
   var channel = window.location.pathname.replace(/\/episodes\//, "");
   var username = $('#current_user').text();
@@ -35,12 +35,18 @@ $(document).ready(function(){
           box.innerHTML = box.innerHTML + '<br>'+ (obj.publisher + ": " +obj.message).replace( /[<>]/g, '' )
       }});
 
+      var $chatBox = $('#chat-container');
+      $chatBox[0].scrollTop = $chatBox[0].scrollHeight;
 
     $("#input").keyup(function(e) {
       if (e.which === 13) {
         pubnub.publish({channel : channel, message : input.value, x: (input.value='')});
+        console.log( "box",$chatBox)
+        console.log("befor", $chatBox[0].scrollTop)
+        $chatBox[0].scrollTop = $chatBox[0].scrollHeight;
+        console.log("after", $chatBox[0].scrollTop)
       }
-    })
+    }).focus();
 
     $("#send").on('click', function() {
       pubnub.publish({channel : channel, message : input.value, x: (input.value='')});
