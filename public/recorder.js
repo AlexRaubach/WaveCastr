@@ -90,24 +90,26 @@ function initRecording() {
       dataType: 'XML',
       replaceFileInput: false
     });
+
     $('#episode_track').fileupload('send', {
       files: [dataBlob],
     })
     .done(function(response){
-      var buckObjectUrl = $($(response).children().children()[0]).text();
-      buckObjectUrl = buckObjectUrl.match(/\wavecastr(.*)/)[1]
+      var episodeSharableLink = window.location.pathname.replace(/\/episodes\//, '');
+      var xmlSerializer = new XMLSerializer();
+      var s3String = xmlSerializer.serializeToString(response);
+      var newTrackData = { sharable_link: episodeSharableLink, track: { s3_string: s3String } };
 
-      var newTrackData = {episode_id: episodeId, s3_string: buckObjectUrl };
       $.ajax({
         url: "/tracks",
         method: "POST",
         data: newTrackData
       })
       .done(function(response){
-        console.log("successful link save");
+        console.log("SUCCESS");
       })
       .fail(function(response){
-        console.log("failed link save");
+        console.log("ERROR");
       })
     })
   });
