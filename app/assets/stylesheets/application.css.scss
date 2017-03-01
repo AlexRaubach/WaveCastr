@@ -103,9 +103,78 @@
 
 }
 
+body {
+  background-image: url('/images/background.jpg');
+}
+
+* {
+  /*border:2px solid lightblue;*/
+}
 
 
+
+/************************************Episode Page************************************/
+
+/*Control Panel*/
+#control-panel {
+  text-align: center;
+}
+
+#control-panel button {
+
+}
+
+/*Guest Panels */
+#guest-panel {
+  padding: 0px;
+  text-align: left;
+}
+
+#guest-panel h3 {
+  padding: 5px;
+  margin: 0px;
+}
+
+#user-list-container {
+  width: 40%;
+  margin-left: auto;
+  margin-right: auto;
+  /*needs fixing of margin*/
+  margin-top: 5%;
+
+}
+
+/*Main Divs*/
+#left-container {
+  height: 260px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+
+}
+
+#right-container {
+  height: 260px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+#bottom-files-container {
+  border:1px solid black;
+  border-radius: 5px;
+  padding-top: 20px;
+  max-height: 140px;
+  overflow-y: scroll;
+}
+
+.track.panel.panel-default {
+  display: inline-block;
+  width: 220px;
+}
+
+/*Chat Box*/
 #input-box {
+  padding-top: 2px;
+
 }
 #input {
   width: 380px;
@@ -113,9 +182,13 @@
 }
 
 #send {
-  width:100px;
+  border-radius: 5px;
+  width:116px;
 }
 
-
-
+#chat-container {
+  border: 1px solid black;
+  border-radius: 5px;
+  color: red;
+}
 
