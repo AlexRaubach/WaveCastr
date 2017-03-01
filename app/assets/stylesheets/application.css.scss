@@ -147,17 +147,25 @@ body {
 }
 
 #bottom-files-container {
-  background-color: rgba(33, 34, 35, .8);
-  border: 1px solid rgba(33, 34, 35, .8);
   border-radius: 5px;
   padding-top: 20px;
-  /*max-height: 140px;*/
-  /*overflow-y: scroll;*/
+}
+
+.track-body {
+  padding: 8px;
+}
+.panel-default {
 }
 
 .track.panel.panel-default {
+  text-align: center;
+  background-color: rgba(33, 34, 35, .8);
+  border: 1px solid rgba(33, 34, 35, .8);
+  border-color: transparent;
+  color: #FFFFFF;
   display: inline-block;
   width: 220px;
+  overflow: hidden;
 }
 
 /*Chat Box*/
