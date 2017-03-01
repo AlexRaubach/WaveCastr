@@ -2,14 +2,7 @@ class Guest < ApplicationRecord
   belongs_to :episode
   validates :name, presence: true
 
-  before_destroy :sign_out_guest
+  after_create { AppearanceBroadcastJob.perform_later(self) }
+  before_destroy { GuestCleanupJob.perform_later(self) }
 
-  private
-    def sign_out_guest
-      puts "Signing out guest..."
-      ActionCable.server.broadcast "appearances_#{self.episode.sharable_link}",
-        guest: self.name,
-        guest_id: self.id,
-        status: 'signout'
-    end
 end

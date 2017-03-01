@@ -3,10 +3,6 @@ class GuestsController < ApplicationController
     guest = Guest.new(guest_params)
     if guest.save
       cookies.signed[:guest_id] = guest.id
-      ActionCable.server.broadcast "appearances_#{guest.episode.sharable_link}",
-        guest: guest.name,
-        guest_id: guest.id,
-        status: 'signin'
       head :ok
     else
       head 422
