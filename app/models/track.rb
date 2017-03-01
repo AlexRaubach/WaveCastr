@@ -1,20 +1,28 @@
+require 'nokogiri'
 class Track < ApplicationRecord
-  validates_presence_of :s3_string, :episode_id
+  validates_presence_of :s3_string
   belongs_to :episode
 
   after_create { TrackBroadcastJob.perform_later(self) }
   
-  def url
-    S3_BUCKET.url.to_s + s3_string.to_s
+  def download_url
+    location
   end
 
   def name
-    s3_string.slice(/\__(.*)\__/)
+    key.sub(/.*__(.+)__.*/, '\1')
   end
 
-  def audio_format
-    s3_string.slice(/\.[0-9a-z]+$/i)
-  end
+  private
+    def key
+      xml_doc.xpath('//Key').text
+    end
 
+    def location
+      xml_doc.xpath('//Location').text
+    end
 
+    def xml_doc
+      Nokogiri::XML(s3_string)
+    end
 end
