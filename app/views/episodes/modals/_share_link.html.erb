@@ -7,9 +7,16 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
-          <%= text_field :episode, :sharable_link, value: episode_url(sharable_link: @episode.sharable_link), class: "form-control input-lg" %>
+          <input class="form-control input-lg" id="episode-link" value="<%= episode_url(sharable_link: @episode.sharable_link) %>" readonly>
+        </div>
+        <div class="form-group">
+          <button id="copy-btn" class="btn btn-primary" data-clipboard-target="#episode-link">Copy</button>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+<script>
+  new Clipboard('#copy-btn');
+</script>
