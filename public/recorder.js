@@ -92,7 +92,7 @@ function initRecording() {
     });
 
     $('#episode_track').fileupload('send', {
-      files: [dataBlob],
+      files: [dataBlob]
     })
     .done(function(response){
       var episodeSharableLink = window.location.pathname.replace(/\/episodes\//, '');

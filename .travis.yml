@@ -10,3 +10,7 @@ before_script:
   - bundle exec rake db:migrate
   - bundle exec rake db:test:prepare
 bundler_args: --binstubs=./bundler_stubs
+
+addons:
+    code_climate:
+        repo_token: c19bd7e9c19353a6be1238cfc29006a20ded1615fcf62bd796d7c7329a18cebc
