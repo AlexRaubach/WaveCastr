@@ -1,40 +1,40 @@
 # WaveCastr
 
-A website for recording high quality audio for podcasts or interviews. WaveCastr allows
+A website for capturing high quality audio for podcasts or interviews. WaveCastr records from each participant's local machine and stores it in the cloud. Capturing audio locally preserves the quality and avoids voip compression. Having each participant's voice on a separate track makes it easy to produce great sounding podcasts with minimal setup.
+
+## Using WaveCastr
+
 
 
 ## Built With
 
+* [Ruby on Rails](https://github.com/rails/rails) -- Powers the backend
 
+* [Action Cable](https://github.com/rails/rails/tree/master/actioncable) -- Provides real time asynchronous communication between users
 
-* [Ruby on Rails](https://github.com/rails/rails) --
+* [PostgresSQL](https://www.postgresql.org/) -- Primary data store
 
-* [PostgresSQL](https://www.postgresql.org/) -- The main data store
+* [Redis](https://redis.io/) -- Data store for Action Cable
 
-* [Recorderjs](https://github.com/chris-rudmin/Recorderjs) -- The JS library that captures user audio
+* [Recorderjs](https://github.com/chris-rudmin/Recorderjs) -- JS library that captures user audio
 
-* [Amazon S3](https://aws.amazon.com/s3/) -- Audio file storage
+* [PubNub](https://www.pubnub.com/) -- Provides chat functionality
 
-* [Heroku](https://www.heroku.com/) -- Application hosting
+* [Amazon S3](https://aws.amazon.com/s3/) -- Stores audio files
 
-## Screenshots
+* [Heroku](https://www.heroku.com/) -- Hosts the application
 
-Our database schema:
+<!-- ## Screenshots -->
 
-<!-- ![schema](/public/schema.png?raw=true)
+## Team Members
 
-Initial wireframe page designs:
+* Oliver Duncan
 
-![index](/public/index.png?raw=true)
+* Jonathan Hyun
 
-![dashboard](/public/dashboard.png?raw=true)
+* Joshua Lucas
 
-![lobby](/public/lobby.png?raw=true) -->
-
-
-## Contributing
-
-
+* Alex Raubach
 
 
 ## Code Status
@@ -42,6 +42,9 @@ Initial wireframe page designs:
 [![Build Status](https://travis-ci.org/Antigrapist/WaveCastr.svg?branch=master)](https://travis-ci.org/Antigrapist/WaveCastr)
 [![Code Climate](https://codeclimate.com/github/Antigrapist/WaveCastr/badges/gpa.svg)](https://codeclimate.com/github/Antigrapist/WaveCastr)
 
+## Contributing
+
+Features and bug fixes are always welcome.
 
 ## License
 
