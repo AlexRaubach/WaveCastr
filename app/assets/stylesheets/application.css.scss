@@ -35,18 +35,24 @@ body {
 }
 
 .header h1 a {
-	color: #418BE4;
+	color: #99AAAA;
+  /*make font bold or something*/
+  text-shadow: 1px 0 #212223;
   font-size: 60px;
   text-decoration: none;
   margin-top: 10px;
 }
 
 .header h1 a:visited {
-  color: #418BE4;
+  color: #99AAAA;
+  /*make font bold or something*/
+  text-shadow: 1px 0 #212223;
 }
 
 .header h1 a:hover {
-  color: #418BE4;
+  color: #99AAAA;
+  /*make font bold or something*/
+  text-shadow: 1px 0 #212223;
 }
 
 
@@ -93,9 +99,9 @@ body {
 }
 
 #control-panel button {
-  border-color: rgb(61, 80, 86);
-  background-color: rgb(61, 80, 86);
-  color: #bfbbad;
+  border-color: rgb(165, 157, 140);
+  background-color: rgb(165, 157, 140);
+  color: #FFFFFF;
 }
 
 #init.btn {
@@ -182,9 +188,10 @@ body {
   border: 0px solid rgba(33, 34, 35, 1);
   border-radius: 5px;
   background-color: rgba(33, 34, 35, 1);
-  color: #A9A9A9;;
+  color: #FFFFFF;
   width:118px;
 }
+
 #send:focus {outline:0;}
 
 #chat-container {
