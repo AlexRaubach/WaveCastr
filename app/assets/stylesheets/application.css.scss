@@ -17,6 +17,20 @@
 @import "bootstrap";
 @import "episodes";
 
+.alert, .notice {
+  padding: 10px;
+  margin: 10px 0;
+  color: white;
+  border-radius: 10px;
+}
+
+.alert {
+  background-color: red;
+}
+
+.notice {
+  background-color: green;
+}
 
 .show-options {
   margin-top: 20px;
@@ -29,8 +43,6 @@
 .picked {
   display: block;
 }
-
-
 
 .header logo {
   position: relative;
@@ -52,12 +64,9 @@
   color: #418BE4;
 }
 
-
-
 .header h1 {
   display: inline-block;
 }
-
 
 .nav-pills {
   display: inline-block;
@@ -78,7 +87,6 @@
   font-size:46px;
   text-transform: uppercase;
 }
-
 
 .slide-container {
   margin-top: 40px;
@@ -103,10 +111,6 @@
 
 }
 
-
-
-#input-box {
-}
 #input {
   width: 380px;
   border-radius: 5px;
@@ -115,7 +119,4 @@
 #send {
   width:100px;
 }
-
-
-
 
