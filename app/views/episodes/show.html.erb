@@ -31,11 +31,6 @@
 
 <%= render '/episodes/aws_s3_upload_form' %>
 
-<!-- Information for saving of Tracks -->
-<script>
-  var episodeId = "<%= @episode.id %>"
-</script>
-
 <div id="record-buttons" <%= 'hidden' unless is_host?(@episode) %>>
   <button id="init">init</button>
   <button id="start" disabled>start</button>

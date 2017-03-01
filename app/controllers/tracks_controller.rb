@@ -1,7 +1,12 @@
 class TracksController < ApplicationController
   def create
-    puts params
-    new_track = Track.new(episode_id: params['episode_id'], s3_string: params['s3_string'])
+    episode = Episode.find_by(sharable_link: params['sharable_link'])
+    new_track = episode.tracks.build(track_params)
     new_track.save ? head(:ok) : head(422)
   end
+
+  private
+    def track_params
+      params.require('track').permit('s3_string')
+    end
 end
