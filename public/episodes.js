@@ -1,8 +1,9 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
+  var box = document.getElementById('chat-container');
   var addToChatBox = function(string){
-    box.innerHTML = ($('#current_user').text()+': ' + string).replace( /[<>]/g, '' ) + '<br>'+ box.innerHTML;
+    box.innerHTML = box.innerHTML + '<br>'+ ("SYSTEM: " + string).replace( /[<>]/g, '' )
   }
 
 $(document).ready(function(){
@@ -13,15 +14,10 @@ $(document).ready(function(){
     switchDiv(choice);
   })
 
-  var box = document.getElementById('box');
   var input = document.getElementById('input');
   var channel = window.location.pathname.replace(/\/episodes\//, "");
   var username = $('#current_user').text();
-    // $(".chat-start").toggle();
-    // $("#chat-container").toggle();
-    // $("#input-box").toggle();
-    startChat();
-  // })
+  startChat();
 
 
   function startChat(){
@@ -36,9 +32,12 @@ $(document).ready(function(){
 
     pubnub.addListener({
       message: function(obj) {
-          box.innerHTML = (obj.publisher + ": " +obj.message).replace( /[<>]/g, '' ) + '<br>'+ box.innerHTML;
+          box.innerHTML = box.innerHTML + '<br>'+ (obj.publisher + ": " +obj.message).replace( /[<>]/g, '' )
+          $chatBox[0].scrollTop = $chatBox[0].scrollHeight;
       }});
 
+      var $chatBox = $('#chat-container');
+      $chatBox[0].scrollTop = $chatBox[0].scrollHeight;
 
     $("#input").keyup(function(e) {
       if (e.which === 13) {
