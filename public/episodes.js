@@ -1,6 +1,7 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
 
+  var box = document.getElementById('chat-container');
   var addToChatBox = function(string){
     box.innerHTML = box.innerHTML + '<br>'+ ("SYSTEM: " + string).replace( /[<>]/g, '' )
   }
@@ -13,7 +14,6 @@ $(document).ready(function(){
     switchDiv(choice);
   })
 
-  var box = document.getElementById('chat-container');
   var input = document.getElementById('input');
   var channel = window.location.pathname.replace(/\/episodes\//, "");
   var username = $('#current_user').text();
@@ -33,6 +33,7 @@ $(document).ready(function(){
     pubnub.addListener({
       message: function(obj) {
           box.innerHTML = box.innerHTML + '<br>'+ (obj.publisher + ": " +obj.message).replace( /[<>]/g, '' )
+          $chatBox[0].scrollTop = $chatBox[0].scrollHeight;
       }});
 
       var $chatBox = $('#chat-container');
@@ -41,12 +42,8 @@ $(document).ready(function(){
     $("#input").keyup(function(e) {
       if (e.which === 13) {
         pubnub.publish({channel : channel, message : input.value, x: (input.value='')});
-        console.log( "box",$chatBox)
-        console.log("befor", $chatBox[0].scrollTop)
-        $chatBox[0].scrollTop = $chatBox[0].scrollHeight;
-        console.log("after", $chatBox[0].scrollTop)
       }
-    }).focus();
+    })
 
     $("#send").on('click', function() {
       pubnub.publish({channel : channel, message : input.value, x: (input.value='')});
