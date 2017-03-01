@@ -128,9 +128,6 @@ body {
 
 #user-list-container {
   width: 40%;
-  margin-left: auto;
-  margin-right: auto;
-  /*needs fixing of margin*/
   margin-top: 5%;
 
 }
@@ -154,8 +151,8 @@ body {
   border: 1px solid rgba(33, 34, 35, .8);
   border-radius: 5px;
   padding-top: 20px;
-  max-height: 140px;
-  overflow-y: scroll;
+  /*max-height: 140px;*/
+  /*overflow-y: scroll;*/
 }
 
 .track.panel.panel-default {
