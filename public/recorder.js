@@ -29,7 +29,8 @@ function initRecording() {
 
   if (!Recorder.isRecordingSupported()) {
     App.appearance.perform("update", {status: 'error'});
-    return screenLogger("Recording features are not supported in your browser.");
+    $('.container').flash("Sorry, recording features are not supported in your browser.", { class: 'alert' });
+    return;
   }
 
   recorder = new Recorder({
@@ -57,7 +58,6 @@ function initRecording() {
     start.disabled = false;
 
     App.appearance.perform("update", {status: 'ready'});
-//     screenLogger('Audio stream is ready.');
     addToChatBox('Audio stream is ready.');
   });
 
@@ -106,12 +106,14 @@ function initRecording() {
         data: newTrackData
       })
       .done(function(response){
-        console.log("SUCCESS");
+        $('.container').flash("Your recording was successfully saved.");
       })
       .fail(function(response){
-        console.log("ERROR");
+        $('.container').flash('Sorry, something went wrong. Please try again.', { class: 'alert' });
       })
-    })
+    }).fail(function(response) {
+      $('.container').flash('Sorry, something went wrong. Please try again.', { class: 'alert' });
+    });
   });
   recorder.initStream();
 }
