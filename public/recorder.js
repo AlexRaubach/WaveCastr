@@ -50,7 +50,7 @@ function initRecording() {
   });
 
   recorder.addEventListener( "streamError", function(e){
-    screenLogger('Error encountered: ' + e.error.name );
+    $('#flash').flash('Error encountered: ' + e.error.name, {class: 'alert'});
   });
 
   recorder.addEventListener( "streamReady", function(e){
@@ -112,8 +112,4 @@ function initRecording() {
     });
   });
   recorder.initStream();
-}
-
-function screenLogger(text, data) {
-  log.innerHTML += "\n" + text + " " + (data || '');
 }
