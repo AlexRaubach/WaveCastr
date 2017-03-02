@@ -185,7 +185,12 @@ body {
   color: white;
 }
 
-/*Main Divs*/
+/*Track List*/
+
+#track-list h1 {
+  text-align: center;
+  color: #99AAAA;
+}
 
 .track {
   margin: 20px;
@@ -195,13 +200,11 @@ body {
   border: 1px solid rgba(33, 34, 35, .8);
   border-color: transparent;
   border-radius: 5px;
-  color: #FFFFFF;
   display: inline-block;
 }
 
 .track a {
-  text-decoration: underline;
-  color: white;
+  color: #C7B185;
 }
 
 /*Chat Box*/
