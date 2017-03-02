@@ -1,4 +1,31 @@
 <div class="row">
+
+  <div class="col-md-3" id="left-container">
+
+    <div id="guest-list">
+      <%= render partial: 'users/host', locals: { host: @episode.host } %>
+      <%= render @episode.guests %>
+    </div>
+    <div class="share-button">
+      <button id="present-share-link-modal" class="btn btn-block" data-toggle="modal" data-target="#share-link-modal">Share Link</button>
+    </div> 
+  </div>
+
+
+  <div class="col-md-9" id="right-container">
+
+    <div id="chat-container"></div>
+
+    <div id="input-box">
+      <input id="input" placeholder="Type your message here"/>
+      <button id="send">Send</button>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="row">
   <div class="col-md-6">
       <div id="control-panel" <%= 'hidden' unless is_host?(@episode) %> >
       <% if is_host?(@episode) %>
@@ -11,33 +38,6 @@
     </div>
   </div>
 </div>
-
-
-<div class="row">
-
-  <div class="col-md-6" id="left-container">
-
-    <div id="user-list-container">
-      <%= render partial: 'users/host', locals: { host: @episode.host } %>
-      <%= render @episode.guests %>
-    </div>
-
-  </div>
-
-
-  <div class="col-md-6" id="right-container">
-
-
-    <div id="chat-container">
-
-    </div>
-    <div id="input-box">
-      <input id="input" placeholder="Type your message here"/>
-      <button id="send">Send</button>
-    </div>
-  </div>
-</div>
-
 
 <div class="row">
   <div class="col-md-12" id="bottom-files-container">

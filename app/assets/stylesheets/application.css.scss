@@ -139,15 +139,6 @@ body {
   width: 44%;
 }
 
-/*.slide-container {
-  margin-top: 40px;
-}*/
-
-#present-share-link-modal {
-  margin-bottom: 5px;
-  width: 44%;
-}
-
 #start.btn {
   display: none;
   width: 21.75%
@@ -159,61 +150,46 @@ body {
 }
 
 /******** Guest Panels ********/
-#guest-panel {
-  padding: 0px;
-  text-align: left;
+.guest {
+  height: 60px;
   background-color: rgba(33, 34, 35, .8);
   border: 1px solid rgba(33, 34, 35, .8);
   color: #FFFFFF;
   border-radius: 5px;
   padding: 10px;
-  margin-right: 4px;
+  margin-bottom: 10px;
 }
 
-.panel {
-    background-color: transparent;
-    border: 1px solid transparent;
-    border-radius: 5px;
-}
-
-.panel-default {
-    border-color: transparent;
-}
-
-
-#guest-panel h3 {
+.guest h3 {
+  display: inline-block;
   padding: 5px;
   margin: 0px;
 }
 
-#user-list-container {
-  width: 44%;
-  /*margin-top: ;*/
-  overflow-y: scroll;
-  /*max-height:*/
+#present-share-link-modal {
+  height: 60px;
+}
+
+#guest-list {
+  height: 265px;
 }
 
 /*Main Divs*/
 #left-container {
-  height: 260px;
-  margin-bottom: 60px;
-
+  height: 300px;
 }
 
 #right-container {
   height: 260px;
-  margin-bottom: 60px;
 }
 
 #bottom-files-container {
   border-radius: 5px;
-  padding-top: 20px;
+  margin-top: 60px;
 }
 
 .track-body {
   padding: 8px;
-}
-.panel-default {
 }
 
 .track.panel.panel-default {

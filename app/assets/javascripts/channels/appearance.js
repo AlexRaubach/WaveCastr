@@ -20,11 +20,12 @@ App.appearance = App.cable.subscriptions.create({channel: "AppearancesChannel", 
   },
 
   renderGuest: function(data) {
-    return '<div id="guest-' + data.guest_id + '" class="guest panel panel-default">' +
-              '<div class="panel-body">' + 
-                '<p><h3><div class="status-dot waiting" ></div>' + data.guest + '</h3></p>' + 
+    return '<div id="guest-' + data.guest_id + '" class="guest">' +
+              '<div>' + 
+                '<div class="status-dot waiting"></div>' +
+                '<h3>' + data.guest + '</h3>' + 
               '</div>' +
-            '</div>'
+            '</div>';
   }
 });
 
