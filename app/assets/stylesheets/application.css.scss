@@ -133,7 +133,6 @@ body {
   text-transform: uppercase;
 }
 
-
 .active {
   display: block;
 }
@@ -142,9 +141,8 @@ body {
 
 /*Control Panel*/
 #control-panel {
-  margin-top: 70px;
-  text-align: left;
-  margin-bottom: 20px;
+  text-align: center;
+  margin: 50px;
 }
 
 #control-panel button {
@@ -158,103 +156,55 @@ body {
 #present-share-link-modal,
 #init:focus {outline:0;}
 
-
-#init.btn {
-  width: 44%;
-}
-
-/*.slide-container {
-  margin-top: 40px;
-}*/
-
-#present-share-link-modal {
-  margin-bottom: 5px;
-  width: 44%;
-}
-
-#start.btn {
-  display: none;
-  width: 21.75%
-}
-
-#stopButton.btn {
-  display: none;
-  width: 21.75%
+#localRecording {
+  margin: 10px auto;
 }
 
 /******** Guest Panels ********/
-#guest-panel {
-  padding: 0px;
-  text-align: left;
+.guest {
+  height: 60px;
   background-color: rgba(33, 34, 35, .8);
   border: 1px solid rgba(33, 34, 35, .8);
   color: #FFFFFF;
   border-radius: 5px;
   padding: 10px;
-  margin-right: 4px;
+  margin: 10px 0;
 }
 
-.panel {
-    background-color: transparent;
-    border: 1px solid transparent;
-    border-radius: 5px;
-}
-
-.panel-default {
-    border-color: transparent;
-}
-
-
-#guest-panel h3 {
+.guest h3 {
+  display: inline-block;
   padding: 5px;
   margin: 0px;
 }
 
-#user-list-container {
-  width: 44%;
-  /*margin-top: ;*/
-  overflow-y: scroll;
-  /*max-height:*/
+#present-share-link-modal {
+  height: 33.99px;
 }
 
 /*Main Divs*/
-#left-container {
-  height: 260px;
-  margin-bottom: 60px;
-
-}
-
-#right-container {
-  height: 260px;
-  margin-bottom: 60px;
-}
 
 #bottom-files-container {
   border-radius: 5px;
-  padding-top: 20px;
+  margin-top: 60px;
 }
 
 .track-body {
-  padding: 8px;
-}
-.panel-default {
+  padding: 8px 20px;
 }
 
-.track.panel.panel-default {
+.track {
   text-align: center;
   background-color: rgba(33, 34, 35, .8);
   border: 1px solid rgba(33, 34, 35, .8);
   border-color: transparent;
+  border-radius: 5px;
   color: #FFFFFF;
   display: inline-block;
-  width: 220px;
-  overflow: hidden;
 }
 
 /*Chat Box*/
 #input-box {
-  padding-top: 3px;
-
+  padding: 5px 0;
 }
 
 #box {
@@ -279,12 +229,12 @@ body {
   color: #FFFFFF;
   margin-left: 1.4px;
   width:23%;
+  height: 33.99px;
 }
 
 #send:focus {outline:0;}
 
 #chat-container {
-
   padding-left: 12px;
   background-color: rgba(33, 34, 35, .8);
   height: 300px;

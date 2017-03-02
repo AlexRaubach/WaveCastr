@@ -5,11 +5,11 @@
 div.status-dot {
   display: inline-block;
   vertical-align: top;
-  height: 20px;
+  height: 37px;
   width: 20px;
-  margin-right: 20px;
   border-radius: 500px;
   border: 1px solid black;
+  padding: 4px;
 }
 
 .status-dot.ready {
