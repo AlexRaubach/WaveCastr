@@ -1,22 +1,28 @@
 <!-- Register Guest Modal -->
 <div class="modal fade" id="register-guest-modal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h4 class="modal-title">Register Guest</h4>
-    </div>
-    <div class="modal-body">
-      <%= form_for @guest do |f| %>
-        <%= hidden_field :guest, :episode_id, value: @episode.id %>
-        <%= f.text_field :name, placeholder: "Enter your name" %>
-      <% end %>
-    </div>
-    <div class="modal-footer">
-      <button type="submit" class="btn btn-primary" form="new_guest">Register</button>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Register</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for @guest do |f| %>
+          <%= hidden_field :guest, :episode_id, value: @episode.id %>
+          <%= f.text_field :name, placeholder: "Enter your name", class: "form-control input-lg" %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" form="new_guest">Go</button>
+      </div>
     </div>
   </div>
 </div>
 
 <script>
+  $('#register-guest-modal').on('shown.bs.modal', function() {
+    $('form input[type=text]').focus();
+  });
+
   $(window).load(function() {
     $('#register-guest-modal').modal('show');
 
