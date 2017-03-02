@@ -1,42 +1,26 @@
 <div class="row">
 
   <div class="col-md-3" id="left-container">
+    <div class="share-button">
+      <button id="present-share-link-modal" class="btn btn-block" data-toggle="modal" data-target="#share-link-modal">Share Link</button>
+    </div> 
 
     <div id="guest-list">
       <%= render partial: 'users/host', locals: { host: @episode.host } %>
       <%= render @episode.guests %>
     </div>
-    <div class="share-button">
-      <button id="present-share-link-modal" class="btn btn-block" data-toggle="modal" data-target="#share-link-modal">Share Link</button>
-    </div> 
   </div>
-
 
   <div class="col-md-9" id="right-container">
 
     <div id="chat-container"></div>
 
     <div id="input-box">
-      <input id="input" placeholder="Type your message here"/>
-      <button id="send">Send</button>
-    </div>
-
-  </div>
-
-</div>
-
-<div class="row">
-  <div class="col-md-6">
-      <div id="control-panel" <%= 'hidden' unless is_host?(@episode) %> >
-      <% if is_host?(@episode) %>
-        <button id="present-share-link-modal" class="btn btn-primary" data-toggle="modal" data-target="#share-link-modal">Share Link</button>
-        <br>
-      <% end %>
-      <button id="init" class="btn btn-primary">Activate Mics</button>
-      <button id="start" class="btn btn-primary" >Begin Recording</button>
-      <button id="stopButton" class="btn btn-primary">Stop Recording</button>
+      <input id="input" class="form-control pull-left" placeholder="Type your message here"/>
+      <button id="send" class="pull-right">Send</button>
     </div>
   </div>
+
 </div>
 
 <div class="row">
@@ -46,13 +30,6 @@
     <% end %>
   </div>
 </div>
-
-
-
-
-
-
-
 
 <% if is_host?(@episode) %>
   <%= render '/episodes/modals/share_link' %>
