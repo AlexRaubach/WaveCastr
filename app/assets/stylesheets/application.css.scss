@@ -217,9 +217,7 @@ body {
 
 #user-list-container {
   width: 44%;
-  /*margin-top: ;*/
   overflow-y: scroll;
-  /*max-height:*/
 }
 
 /*Main Divs*/
@@ -302,61 +300,7 @@ body {
 
 
 
-/* homepage */
 
-.main h1 {
-  color: #FFFFFF;
-  position:relative;
-  top: 50px;
-  left:100px;
-  line-height: 1.2;
-}
-
-
-.main-img img {
-  height: 300px;
-  position: relative;
-  right: -20%;
-  border-radius: 5px;
-}
-
-.sub-heading h2 {
-  color:#fff;
-  text-align: center;
-  margin-bottom: 60px;
-}
-.sub-main button{
-  color: #F9F9F9;
-  padding: 10px 30px;
-  background-color: #a59d8c;
-  border-radius: 5px;
-}
-
-.sub-main button:focus {
-  outline: none;
-}
-
-.sub-main p {
-  color: #C7B185;
-  padding-top: 20px;
-}
-
-.description1{
-  display: none;
-}
-.description2{
-  display: none;
-}
-.description3{
-  display: none;
-}
-
-.footer{
-  margin-top:200px;
-}
-.footer p {
-  color: #C7B185;
-}
 
 /*************Share Link Modal*************/
 
@@ -430,20 +374,87 @@ body {
 
 }
 
-/********************************Landing Page********************************/
+
+/**********************************************************************************Home Page*********************************************************************************/
 
 #landing-main {
   height: 300px;
   border-radius: 5px;
   color: rgba(190, 181, 166, 1);
+  padding-left: 60px;
+}
+
+#landing-main > h3:first-of-type {
+  margin-top: 90px;
+}
+
+#landing-main > h3:last-of-type {
+  margin-left: 128px;
 }
 
 #stagered-head-1 {
+  color: #FFFFFF;
 }
 
 #stagered-head-2 {
   padding-left: 97px;
+  color: #FFFFFF;
+}
+ main h1 {
+  color: #FFFFFF;
+  position:relative;
+  top: 50px;
+  left:100px;
+  line-height: 1.2;
 }
 
 
+.main-img img {
+  height: 300px;
+  position: relative;
+  right: -20%;
+  border-radius: 5px;
+}
+
+.sub-heading {
+  height: 30px;
+}
+
+.sub-heading h2 {
+  color:#fff;
+  text-align: center;
+  margin-bottom: 60px;
+}
+.sub-main button{
+  color: #F9F9F9;
+  padding: 10px 30px;
+  background-color: #a59d8c;
+  border-radius: 5px;
+}
+
+.sub-main button:focus {
+  outline: none;
+}
+
+.sub-main p {
+  color: #C7B185;
+  padding-top: 20px;
+}
+
+.description1{
+  display: none;
+}
+.description2{
+  display: none;
+}
+.description3{
+  display: none;
+}
+
+.footer{
+  margin-top:200px;
+}
+.footer p {
+  color: #C7B185;
+}
 
