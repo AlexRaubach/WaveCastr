@@ -27,6 +27,13 @@ body {
   /*border:2px solid lightblue;*/
 }
 
+::-webkit-scrollbar {
+    /*display: ;*/
+  border-radius: 5px;
+  width: 8px;
+  background-color: rgba(33, 34, 35, .8);
+  border: 1px solid rgba(33, 34, 35, .8);
+}
 
 /*********************************************************Header*********************************************************/
 .header logo {
@@ -94,8 +101,9 @@ body {
 
 /*Control Panel*/
 #control-panel {
-  text-align: center;
-  margin-bottom: 10px;
+  margin-top: 70px;
+  text-align: left;
+  margin-bottom: 20px;
 }
 
 #control-panel button {
@@ -115,10 +123,26 @@ body {
   display: none;
 }
 
-/*Guest Panels */
+/******** Guest Panels ********/
 #guest-panel {
   padding: 0px;
   text-align: left;
+  background-color: rgba(33, 34, 35, .8);
+  border: 1px solid rgba(33, 34, 35, .8);
+  color: #FFFFFF;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 4px;
+}
+
+.panel {
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 5px;
+}
+
+.panel-default {
+    border-color: transparent;
 }
 
 #guest-panel h3 {
@@ -127,23 +151,21 @@ body {
 }
 
 #user-list-container {
-  width: 40%;
-  margin-top: 5%;
-
+  width: 44%;
+  /*margin-top: ;*/
+  overflow-y: scroll;
 }
 
 /*Main Divs*/
 #left-container {
   height: 260px;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 
 }
 
 #right-container {
   height: 260px;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
 }
 
 #bottom-files-container {
