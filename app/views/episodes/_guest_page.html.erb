@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Wavecastr</title>
+    <link href="https://fonts.googleapis.com/css?family=Anton|Indie+Flower|Supermercado+One|Titillium+Web" rel="stylesheet">
+    <script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.4.4.js"></script>
+    <%= csrf_meta_tags %>
+    <%= action_cable_meta_tag %>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+
+  </head>
+
+  <body>
+    <div class="header">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="/Wellen-lineart-800px.png" alt="WaveCastr" height="80" class="logo .img-responsive">
+          <h1><a href="/">WaveCastr</a> </h1>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div id="flash">
+        <% flash.each do |name, msg| -%>
+          <%= content_tag :div, msg, class: name unless name == "notice" %>
+        <% end %>
+      </div>
+      <%= render(template: 'episodes/show', layout: false) %>
+    </div>
+  </body>
+</html>

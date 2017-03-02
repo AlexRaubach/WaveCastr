@@ -1,28 +1,26 @@
+<!-- ChatBox & Guests -->
 <div class="row">
-
   <div class="col-md-3" id="left-container">
     <div class="share-button">
       <button id="present-share-link-modal" class="btn btn-block" data-toggle="modal" data-target="#share-link-modal">Share Link</button>
     </div> 
-
     <div id="guest-list">
       <%= render partial: 'users/host', locals: { host: @episode.host } %>
       <%= render @episode.guests %>
     </div>
   </div>
-
+  
   <div class="col-md-9" id="right-container">
-
     <div id="chat-container"></div>
-
     <div id="input-box">
       <input id="input" class="form-control pull-left" placeholder="Type your message here"/>
       <button id="send" class="pull-right">Send</button>
     </div>
   </div>
-
 </div>
+<!-- End ChatBox & Guests -->
 
+<!-- Control Panel -->
 <div class="row">
   <div id="control-panel" class="text-right">
     <div id="record-buttons" <%= 'hidden' unless is_host?(@episode) %> >
@@ -33,30 +31,33 @@
   <div id="localRecording"></div>
   </div>
 </div>
+<!-- End Control Panel -->
 
-<div class="row">
-  <div class="col-md-12" id="track-list">
-    <h1 class="page-header">Tracks</h1>
-    <% if is_host?(@episode) %>
-        <%= render @episode.tracks %>
-    <% end %>
+<!-- Track List -->
+<% if is_host?(@episode) %>
+  <div class="row">
+    <div class="col-md-12" id="track-list">
+      <h1 class="page-header">Tracks</h1>
+      <% if is_host?(@episode) %>
+          <%= render @episode.tracks %>
+      <% end %>
+    </div>
   </div>
-</div>
+<% end %>
+<!-- End Track List -->
 
+<!-- Modals -->
 <% if is_host?(@episode) %>
   <%= render '/episodes/modals/share_link' %>
 <% end %>
 
-<!-- Register Guest Modal -->
 <% if unregistered_guest?(@episode) %>
   <%= render '/episodes/modals/register_guest' %>
 <% end %>
+<!-- End Modals -->
 
-
-<!-- AWS S3 signed link information -->
 <%= render '/episodes/aws_s3_upload_form' %>
 
-<!-- Chat Keys -->
 <script>
   var subscribeKey = "<%= @chat_keys[0] %>"
   var publishKey = "<%= @chat_keys[1] %>"

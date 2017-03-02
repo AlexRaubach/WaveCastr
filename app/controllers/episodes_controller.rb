@@ -4,9 +4,12 @@ class EpisodesController < ApplicationController
   before_action :authenticate_user!, only: [:create, :destroy]
 
   def show
-    @chat_keys = [ENV['CHAT_SUBSCRIBE_KEY'], ENV['CHAT_PUBLISH_KEY']]
-    set_s3_direct_post(@episode)
     @guest = Guest.new
+    set_s3_direct_post(@episode)
+    @chat_keys = [ENV['CHAT_SUBSCRIBE_KEY'], ENV['CHAT_PUBLISH_KEY']]
+    if !current_user || !current_user.host?(@episode)
+      render(partial: 'episodes/guest_page', layout: false)
+    end
   end
 
   def create
@@ -38,6 +41,4 @@ class EpisodesController < ApplicationController
     def episode_params
       params.require(:episode).permit(:name, :description)
     end
-
-
 end
