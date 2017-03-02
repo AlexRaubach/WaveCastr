@@ -101,7 +101,7 @@ function initRecording() {
         data: newTrackData
       })
       .done(function(response){
-        $('.container').flash("Your recording was successfully saved.");
+        $('.container').flash("Your recording was successfully saved.", { fadeOut: 2000 });
       })
       .fail(function(response){
         $('.container').flash('Sorry, something went wrong. A local version of your recording is available under the control panel.', { class: 'alert' });
