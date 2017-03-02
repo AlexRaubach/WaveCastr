@@ -28,7 +28,7 @@ $(document).ready(function(){
   $(".next").click(function(){
     var $active = $(".slide-container div.active");
     var $next = $active.next();
-    if (checkLast() == false){
+    if (checkLast() === false){
       $next.addClass('active');
       $active.removeClass("active");
     }
@@ -37,7 +37,7 @@ $(document).ready(function(){
   $(".prev").click(function(){
     var $active = $(".slide-container div.active");
     var $prev = $active.prev();
-    if (checkFirst() == false){
+    if (checkFirst() === false){
       $prev.addClass('active');
       $active.removeClass('active');
     }
@@ -46,7 +46,7 @@ $(document).ready(function(){
   function checkLast(){
     var check = false;
     var slides = $(".slide-container");
-    if (slides.find('div:last').hasClass("active") == true){
+    if (slides.find('div:last').hasClass("active") === true){
       check = true;
     }
     return check;
@@ -55,7 +55,7 @@ $(document).ready(function(){
   function checkFirst(){
   var check = false;
   var slides = $(".slide-container");
-  if (slides.find('div:first').hasClass("active") == true){
+  if (slides.find('div:first').hasClass("active") === true){
     check = true;
   }
   return check;
