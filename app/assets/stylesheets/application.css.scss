@@ -353,6 +353,35 @@ small {
   padding: 10px;
 }
 
+/*************** login ***********/
+.user-form-container {
+  color: #99AAAA;
+  display: inline-block;
+  border-color: rgba(33, 34, 35, .8);
+  background-color: rgba(33, 34, 35, .8);
+  border-radius: 5px;
+}
+
+.user-form-container form {
+  padding: 50px;
+}
+
+.user-form-container label {
+  font-size: 18px;
+}
+
+.user-form-container h2 {
+  font-size: 26px;
+  text-align: center;
+}
+
+.user-form-container input[type=submit] {
+  background-color: #a59d8c;
+  color: #fff;
+  margin-top: 8px;
+  border-color: #a59d8c;
+  border-radius: 5px;
+}
 
 
 /**********New Episode Modal**********/
