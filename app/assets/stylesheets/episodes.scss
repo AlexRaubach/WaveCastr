@@ -8,19 +8,19 @@ div.status-dot {
   height: 37px;
   width: 20px;
   border-radius: 500px;
-  border: 1px solid black;
+
   padding: 4px;
 }
 
 .status-dot.ready {
-  background-color: green;
+  background-color: #006400;
 }
 
 .status-dot.waiting {
-  background-color: yellow;
+  background-color: #DAA520;
 }
 
 .status-dot.error {
-  background-color: red;
+  background-color: #8B0000;
 }
 
