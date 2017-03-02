@@ -5,12 +5,14 @@
       class: 'notice'
     }, options);
 
-    var flash = '<div class=' + settings.class + '>' + message + '</div>';
-    $(flash).hide().prependTo(this).fadeIn('slow', function() {
-      var flash = this;
+    var innerDiv = '<div class=' + settings.class + '>' + message + '</div>';
+    var outerDiv = this;
+    $(outerDiv).hide().html(innerDiv).fadeIn('slow', function() {
       if (settings.fadeOut) {
         setTimeout(function() { 
-          $(flash).fadeOut('slow');
+          $(outerDiv).children('div').fadeOut('slow', function() {
+            $(this).remove();
+          });
         }, settings.fadeOut);
       }
     });
