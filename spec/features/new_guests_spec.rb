@@ -13,7 +13,7 @@ RSpec.feature "New guests", type: :feature do
   scenario "guest visits episode and sees modal to register" do
     visit episode_url(sharable_link: episode.sharable_link)
     within "#register-guest-modal" do
-      expect(page).to have_content "Register Guest"
+      expect(page).to have_content "Register"
     end
   end
 
