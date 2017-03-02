@@ -53,19 +53,43 @@ body {
 
 
 /*********************************************************Header*********************************************************/
+.nav {
+  font-size: 20px;
+}
 
+.nav li a{
+  position: relative;
+  right:60px;
+  top: 40px;
+  color: #F9F9F9;
+}
+
+.nav li a:hover{
+  background-color: #a59d8c;
+}
+
+.right {
+  position: relative;
+  right:-160px;
+  margin-bottom: 20px;
+}
 .header logo {
   position: relative;
   top: -20px;
 }
-
+.nav a{
+  background-color:  #a59d8c;
+  color: #F9F9F9;
+}
 .header h1 a {
 	color: #99AAAA;
   /*make font bold or something*/
   text-shadow: 1px 0 #212223;
   font-size: 60px;
   text-decoration: none;
-  margin-top: 10px;
+  margin-top: 20px;
+  position: relative;
+  bottom: -20px;
 }
 
 .header h1 a:visited {
@@ -344,5 +368,51 @@ body {
   background-color: rgb(165, 157, 140);
 }
 
+/**********************************************************************Episodes List Page**********************************************************************/
+#new-episode-div,
+#episode-list {
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+
+}
+
+#new-episode-div {
+  margin-bottom: 12px;
+}
+
+#present-new-episode-modal {
+  color: #FFFFFF;
+  border-color: rgb(165, 157, 140);
+  background-color: rgb(165, 157, 140);
+}
+
+#episode-list {
+}
+
+.episode.panel.panel-default {
+  color: #FFFFFF;
+  border-radius: 5px;
+  background-color: rgba(33, 34, 35, .8);
+  border: 1px solid rgba(33, 34, 35, .8);
+}
+
+#new-episode-modal-btn,
+#present-new-episode-modal:focus {outline:0;}
+
+/**********New Episode Modal**********/
+#new-episode-modal-btn {
+  color: #FFFFFF;
+  border-color: rgb(165, 157, 140);
+  background-color: rgb(165, 157, 140);
+}
+
+#new-episode-modal {
+
+}
+
+#filetype {
+
+}
 
 

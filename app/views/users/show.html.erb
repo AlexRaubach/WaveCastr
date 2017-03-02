@@ -1,10 +1,23 @@
+
 <div class="row">
-  <main class="well col-md-6 col-md-offset-3">
+
+    <div id="new-episode-div">
+    <button id="present-new-episode-modal" class="btn btn-primary btn-block" data-toggle="modal" data-target="#new-episode-modal">
+      New Episode
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <div id="episode-list">
+    <%= render current_user.episodes.order(created_at: :desc) %>
+  </div>
+<!--   <main class="well col-md-6 col-md-offset-3">
     <button id="present-new-episode-modal" class="btn btn-primary btn-block" data-toggle="modal" data-target="#new-episode-modal">
       New Episode
     </button>
     <%= render current_user.episodes.order(created_at: :desc) %>
-  </main>
+  </main> -->
 </div>
 
 <!-- Modal -->
@@ -20,7 +33,7 @@
         <% end %>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" form="new_episode">Go</button>
+        <button type="submit" id="new-episode-modal-btn" class="btn btn-primary" form="new_episode">Go</button>
       </div>
     </div>
   </div>
