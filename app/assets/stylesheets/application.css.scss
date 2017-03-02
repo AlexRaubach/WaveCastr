@@ -157,7 +157,7 @@ body {
   color: #FFFFFF;
   border-radius: 5px;
   padding: 10px;
-  margin-bottom: 10px;
+  margin: 10px 0;
 }
 
 .guest h3 {
@@ -167,20 +167,20 @@ body {
 }
 
 #present-share-link-modal {
-  height: 60px;
+  height: 33.99px;
 }
 
 #guest-list {
-  height: 265px;
+  height: 306px;
 }
 
 /*Main Divs*/
 #left-container {
-  height: 300px;
+  height: 340px;
 }
 
 #right-container {
-  height: 260px;
+  height: 340px;
 }
 
 #bottom-files-container {
@@ -205,8 +205,7 @@ body {
 
 /*Chat Box*/
 #input-box {
-  padding-top: 3px;
-
+  padding: 5px 0;
 }
 
 #box {
@@ -231,12 +230,12 @@ body {
   color: #FFFFFF;
   margin-left: 1.4px;
   width:23%;
+  height: 33.99px;
 }
 
 #send:focus {outline:0;}
 
 #chat-container {
-
   padding-left: 12px;
   background-color: rgba(33, 34, 35, .8);
   height: 300px;
