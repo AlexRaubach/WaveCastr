@@ -187,23 +187,21 @@ body {
 
 /*Main Divs*/
 
-#bottom-files-container {
-  border-radius: 5px;
-  margin-top: 60px;
-}
-
-.track-body {
-  padding: 8px 20px;
-}
-
 .track {
-  margin: 10px 0;
+  margin: 20px;
+  padding: 20px 60px;
   text-align: center;
   background-color: rgba(33, 34, 35, .8);
   border: 1px solid rgba(33, 34, 35, .8);
   border-color: transparent;
   border-radius: 5px;
   color: #FFFFFF;
+  display: inline-block;
+}
+
+.track a {
+  text-decoration: underline;
+  color: white;
 }
 
 /*Chat Box*/
