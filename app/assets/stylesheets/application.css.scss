@@ -412,12 +412,20 @@ body {
 #new-episode-modal-btn,
 #present-new-episode-modal:focus {outline:0;}
 
-
+/******** Signup **************/
 .signup-container{
   color: #99AAAA;
-  position: relative;
-  right: -40%;
 }
+
+.signup-container label {
+  font-size: 18px;
+}
+
+.signup-container h2 {
+  font-size: 26px;
+}
+
+
 
 .login-link a {
   padding: 10px;
