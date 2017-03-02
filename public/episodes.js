@@ -49,7 +49,22 @@ $(document).ready(function(){
       pubnub.publish({channel : channel, message : input.value, x: (input.value='')});
     })
   }
+
+  $('#init').one('click', function(){
+    $('#start').show();
+  })
+
+  $('#start').on("click", function(){
+    $(this).hide();
+    $('#stopButton').show();
+  })
+
+  $('#stopButton').on("click", function(){
+    $(this).hide();
+    $('#start').show();
+  })
 })
+
 
 
 
