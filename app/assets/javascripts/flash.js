@@ -5,7 +5,12 @@
       class: 'notice'
     }, options);
 
-    this.prepend('<div class=' + settings.class + '>' + message + '</div>');
+    var flash = '<div class=' + settings.class + '>' + message + '</div>';
+    $(flash).hide().prependTo(this).fadeIn('slow', function() {
+      if (settings.fadeOut) {
+        setTimeout(() => $(this).fadeOut('slow'), settings.fadeOut);
+      }
+    });
   };
 
 })(jQuery);
