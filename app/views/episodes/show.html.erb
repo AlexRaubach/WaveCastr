@@ -52,13 +52,6 @@
 <ul id="recordingslist"></ul>
 
 
-<!-- Information for saving of Tracks -->
-
-
-
-
-
-
 
 <% if is_host?(@episode) %>
   <%= render '/episodes/modals/share_link' %>
@@ -73,6 +66,7 @@
 
 <!-- AWS S3 signed link information -->
 <%= render '/episodes/aws_s3_upload_form' %>
+
 <!-- Chat Keys -->
 <script>
   var episodeId = "<%= @episode.id %>"

@@ -17,7 +17,24 @@
 @import "bootstrap";
 @import "episodes";
 
+
 /*****************************************************Global Options*****************************************************/
+
+.alert, .notice {
+  padding: 10px;
+  margin: 10px 0;
+  color: white;
+  border-radius: 10px;
+}
+
+.alert {
+  background-color: red;
+}
+
+.notice {
+  background-color: green;
+}
+
 
 body {
   background-image: url('/images/background.jpg');
@@ -35,7 +52,9 @@ body {
   border: 1px solid rgba(33, 34, 35, .8);
 }
 
+
 /*********************************************************Header*********************************************************/
+
 .header logo {
   position: relative;
   top: -20px;
@@ -62,12 +81,9 @@ body {
   text-shadow: 1px 0 #212223;
 }
 
-
-
 .header h1 {
   display: inline-block;
 }
-
 
 .nav-pills {
   display: inline-block;
@@ -88,6 +104,7 @@ body {
   font-size:46px;
   text-transform: uppercase;
 }
+
 
 .active {
   display: block;
@@ -113,7 +130,12 @@ body {
 }
 
 #init.btn {
+
 }
+
+/*.slide-container {
+  margin-top: 40px;
+}*/
 
 #start.btn {
   display: none;
@@ -144,6 +166,7 @@ body {
 .panel-default {
     border-color: transparent;
 }
+
 
 #guest-panel h3 {
   padding: 5px;
@@ -232,4 +255,3 @@ body {
   border-radius: 5px;
   color: rgba(190, 181, 166, 1);
 }
-

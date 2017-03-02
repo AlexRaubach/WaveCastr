@@ -29,7 +29,8 @@ function initRecording() {
 
   if (!Recorder.isRecordingSupported()) {
     App.appearance.perform("update", {status: 'error'});
-    return screenLogger("Recording features are not supported in your browser.");
+    $('.container').flash("Sorry, recording features are not supported in your browser.", { class: 'alert' });
+    return;
   }
 
   recorder = new Recorder({
@@ -57,7 +58,6 @@ function initRecording() {
     start.disabled = false;
 
     App.appearance.perform("update", {status: 'ready'});
-//     screenLogger('Audio stream is ready.');
     addToChatBox('Audio stream is ready.');
   });
 
@@ -90,26 +90,30 @@ function initRecording() {
       dataType: 'XML',
       replaceFileInput: false
     });
+
     $('#episode_track').fileupload('send', {
-      files: [dataBlob],
+      files: [dataBlob]
     })
     .done(function(response){
-      var buckObjectUrl = $($(response).children().children()[0]).text();
-      buckObjectUrl = buckObjectUrl.match(/\wavecastr(.*)/)[1]
+      var episodeSharableLink = window.location.pathname.replace(/\/episodes\//, '');
+      var xmlSerializer = new XMLSerializer();
+      var s3String = xmlSerializer.serializeToString(response);
+      var newTrackData = { sharable_link: episodeSharableLink, track: { s3_string: s3String } };
 
-      var newTrackData = {episode_id: episodeId, s3_string: buckObjectUrl };
       $.ajax({
         url: "/tracks",
         method: "POST",
         data: newTrackData
       })
       .done(function(response){
-        console.log("successful link save");
+        $('.container').flash("Your recording was successfully saved.");
       })
       .fail(function(response){
-        console.log("failed link save");
+        $('.container').flash('Sorry, something went wrong. Please try again.', { class: 'alert' });
       })
-    })
+    }).fail(function(response) {
+      $('.container').flash('Sorry, something went wrong. Please try again.', { class: 'alert' });
+    });
   });
   recorder.initStream();
 }

@@ -1,11 +1,22 @@
 <!-- Share Link Modal -->
 <div class="modal fade" id="share-link-modal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h4 class="modal-title">Share Link</h4>
-    </div>
-    <div class="modal-body">
-      <p>Share this link with your guests: <%= text_field :episode, :sharable_link, readonly: true, size: 40, value: episode_url(sharable_link: @episode.sharable_link) %></p>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Share Link</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <input class="form-control input-lg" id="episode-link" value="<%= episode_url(sharable_link: @episode.sharable_link) %>" readonly>
+        </div>
+        <div class="form-group">
+          <button id="copy-btn" class="btn btn-primary" data-clipboard-target="#episode-link">Copy</button>
+        </div>
+      </div>
     </div>
   </div>
 </div>
+
+<script>
+  new Clipboard('#copy-btn');
+</script>
