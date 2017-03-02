@@ -1,29 +1,27 @@
 <div class="row">
-  <aside class="col-md-6 well" id="episode-list">
-    <%= render current_user.episodes.order(created_at: :desc) %>
-  </aside>
-  <main class="col-md-6 well">
+  <main class="well col-md-6 col-md-offset-3">
     <button id="present-new-episode-modal" class="btn btn-primary btn-block" data-toggle="modal" data-target="#new-episode-modal">
       New Episode
     </button>
-    <%= image_tag 'microphone.png', style: "display: block; margin: 10px auto" %>
+    <%= render current_user.episodes.order(created_at: :desc) %>
   </main>
 </div>
 
 <!-- Modal -->
 <div class="modal fade" id="new-episode-modal">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h4 class="modal-title">New Episode</h4>
-    </div>
-    <div class="modal-body">
-      <%= form_for @episode do |f| %>
-        <%= select_tag 'filetype', options_for_select(audio_filetypes) %>
-        <%= f.text_field :name, placeholder: "Episode name" %>
-      <% end %>
-    </div>
-    <div class="modal-footer">
-      <button type="submit" class="btn btn-primary" form="new_episode">Go</button>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">New Episode</h4>
+      </div>
+      <div class="modal-body">
+        <%= form_for @episode do |f| %>
+          <%= f.text_field :name, placeholder: "Episode name", class: "form-control input-lg" %>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" form="new_episode">Go</button>
+      </div>
     </div>
   </div>
 </div>

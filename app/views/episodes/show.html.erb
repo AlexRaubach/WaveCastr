@@ -3,6 +3,7 @@
       <div id="control-panel" <%= 'hidden' unless is_host?(@episode) %> >
       <% if is_host?(@episode) %>
         <button id="present-share-link-modal" class="btn btn-primary" data-toggle="modal" data-target="#share-link-modal">Share Link</button>
+        <br>
       <% end %>
       <button id="init" class="btn btn-primary">Activate Mics</button>
       <button id="start" class="btn btn-primary" >Begin Recording</button>
@@ -49,7 +50,7 @@
 
 
 
-<ul id="recordingslist"></ul>
+
 
 
 
