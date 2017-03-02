@@ -1,7 +1,7 @@
 <div class="episode panel panel-default">
   <div class="panel-body">
     <p>
-      <h3><%= link_to "#{episode.name}", episode_path(sharable_link: episode.sharable_link) %></h3>
+      <h3 class="episode-title"><%= link_to "#{episode.name}", episode_path(sharable_link: episode.sharable_link), class: "episode-title" %></h3>
     </p>
     <p><small><%= episode.created_at %></small></p>
     <p><%= button_to "Delete", episode_path(sharable_link: episode.sharable_link), method: 'delete', class: "btn btn-danger" %></p>

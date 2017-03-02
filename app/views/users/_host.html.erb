@@ -1,8 +1,6 @@
-<div id="host" class="panel panel-default">
-  <div id="guest-panel" class="panel-body">
-    <h3 <%= 'id=current_user' if user_signed_in? && current_user.host?(@episode) %>>
-      <div class="status-dot ready"></div>
-      <%= host.name %>
-    </h3>
+<div id="host" class="guest">
+  <div>
+    <div class="status-dot ready"></div>
+    <h3 <%= 'id=current_user' if user_signed_in? && current_user.host?(@episode) %>><%= host.name %></h3>
   </div>
 </div>

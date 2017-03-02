@@ -78,6 +78,7 @@ body {
 .header logo {
   position: relative;
   top: -20px;
+  margin-left: 50px;
 }
 
 .header {
@@ -96,6 +97,7 @@ body {
   margin-top: 20px;
   position: relative;
   bottom: -20px;
+
 }
 
 .header h1 a:visited {
@@ -134,7 +136,6 @@ body {
   text-transform: uppercase;
 }
 
-
 .active {
   display: block;
 }
@@ -143,9 +144,8 @@ body {
 
 /*Control Panel*/
 #control-panel {
-  margin-top: 70px;
-  text-align: left;
-  margin-bottom: 20px;
+  text-align: center;
+  margin: 50px;
 }
 
 #control-panel button {
@@ -159,103 +159,55 @@ body {
 #present-share-link-modal,
 #init:focus {outline:0;}
 
-
-#init.btn {
-  width: 44%;
-}
-
-/*.slide-container {
-  margin-top: 40px;
-}*/
-
-#present-share-link-modal {
-  margin-bottom: 5px;
-  width: 44%;
-}
-
-#start.btn {
-  display: none;
-  width: 21.75%
-}
-
-#stopButton.btn {
-  display: none;
-  width: 21.75%
+#localRecording {
+  margin: 10px auto;
 }
 
 /******** Guest Panels ********/
-#guest-panel {
-  padding: 0px;
-  text-align: left;
+.guest {
+  height: 60px;
   background-color: rgba(33, 34, 35, .8);
   border: 1px solid rgba(33, 34, 35, .8);
   color: #FFFFFF;
   border-radius: 5px;
   padding: 10px;
-  margin-right: 4px;
+  margin: 10px 0;
 }
 
-.panel {
-    background-color: transparent;
-    border: 1px solid transparent;
-    border-radius: 5px;
-}
-
-.panel-default {
-    border-color: transparent;
-}
-
-
-#guest-panel h3 {
+.guest h3 {
+  display: inline-block;
   padding: 5px;
   margin: 0px;
 }
 
-#user-list-container {
-  width: 44%;
-  /*margin-top: ;*/
-  overflow-y: scroll;
-  /*max-height:*/
+#present-share-link-modal {
+  height: 33.99px;
 }
 
 /*Main Divs*/
-#left-container {
-  height: 260px;
-  margin-bottom: 60px;
-
-}
-
-#right-container {
-  height: 260px;
-  margin-bottom: 60px;
-}
 
 #bottom-files-container {
   border-radius: 5px;
-  padding-top: 20px;
+  margin-top: 60px;
 }
 
 .track-body {
-  padding: 8px;
-}
-.panel-default {
+  padding: 8px 20px;
 }
 
-.track.panel.panel-default {
+.track {
   text-align: center;
   background-color: rgba(33, 34, 35, .8);
   border: 1px solid rgba(33, 34, 35, .8);
   border-color: transparent;
+  border-radius: 5px;
   color: #FFFFFF;
   display: inline-block;
-  width: 220px;
-  overflow: hidden;
 }
 
 /*Chat Box*/
 #input-box {
-  padding-top: 3px;
-
+  padding: 5px 0;
 }
 
 #box {
@@ -280,12 +232,12 @@ body {
   color: #FFFFFF;
   margin-left: 1.4px;
   width:23%;
+  height: 33.99px;
 }
 
 #send:focus {outline:0;}
 
 #chat-container {
-
   padding-left: 12px;
   background-color: rgba(33, 34, 35, .8);
   height: 300px;
@@ -298,61 +250,7 @@ body {
 
 
 
-/* homepage */
 
-.main h1 {
-  color: #FFFFFF;
-  position:relative;
-  top: 50px;
-  left:100px;
-  line-height: 1.2;
-}
-
-
-.main-img img {
-  height: 300px;
-  position: relative;
-  right: -20%;
-  border-radius: 5px;
-}
-
-.sub-heading h2 {
-  color:#fff;
-  text-align: center;
-  margin-bottom: 60px;
-}
-.sub-main button{
-  color: #F9F9F9;
-  padding: 10px 30px;
-  background-color: #a59d8c;
-  border-radius: 5px;
-}
-
-.sub-main button:focus {
-  outline: none;
-}
-
-.sub-main p {
-  color: #C7B185;
-  padding-top: 20px;
-}
-
-.description1{
-  display: none;
-}
-.description2{
-  display: none;
-}
-.description3{
-  display: none;
-}
-
-.footer{
-  margin-top:200px;
-}
-.footer p {
-  color: #C7B185;
-}
 
 /*************Share Link Modal*************/
 
@@ -399,7 +297,17 @@ body {
   background-color: rgb(165, 157, 140);
 }
 
-#episode-list {
+ .episode-title {
+  color: #FFFFFF;
+}
+
+ .episode-title:hover {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+small {
+  color: rgb(165, 157, 140)
 }
 
 .episode.panel.panel-default {
@@ -462,4 +370,87 @@ body {
 
 }
 
+
+/**********************************************************************************Home Page*********************************************************************************/
+
+#landing-main {
+  height: 300px;
+  border-radius: 5px;
+  color: rgba(190, 181, 166, 1);
+  padding-left: 60px;
+}
+
+#landing-main > h3:first-of-type {
+  margin-top: 90px;
+}
+
+#landing-main > h3:last-of-type {
+  margin-left: 128px;
+}
+
+#stagered-head-1 {
+  color: #FFFFFF;
+}
+
+#stagered-head-2 {
+  padding-left: 97px;
+  color: #FFFFFF;
+}
+ main h1 {
+  color: #FFFFFF;
+  position:relative;
+  top: 50px;
+  left:100px;
+  line-height: 1.2;
+}
+
+
+.main-img img {
+  height: 300px;
+  position: relative;
+  right: -20%;
+  border-radius: 5px;
+}
+
+.sub-heading {
+  height: 30px;
+}
+
+.sub-heading h2 {
+  color:#fff;
+  text-align: center;
+  margin-bottom: 60px;
+}
+.sub-main button{
+  color: #F9F9F9;
+  padding: 10px 30px;
+  background-color: #a59d8c;
+  border-radius: 5px;
+}
+
+.sub-main button:focus {
+  outline: none;
+}
+
+.sub-main p {
+  color: #C7B185;
+  padding-top: 20px;
+}
+
+.description1{
+  display: none;
+}
+.description2{
+  display: none;
+}
+.description3{
+  display: none;
+}
+
+.footer{
+  margin-top:200px;
+}
+.footer p {
+  color: #C7B185;
+}
 
