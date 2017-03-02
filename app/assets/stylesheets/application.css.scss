@@ -17,6 +17,9 @@
 @import "bootstrap";
 @import "episodes";
 
+
+/*****************************************************Global Options*****************************************************/
+
 .alert, .notice {
   padding: 10px;
   margin: 10px 0;
@@ -32,17 +35,25 @@
   background-color: green;
 }
 
-.show-options {
-  margin-top: 20px;
+
+body {
+  background-image: url('/images/background.jpg');
 }
 
-.commands, .recordings, .logs{
-  display: none;
+* {
+  /*border:2px solid lightblue;*/
 }
 
-.picked {
-  display: block;
+::-webkit-scrollbar {
+    /*display: ;*/
+  border-radius: 5px;
+  width: 8px;
+  background-color: rgba(33, 34, 35, .8);
+  border: 1px solid rgba(33, 34, 35, .8);
 }
+
+
+/*********************************************************Header*********************************************************/
 
 .header logo {
   position: relative;
@@ -50,18 +61,24 @@
 }
 
 .header h1 a {
-	color: #418BE4;
+	color: #99AAAA;
+  /*make font bold or something*/
+  text-shadow: 1px 0 #212223;
   font-size: 60px;
   text-decoration: none;
   margin-top: 10px;
 }
 
 .header h1 a:visited {
-  color: #418BE4;
+  color: #99AAAA;
+  /*make font bold or something*/
+  text-shadow: 1px 0 #212223;
 }
 
 .header h1 a:hover {
-  color: #418BE4;
+  color: #99AAAA;
+  /*make font bold or something*/
+  text-shadow: 1px 0 #212223;
 }
 
 .header h1 {
@@ -88,35 +105,153 @@
   text-transform: uppercase;
 }
 
-.slide-container {
-  margin-top: 40px;
-}
-
-.slide-container h2 {
-  text-align: center;
-}
-
-.mySlides {
-  display: none;
-}
 
 .active {
   display: block;
 }
 
-#chat-container {
-  height: 200px;
-  width: 500px;
-  overflow: auto;
 
+
+
+
+/************************************Episode Page************************************/
+
+/*Control Panel*/
+#control-panel {
+  margin-top: 70px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+#control-panel button {
+  border-color: rgb(165, 157, 140);
+  background-color: rgb(165, 157, 140);
+  color: #FFFFFF;
+}
+
+#init.btn {
+
+}
+
+/*.slide-container {
+  margin-top: 40px;
+}*/
+
+#start.btn {
+  display: none;
+}
+
+#stopButton.btn {
+  display: none;
+}
+
+/******** Guest Panels ********/
+#guest-panel {
+  padding: 0px;
+  text-align: left;
+  background-color: rgba(33, 34, 35, .8);
+  border: 1px solid rgba(33, 34, 35, .8);
+  color: #FFFFFF;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 4px;
+}
+
+.panel {
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 5px;
+}
+
+.panel-default {
+    border-color: transparent;
+}
+
+
+#guest-panel h3 {
+  padding: 5px;
+  margin: 0px;
+}
+
+#user-list-container {
+  width: 44%;
+  /*margin-top: ;*/
+  overflow-y: scroll;
+}
+
+/*Main Divs*/
+#left-container {
+  height: 260px;
+  margin-bottom: 60px;
+
+}
+
+#right-container {
+  height: 260px;
+  margin-bottom: 60px;
+}
+
+#bottom-files-container {
+  border-radius: 5px;
+  padding-top: 20px;
+}
+
+.track-body {
+  padding: 8px;
+}
+.panel-default {
+}
+
+.track.panel.panel-default {
+  text-align: center;
+  background-color: rgba(33, 34, 35, .8);
+  border: 1px solid rgba(33, 34, 35, .8);
+  border-color: transparent;
+  color: #FFFFFF;
+  display: inline-block;
+  width: 220px;
+  overflow: hidden;
+}
+
+/*Chat Box*/
+#input-box {
+  padding-top: 3px;
+
+}
+
+#box {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #input {
+  padding-left: 12px;
   width: 380px;
   border-radius: 5px;
+  background-color: rgba(33, 34, 35, .8);
+  border: 1px solid rgba(33, 34, 35, .8);
+  color: rgba(190, 181, 166, 1);
 }
+#input:focus {outline:0;}
 
 #send {
-  width:100px;
+  border: 0px solid rgba(33, 34, 35, 1);
+  border-radius: 5px;
+  background-color: rgba(33, 34, 35, 1);
+  color: #FFFFFF;
+  width:118px;
 }
 
+#send:focus {outline:0;}
+
+#chat-container {
+
+  padding-left: 12px;
+  background-color: rgba(33, 34, 35, .8);
+  height: 200px;
+  width: 500px;
+  overflow: auto;
+  border: 1px solid rgba(33, 34, 35, .8);
+  border-radius: 5px;
+  color: rgba(190, 181, 166, 1);
+}

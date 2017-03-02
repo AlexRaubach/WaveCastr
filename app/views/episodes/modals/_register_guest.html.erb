@@ -8,7 +8,7 @@
       <div class="modal-body">
         <%= form_for @guest do |f| %>
           <%= hidden_field :guest, :episode_id, value: @episode.id %>
-          <%= f.text_field :name, placeholder: "Enter your name", class: "form-control input-lg" %>
+          <%= f.text_field :name, placeholder: "Enter your name", class: "form-control input-lg", maxlength: 10 %>
         <% end %>
       </div>
       <div class="modal-footer">

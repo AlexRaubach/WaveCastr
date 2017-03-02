@@ -1,60 +1,79 @@
 <div class="row">
-  <div class="col-md-6" id="guest-list">
-    <%= render partial: 'users/host', locals: { host: @episode.host } %>
+  <div class="col-md-6">
+      <div id="control-panel" <%= 'hidden' unless is_host?(@episode) %> >
+      <% if is_host?(@episode) %>
+        <button id="present-share-link-modal" class="btn btn-primary" data-toggle="modal" data-target="#share-link-modal">Share Link</button>
+      <% end %>
+      <button id="init" class="btn btn-primary">Activate Mics</button>
+      <button id="start" class="btn btn-primary" >Begin Recording</button>
+      <button id="stopButton" class="btn btn-primary">Stop Recording</button>
+    </div>
+  </div>
+</div>
 
-    <%= render @episode.guests %>
 
+<div class="row">
+
+  <div class="col-md-6" id="left-container">
+
+    <div id="user-list-container">
+      <%= render partial: 'users/host', locals: { host: @episode.host } %>
+      <%= render @episode.guests %>
+    </div>
+
+  </div>
+
+
+  <div class="col-md-6" id="right-container">
+
+
+    <div id="chat-container">
+
+    </div>
+    <div id="input-box">
+      <input id="input" placeholder="Type your message here"/>
+      <button id="send">Send</button>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-12" id="bottom-files-container">
     <% if is_host?(@episode) %>
-      <button id="present-share-link-modal" class="btn btn-primary" data-toggle="modal" data-target="#share-link-modal">Share Link</button>
+        <%= render @episode.tracks %>
     <% end %>
   </div>
 </div>
 
+
+
+
 <ul id="recordingslist"></ul>
 
-<% if is_host?(@episode) %>
-  <div id="track-list">
-    <%= render @episode.tracks %>
-  </div>
-<% end %>
-
-<div class="col-md-6">
-  <div id="chat-container">
-    <div id="box"></div>
-  </div>
-  <div id="input-box">
-    <input id="input" placeholder="type your message here"/>
-    <button id="send">Send</button>
-  </div>
-</div>
-
-
-<%= render '/episodes/aws_s3_upload_form' %>
-
-<div id="record-buttons" <%= 'hidden' unless is_host?(@episode) %>>
-  <button id="init">init</button>
-  <button id="start" disabled>start</button>
-  <button id="stopButton" disabled>stop</button>
-</div>
-
-<pre id="log"></pre>
-
-<script src="/episodes.js"></script>
-<script src="/recorderjs/recorder.min.js"></script>
-<script src="/recorder.js"></script>
 
 
 <% if is_host?(@episode) %>
   <%= render '/episodes/modals/share_link' %>
 <% end %>
 
+
+<!-- Register Guest Modal -->
 <% if unregistered_guest?(@episode) %>
   <%= render '/episodes/modals/register_guest' %>
 <% end %>
 
+
+<!-- AWS S3 signed link information -->
+<%= render '/episodes/aws_s3_upload_form' %>
+
 <!-- Chat Keys -->
 <script>
+  var episodeId = "<%= @episode.id %>"
   var subscribeKey = "<%= @chat_keys[0] %>"
   var publishKey = "<%= @chat_keys[1] %>"
 </script>
 
+<script src="/recorderjs/recorder.min.js"></script>
+<script src="/recorder.js"></script>
+<script src="/episodes.js"></script>
