@@ -6,10 +6,12 @@ App.appearance = App.cable.subscriptions.create({channel: "AppearancesChannel", 
     switch (data.status) {
       case 'signin':
         var guestTemplate = this.renderGuest(data);
-        $("#guest-list").append(guestTemplate);
+        $(guestTemplate).hide().appendTo('#guest-list').fadeIn('slow');
         break;
       case 'signout':
-        $('#guest-' + data.guest_id).remove();
+        $('#guest-' + data.guest_id).fadeOut('slow', function() {
+          $(this).remove();
+        });
         break;
       case 'ready':
         $('#guest-' + data.guest_id).find('.status-dot').removeClass('waiting').addClass('ready');
@@ -22,7 +24,7 @@ App.appearance = App.cable.subscriptions.create({channel: "AppearancesChannel", 
   renderGuest: function(data) {
     return '<div id="guest-' + data.guest_id + '" class="guest">' +
               '<div>' + 
-                '<div class="status-dot waiting"></div>' +
+                '<div class="status-dot waiting"></div> ' +
                 '<h3>' + data.guest + '</h3>' + 
               '</div>' +
             '</div>';
