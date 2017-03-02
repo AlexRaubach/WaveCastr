@@ -51,7 +51,10 @@ $(document).ready(function(){
   }
 
   $('#init').one('click', function(){
+    $(this).css('width', '21.75%')
+    $(this).text('Reactivate Mics')
     $('#start').show();
+
   })
 
   $('#start').on("click", function(){
@@ -59,10 +62,13 @@ $(document).ready(function(){
     $('#stopButton').show();
   })
 
-  $('#stopButton').on("click", function(){
+  $('#stopButton').one("click", function(){
     $(this).hide();
+    // breaks addToChatBox() when line comment switched below
+    // $(#init).css('width', '44%');
     $('#start').show();
   })
+
 })
 
 
