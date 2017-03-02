@@ -378,6 +378,7 @@ body {
   background-color: rgb(165, 157, 140);
 }
 
+
 /**********************************************************************Episodes List Page**********************************************************************/
 #new-episode-div,
 #episode-list {
@@ -409,6 +410,19 @@ body {
 
 #new-episode-modal-btn,
 #present-new-episode-modal:focus {outline:0;}
+
+
+.signup-container{
+  color: #99AAAA;
+  position: relative;
+  right: -40%;
+}
+
+.login-link a {
+  padding: 10px;
+}
+
+
 
 /**********New Episode Modal**********/
 #new-episode-modal-btn {
