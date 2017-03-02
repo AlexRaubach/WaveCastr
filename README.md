@@ -2,16 +2,13 @@
 [![Build Status](https://travis-ci.org/Antigrapist/WaveCastr.svg?branch=master)](https://travis-ci.org/Antigrapist/WaveCastr)
 [![Code Climate](https://codeclimate.com/github/Antigrapist/WaveCastr/badges/gpa.svg)](https://codeclimate.com/github/Antigrapist/WaveCastr)
 
-A website for capturing high quality audio for podcasts or interviews. WaveCastr records from each participant's local machine and stores it in the cloud. Capturing audio locally preserves the quality and avoids voip compression. Having each participant's voice on a separate track makes it easy to produce great sounding podcasts with minimal setup.
+A website for capturing high quality audio for podcasts or interviews. WaveCastr records from each participant's local machine and stores it in the cloud. Capturing the audio locally preserves the quality and having each participant's voice on a separate track makes it easy to produce great sounding podcasts with minimal setup.
 
 ## Using WaveCastr
 
 Every participant will need a recent version of Chrome / Firefox, a microphone, headphones and a voip program (Skype, Google Hangouts etc).
 
 The host should create an [account](https://wavecastr.herokuapp.com/users/sign_up), create a new episode and then share the link with the guests.
-
-
-<!-- ## Screenshots -->
 
 ## Built With
 
@@ -33,19 +30,16 @@ The host should create an [account](https://wavecastr.herokuapp.com/users/sign_u
 
 ## Team Members
 
-* Oliver Duncan
+* [Oliver Duncan](https://github.com/ollieshmollie)
 
-* Jonathan Hyun
+* [Jonathan Hyun](https://github.com/jhyun94)
 
-* Joshua Lucas
+* [Joshua Lucas](https://github.com/Mithridates01)
 
-* Alex Raubach
+* [Alex Raubach](https://github.com/Antigrapist)
 
 
-<!-- ## Code Status
 
-[![Build Status](https://travis-ci.org/Antigrapist/WaveCastr.svg?branch=master)](https://travis-ci.org/Antigrapist/WaveCastr)
-[![Code Climate](https://codeclimate.com/github/Antigrapist/WaveCastr/badges/gpa.svg)](https://codeclimate.com/github/Antigrapist/WaveCastr) -->
 
 ## Contributing
 
