@@ -269,13 +269,22 @@ body {
 .sub-heading h2 {
   color:#fff;
   text-align: center;
+  margin-bottom: 60px;
 }
 .sub-main button{
-  color: red;
+  color: #F9F9F9;
+  padding: 10px 30px;
+  background-color: #a59d8c;
+  border-radius: 5px;
+}
+
+.sub-main button:focus {
+  outline: none;
 }
 
 .sub-main p {
-  color: red;
+  color: #C7B185;
+  padding-top: 20px;
 }
 
 .description1{
