@@ -263,7 +263,8 @@ body {
 }
 
 .main-img img {
-  height: 200px;
+  text-align:right;
+  height: 300px;
 }
 
 .sub-heading h2 {
@@ -297,4 +298,10 @@ body {
   display: none;
 }
 
+.footer{
+  margin-top:200px;
+}
+.footer p {
+  color: #C7B185;
+}
 
