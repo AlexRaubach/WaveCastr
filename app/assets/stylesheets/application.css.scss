@@ -129,20 +129,33 @@ body {
   color: #FFFFFF;
 }
 
-#init.btn {
+#start.btn,
+#stopButton.btn,
+#present-share-link-modal,
+#init:focus {outline:0;}
 
+
+#init.btn {
+  width: 44%;
 }
 
 /*.slide-container {
   margin-top: 40px;
 }*/
 
+#present-share-link-modal {
+  margin-bottom: 5px;
+  width: 44%;
+}
+
 #start.btn {
   display: none;
+  width: 21.75%
 }
 
 #stopButton.btn {
   display: none;
+  width: 21.75%
 }
 
 /******** Guest Panels ********/
@@ -177,6 +190,7 @@ body {
   width: 44%;
   /*margin-top: ;*/
   overflow-y: scroll;
+  /*max-height:*/
 }
 
 /*Main Divs*/
@@ -226,7 +240,7 @@ body {
 
 #input {
   padding-left: 12px;
-  width: 380px;
+  width: 76%;
   border-radius: 5px;
   background-color: rgba(33, 34, 35, .8);
   border: 1px solid rgba(33, 34, 35, .8);
@@ -239,7 +253,8 @@ body {
   border-radius: 5px;
   background-color: rgba(33, 34, 35, 1);
   color: #FFFFFF;
-  width:118px;
+  margin-left: 1.4px;
+  width:23%;
 }
 
 #send:focus {outline:0;}
@@ -249,7 +264,7 @@ body {
   padding-left: 12px;
   background-color: rgba(33, 34, 35, .8);
   height: 200px;
-  width: 500px;
+  width: 100%;
   overflow: auto;
   border: 1px solid rgba(33, 34, 35, .8);
   border-radius: 5px;
