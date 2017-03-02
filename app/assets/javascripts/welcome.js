@@ -52,15 +52,32 @@ $(document).ready(function(){
     return check;
   }
 
-    function checkFirst(){
-    var check = false;
-    var slides = $(".slide-container");
-    if (slides.find('div:first').hasClass("active") == true){
-      check = true;
-    }
-    return check;
+  function checkFirst(){
+  var check = false;
+  var slides = $(".slide-container");
+  if (slides.find('div:first').hasClass("active") == true){
+    check = true;
   }
+  return check;
+  }
+
+ $(".question1").on("click", function(){
+  $(".description1").toggle();
+ })
+
+  $(".question2").on("click", function(){
+   $(".description2").toggle();
+  })
+
+  $(".question3").on("click", function(){
+    $(".description3").toggle();
+  })
+
+
+
 })
+
+
 
 
 

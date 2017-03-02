@@ -268,12 +268,24 @@ body {
 
 .sub-heading h2 {
   color:#fff;
+  text-align: center;
 }
-.sub-main h3{
-  color: #fff;
+.sub-main button{
+  color: red;
 }
 
-.description p {
-  color: #fff;
+.sub-main p {
+  color: red;
 }
+
+.description1{
+  display: none;
+}
+.description2{
+  display: none;
+}
+.description3{
+  display: none;
+}
+
 
