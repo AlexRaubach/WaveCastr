@@ -12,13 +12,13 @@ $(document).ready(function(){
     var choice = this.innerHTML;
     $(".show-options").children().hide();
     switchDiv(choice);
+    console.log(choice);
   })
 
   var input = document.getElementById('input');
   var channel = window.location.pathname.replace(/\/episodes\//, "");
   var username = $('#current_user').text();
   startChat();
-
 
   function startChat(){
     var pubnub = new PubNub({
@@ -27,8 +27,6 @@ $(document).ready(function(){
     uuid: username
     });
     pubnub.subscribe({channels:[channel]});
-
-
 
     pubnub.addListener({
       message: function(obj) {
@@ -49,25 +47,6 @@ $(document).ready(function(){
       pubnub.publish({channel : channel, message : input.value, x: (input.value='')});
     })
   }
-
-  $('#init').one('click', function(){
-    $(this).css('width', '21.75%')
-    $(this).text('Reactivate Mics')
-    $('#start').show();
-
-  })
-
-  $('#start').on("click", function(){
-    $(this).hide();
-    $('#stopButton').show();
-  })
-
-  $('#stopButton').one("click", function(){
-    $(this).hide();
-    // breaks addToChatBox() when line comment switched below
-    // $(#init).css('width', '44%');
-    $('#start').show();
-  })
 
 })
 
