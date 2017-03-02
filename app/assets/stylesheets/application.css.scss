@@ -298,5 +298,53 @@ body {
 }
 
 
+/**********************************************************************Episodes List Page**********************************************************************/
+#new-episode-div,
+#episode-list {
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+
+}
+
+#new-episode-div {
+
+  margin-bottom: 12px;
+}
+
+#present-new-episode-modal {
+  color: #FFFFFF;
+  border-color: rgb(165, 157, 140);
+  background-color: rgb(165, 157, 140);
+}
+
+#episode-list {
+}
+
+.episode.panel.panel-default {
+  color: #FFFFFF;
+  border-radius: 5px;
+  background-color: rgba(33, 34, 35, .8);
+  border: 1px solid rgba(33, 34, 35, .8);
+}
+
+#new-episode-modal-btn,
+#present-new-episode-modal:focus {outline:0;}
+
+/**********New Episode Modal**********/
+#new-episode-modal-btn {
+  color: #FFFFFF;
+  border-color: rgb(165, 157, 140);
+  background-color: rgb(165, 157, 140);
+}
+
+#new-episode-modal {
+
+}
+
+#filetype {
+
+}
+
 
 
