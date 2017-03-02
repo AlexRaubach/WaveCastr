@@ -58,7 +58,14 @@ body {
 }
 
 .nav li a{
-  color: #99AAAA;
+  position: relative;
+  right:60px;
+  top: 40px;
+  color: #F9F9F9;
+}
+
+.nav li a:hover{
+  background-color: #a59d8c;
 }
 
 .right {
@@ -70,7 +77,10 @@ body {
   position: relative;
   top: -20px;
 }
-
+.nav a{
+  background-color:  #a59d8c;
+  color: #F9F9F9;
+}
 .header h1 a {
 	color: #99AAAA;
   /*make font bold or something*/
