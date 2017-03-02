@@ -41,6 +41,7 @@ body {
 
 * {
   /*border:2px solid lightblue;*/
+  font-family: 'Titillium Web', sans-serif;
 }
 
 ::-webkit-scrollbar {
@@ -77,6 +78,10 @@ body {
   position: relative;
   top: -20px;
   margin-left: 50px;
+}
+
+.header {
+  margin-bottom: 50px;
 }
 .nav a{
   background-color:  #a59d8c;
@@ -298,16 +303,21 @@ body {
 
 
 /* homepage */
+
 .main h1 {
   color: #FFFFFF;
   position:relative;
   top: 50px;
   left:100px;
+  line-height: 1.2;
 }
 
+
 .main-img img {
-  text-align:right;
   height: 300px;
+  position: relative;
+  right: -20%;
+  border-radius: 5px;
 }
 
 .sub-heading h2 {
