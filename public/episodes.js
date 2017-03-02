@@ -49,7 +49,28 @@ $(document).ready(function(){
       pubnub.publish({channel : channel, message : input.value, x: (input.value='')});
     })
   }
+
+  $('#init').one('click', function(){
+    $(this).css('width', '21.75%')
+    $(this).text('Reactivate Mics')
+    $('#start').show();
+
+  })
+
+  $('#start').on("click", function(){
+    $(this).hide();
+    $('#stopButton').show();
+  })
+
+  $('#stopButton').one("click", function(){
+    $(this).hide();
+    // breaks addToChatBox() when line comment switched below
+    // $(#init).css('width', '44%');
+    $('#start').show();
+  })
+
 })
+
 
 
 

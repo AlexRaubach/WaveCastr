@@ -17,6 +17,9 @@
 @import "bootstrap";
 @import "episodes";
 
+
+/*****************************************************Global Options*****************************************************/
+
 .alert, .notice {
   padding: 10px;
   margin: 10px 0;
@@ -32,36 +35,73 @@
   background-color: green;
 }
 
-.show-options {
-  margin-top: 20px;
+body {
+  background-image: url('/images/background.jpg');
 }
 
-.commands, .recordings, .logs{
-  display: none;
+* {
+  /*border:2px solid lightblue;*/
 }
 
-.picked {
-  display: block;
+::-webkit-scrollbar {
+    /*display: ;*/
+  border-radius: 5px;
+  width: 8px;
+  background-color: rgba(33, 34, 35, .8);
+  border: 1px solid rgba(33, 34, 35, .8);
 }
 
+
+/*********************************************************Header*********************************************************/
+.nav {
+  font-size: 20px;
+}
+
+.nav li a{
+  position: relative;
+  right:60px;
+  top: 40px;
+  color: #F9F9F9;
+}
+
+.nav li a:hover{
+  background-color: #a59d8c;
+}
+
+.right {
+  position: relative;
+  right:-160px;
+  margin-bottom: 20px;
+}
 .header logo {
   position: relative;
   top: -20px;
 }
-
+.nav a{
+  background-color:  #a59d8c;
+  color: #F9F9F9;
+}
 .header h1 a {
-	color: #418BE4;
+	color: #99AAAA;
+  /*make font bold or something*/
+  text-shadow: 1px 0 #212223;
   font-size: 60px;
   text-decoration: none;
-  margin-top: 10px;
+  margin-top: 20px;
+  position: relative;
+  bottom: -20px;
 }
 
 .header h1 a:visited {
-  color: #418BE4;
+  color: #99AAAA;
+  /*make font bold or something*/
+  text-shadow: 1px 0 #212223;
 }
 
 .header h1 a:hover {
-  color: #418BE4;
+  color: #99AAAA;
+  /*make font bold or something*/
+  text-shadow: 1px 0 #212223;
 }
 
 .header h1 {
@@ -73,11 +113,11 @@
   margin-top: 20px;
 }
 
-.sub-main {
+/*.sub-main {
   background: url("/podcast.jpg") no-repeat center center;
   background-size: cover;
   height:500px;
-}
+}*/
 
 .heading h1{
   color: #fff;
@@ -88,35 +128,291 @@
   text-transform: uppercase;
 }
 
-.slide-container {
-  margin-top: 40px;
-}
-
-.slide-container h2 {
-  text-align: center;
-}
-
-.mySlides {
-  display: none;
-}
 
 .active {
   display: block;
 }
 
-#chat-container {
-  height: 200px;
-  width: 500px;
-  overflow: auto;
+/************************************Episode Page************************************/
 
+/*Control Panel*/
+#control-panel {
+  margin-top: 70px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+#control-panel button {
+  border-color: rgb(165, 157, 140);
+  background-color: rgb(165, 157, 140);
+  color: #FFFFFF;
+}
+
+#start.btn,
+#stopButton.btn,
+#present-share-link-modal,
+#init:focus {outline:0;}
+
+
+#init.btn {
+  width: 44%;
+}
+
+/*.slide-container {
+  margin-top: 40px;
+}*/
+
+#present-share-link-modal {
+  margin-bottom: 5px;
+  width: 44%;
+}
+
+#start.btn {
+  display: none;
+  width: 21.75%
+}
+
+#stopButton.btn {
+  display: none;
+  width: 21.75%
+}
+
+/******** Guest Panels ********/
+#guest-panel {
+  padding: 0px;
+  text-align: left;
+  background-color: rgba(33, 34, 35, .8);
+  border: 1px solid rgba(33, 34, 35, .8);
+  color: #FFFFFF;
+  border-radius: 5px;
+  padding: 10px;
+  margin-right: 4px;
+}
+
+.panel {
+    background-color: transparent;
+    border: 1px solid transparent;
+    border-radius: 5px;
+}
+
+.panel-default {
+    border-color: transparent;
+}
+
+
+#guest-panel h3 {
+  padding: 5px;
+  margin: 0px;
+}
+
+#user-list-container {
+  width: 44%;
+  /*margin-top: ;*/
+  overflow-y: scroll;
+  /*max-height:*/
+}
+
+/*Main Divs*/
+#left-container {
+  height: 260px;
+  margin-bottom: 60px;
+
+}
+
+#right-container {
+  height: 260px;
+  margin-bottom: 60px;
+}
+
+#bottom-files-container {
+  border-radius: 5px;
+  padding-top: 20px;
+}
+
+.track-body {
+  padding: 8px;
+}
+.panel-default {
+}
+
+.track.panel.panel-default {
+  text-align: center;
+  background-color: rgba(33, 34, 35, .8);
+  border: 1px solid rgba(33, 34, 35, .8);
+  border-color: transparent;
+  color: #FFFFFF;
+  display: inline-block;
+  width: 220px;
+  overflow: hidden;
+}
+
+/*Chat Box*/
+#input-box {
+  padding-top: 3px;
+
+}
+
+#box {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #input {
-  width: 380px;
+  padding-left: 12px;
+  width: 76%;
+  border-radius: 5px;
+  background-color: rgba(33, 34, 35, .8);
+  border: 1px solid rgba(33, 34, 35, .8);
+  color: rgba(190, 181, 166, 1);
+}
+#input:focus {outline:0;}
+
+#send {
+  border: 0px solid rgba(33, 34, 35, 1);
+  border-radius: 5px;
+  background-color: rgba(33, 34, 35, 1);
+  color: #FFFFFF;
+  margin-left: 1.4px;
+  width:23%;
+}
+
+#send:focus {outline:0;}
+
+#chat-container {
+
+  padding-left: 12px;
+  background-color: rgba(33, 34, 35, .8);
+  height: 300px;
+  width: 100%;
+  overflow: auto;
+  border: 1px solid rgba(33, 34, 35, .8);
+  border-radius: 5px;
+  color: rgba(190, 181, 166, 1);
+}
+
+
+
+/* homepage */
+.main h1 {
+  color: #FFFFFF;
+  position:relative;
+  top: 50px;
+  left:100px;
+}
+
+.main-img img {
+  text-align:right;
+  height: 300px;
+}
+
+.sub-heading h2 {
+  color:#fff;
+  text-align: center;
+  margin-bottom: 60px;
+}
+.sub-main button{
+  color: #F9F9F9;
+  padding: 10px 30px;
+  background-color: #a59d8c;
   border-radius: 5px;
 }
 
-#send {
-  width:100px;
+.sub-main button:focus {
+  outline: none;
 }
+
+.sub-main p {
+  color: #C7B185;
+  padding-top: 20px;
+}
+
+.description1{
+  display: none;
+}
+.description2{
+  display: none;
+}
+.description3{
+  display: none;
+}
+
+.footer{
+  margin-top:200px;
+}
+.footer p {
+  color: #C7B185;
+}
+
+/*************Share Link Modal*************/
+
+.modal-content {
+  color: #FFFFFF;
+  background-color: rgba(33, 34, 35, 1);
+  border: 1px solid rgba(33, 34, 35, 1);
+}
+
+#modal-content {
+  background-color: #FFFFFF;
+}
+
+#copy-btn {
+  color: #FFFFFF;
+  border-color: rgb(165, 157, 140);
+  background-color: rgb(165, 157, 140);
+}
+
+/**********Register Guest Button**********/
+#register-guest-btn {
+  color: #FFFFFF;
+  border-color: rgb(165, 157, 140);
+  background-color: rgb(165, 157, 140);
+}
+
+/**********************************************************************Episodes List Page**********************************************************************/
+#new-episode-div,
+#episode-list {
+  margin-left: auto;
+  margin-right: auto;
+  width: 40%;
+
+}
+
+#new-episode-div {
+  margin-bottom: 12px;
+}
+
+#present-new-episode-modal {
+  color: #FFFFFF;
+  border-color: rgb(165, 157, 140);
+  background-color: rgb(165, 157, 140);
+}
+
+#episode-list {
+}
+
+.episode.panel.panel-default {
+  color: #FFFFFF;
+  border-radius: 5px;
+  background-color: rgba(33, 34, 35, .8);
+  border: 1px solid rgba(33, 34, 35, .8);
+}
+
+#new-episode-modal-btn,
+#present-new-episode-modal:focus {outline:0;}
+
+/**********New Episode Modal**********/
+#new-episode-modal-btn {
+  color: #FFFFFF;
+  border-color: rgb(165, 157, 140);
+  background-color: rgb(165, 157, 140);
+}
+
+#new-episode-modal {
+
+}
+
+#filetype {
+
+}
+
 
