@@ -8,11 +8,13 @@ A website for capturing high quality audio for podcasts or interviews. WaveCastr
 
 Every participant will need a recent version of Chrome / Firefox, a microphone, headphones and a voip program (Skype, Google Hangouts etc).
 
-The host should create an [account](https://wavecastr.herokuapp.com/users/sign_up), create a new episode and then share the link with the guests.
+First, the host makes an [account](https://wavecastr.herokuapp.com/users/sign_up) or logs in. Then the host create a new episode and shares the link with the other participants.
+
+After everyone has arrived, the host activates the microphones which prompts users to grant microphone permissions. Simply start recording when everyone is ready. When the podcast is over, the host just presses the stop recording button and all audio files are upload to the cloud.
 
 ## Built With
 
-* [Ruby on Rails](https://github.com/rails/rails) -- Powers the backend
+* [Ruby on Rails](https://github.com/rails/rails) -- Powers the back end
 
 * [Action Cable](https://github.com/rails/rails/tree/master/actioncable) -- Provides real time asynchronous communication
 
@@ -26,7 +28,7 @@ The host should create an [account](https://wavecastr.herokuapp.com/users/sign_u
 
 * [Amazon S3](https://aws.amazon.com/s3/) -- Stores audio files
 
-* [Heroku](https://www.heroku.com/) -- Hosts the application
+* [Heroku](https://www.heroku.com/) -- Cloud hosting for the application
 
 ## Team Members
 
@@ -39,8 +41,6 @@ The host should create an [account](https://wavecastr.herokuapp.com/users/sign_u
 * [Alex Raubach](https://github.com/Antigrapist)
 
 
-
-
 ## Contributing
 
 Features and bug fixes are always welcome.
@@ -48,3 +48,5 @@ Features and bug fixes are always welcome.
 ## License
 
 WaveCastr is released under a [GNU General Public License v3.0](/license.txt).
+
+[Microphone on stage](https://www.flickr.com/photos/audiolucistore/11046609315/) provided by [audiolucistore](https://www.flickr.com/photos/audiolucistore/) under a [CC BY 2.0 license](https://creativecommons.org/licenses/by/2.0/)
