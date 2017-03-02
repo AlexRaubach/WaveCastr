@@ -105,7 +105,6 @@ body {
   text-transform: uppercase;
 }
 
-
 .active {
   display: block;
 }
@@ -118,9 +117,8 @@ body {
 
 /*Control Panel*/
 #control-panel {
-  margin-top: 70px;
-  text-align: left;
-  margin-bottom: 20px;
+  text-align: center;
+  margin: 50px;
 }
 
 #control-panel button {
@@ -134,19 +132,8 @@ body {
 #present-share-link-modal,
 #init:focus {outline:0;}
 
-
-#init.btn {
-  width: 44%;
-}
-
-#start.btn {
-  display: none;
-  width: 21.75%
-}
-
-#stopButton.btn {
-  display: none;
-  width: 21.75%
+#localRecording {
+  margin: 10px auto;
 }
 
 /******** Guest Panels ********/
@@ -170,18 +157,7 @@ body {
   height: 33.99px;
 }
 
-#guest-list {
-  height: 306px;
-}
-
 /*Main Divs*/
-#left-container {
-  height: 340px;
-}
-
-#right-container {
-  height: 340px;
-}
 
 #bottom-files-container {
   border-radius: 5px;
@@ -189,18 +165,17 @@ body {
 }
 
 .track-body {
-  padding: 8px;
+  padding: 8px 20px;
 }
 
-.track.panel.panel-default {
+.track {
   text-align: center;
   background-color: rgba(33, 34, 35, .8);
   border: 1px solid rgba(33, 34, 35, .8);
   border-color: transparent;
+  border-radius: 5px;
   color: #FFFFFF;
   display: inline-block;
-  width: 220px;
-  overflow: hidden;
 }
 
 /*Chat Box*/
