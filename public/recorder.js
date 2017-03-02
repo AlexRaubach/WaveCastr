@@ -66,20 +66,15 @@ function initRecording() {
     dataBlob.name = "__" + $('#current_user').text() + '__' + new Date().toISOString() + ".ogg";
     var fileName = dataBlob.name;
     var url = URL.createObjectURL( dataBlob );
-    var audio = document.createElement('audio');
-    audio.controls = true;
-    audio.src = url;
 
     var link = document.createElement('a');
     link.href = url;
     link.download = fileName;
     link.innerHTML = link.download;
 
-    var li = document.createElement('li');
-    li.appendChild(link);
-    li.appendChild(audio);
-
-    recordingslist.appendChild(li);
+    var div = document.createElement('div');
+    $(div).addClass('track panel panel-default');
+    div.appendChild(link);
 
     $('#episode_track').fileupload({
       url: $('.directUpload').data('url'),
@@ -109,7 +104,8 @@ function initRecording() {
         $('.container').flash("Your recording was successfully saved.");
       })
       .fail(function(response){
-        $('.container').flash('Sorry, something went wrong. Please try again.', { class: 'alert' });
+        $('.container').flash('Sorry, something went wrong. A local version of your recording is available under the control panel.', { class: 'alert' });
+        localRecording.appendChild(div);
       })
     }).fail(function(response) {
       $('.container').flash('Sorry, something went wrong. Please try again.', { class: 'alert' });
