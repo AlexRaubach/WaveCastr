@@ -386,10 +386,12 @@ small {
 
 #landing-main > h3:first-of-type {
   margin-top: 90px;
+  color: #C7B185;
 }
 
 #landing-main > h3:last-of-type {
   margin-left: 128px;
+  color: #C7B185;
 }
 
 #stagered-head-1 {
@@ -417,15 +419,17 @@ small {
 }
 
 .sub-heading {
-  height: 30px;
+  margin-top: 50px;
+  margin-left: 120px;
+  color: #FFFFFF;
 }
 
 .sub-heading h2 {
-  color:#fff;
+  color:#FFFFFF;
   text-align: center;
   margin-bottom: 60px;
 }
-.sub-main button{
+/*.sub-main button{
   color: #F9F9F9;
   padding: 10px 30px;
   background-color: #a59d8c;
@@ -434,21 +438,26 @@ small {
 
 .sub-main button:focus {
   outline: none;
-}
+}*/
 
 .sub-main p {
-  color: #C7B185;
+  color: rgba(190, 181, 166, 1);
   padding-top: 20px;
 }
 
-.description1{
-  display: none;
+.description1,
+.description2,
+.description3 {
+  background-color: rgba(33, 34, 35, .8);
+  border: 1px solid rgba(33, 34, 35, .8);
+  border-radius: 5px;
+  padding: 5px;
 }
-.description2{
-  display: none;
-}
-.description3{
-  display: none;
+
+.description1,
+.description2,
+.description3:div {
+  margin-right: 20px;
 }
 
 .footer{
