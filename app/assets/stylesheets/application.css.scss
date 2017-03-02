@@ -113,11 +113,11 @@ body {
   margin-top: 20px;
 }
 
-.sub-main {
+/*.sub-main {
   background: url("/podcast.jpg") no-repeat center center;
   background-size: cover;
   height:500px;
-}
+}*/
 
 .heading h1{
   color: #fff;
@@ -291,6 +291,58 @@ body {
 }
 
 
+
+/* homepage */
+.main h1 {
+  color: #FFFFFF;
+  position:relative;
+  top: 50px;
+  left:100px;
+}
+
+.main-img img {
+  text-align:right;
+  height: 300px;
+}
+
+.sub-heading h2 {
+  color:#fff;
+  text-align: center;
+  margin-bottom: 60px;
+}
+.sub-main button{
+  color: #F9F9F9;
+  padding: 10px 30px;
+  background-color: #a59d8c;
+  border-radius: 5px;
+}
+
+.sub-main button:focus {
+  outline: none;
+}
+
+.sub-main p {
+  color: #C7B185;
+  padding-top: 20px;
+}
+
+.description1{
+  display: none;
+}
+.description2{
+  display: none;
+}
+.description3{
+  display: none;
+}
+
+.footer{
+  margin-top:200px;
+}
+.footer p {
+  color: #C7B185;
+}
+
 /*************Share Link Modal*************/
 
 .modal-content {
@@ -326,7 +378,6 @@ body {
 }
 
 #new-episode-div {
-
   margin-bottom: 12px;
 }
 
@@ -363,4 +414,5 @@ body {
 #filetype {
 
 }
+
 
