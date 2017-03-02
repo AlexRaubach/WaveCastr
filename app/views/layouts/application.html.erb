@@ -15,9 +15,11 @@
   <body>
     <%= render "layouts/header" %>
     <div class="container">
-      <% flash.each do |name, msg| -%>
-        <%= content_tag :div, msg, class: name unless name == "notice" %>
-      <% end %>
+      <div id="flash">
+        <% flash.each do |name, msg| -%>
+          <%= content_tag :div, msg, class: name unless name == "notice" %>
+        <% end %>
+      </div>
       <%= yield %>
     </div>
   </body>

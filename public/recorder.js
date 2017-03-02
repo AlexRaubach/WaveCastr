@@ -29,7 +29,7 @@ function initRecording() {
 
   if (!Recorder.isRecordingSupported()) {
     App.appearance.perform("update", {status: 'error'});
-    $('.container').flash("Sorry, recording features are not supported in your browser.", { class: 'alert' });
+    $('#flash').flash("Sorry, recording features are not supported in your browser.", { class: 'alert' });
     return;
   }
 
@@ -101,14 +101,14 @@ function initRecording() {
         data: newTrackData
       })
       .done(function(response){
-        $('.container').flash("Your recording was successfully saved.", { fadeOut: 2000 });
+        $('#flash').flash("Your recording was successfully saved.", { fadeOut: 2000 });
       })
       .fail(function(response){
-        $('.container').flash('Sorry, something went wrong. A local version of your recording is available under the control panel.', { class: 'alert' });
+        $('#flash').flash('Sorry, something went wrong. A local version of your recording is available under the control panel.', { class: 'alert' });
         localRecording.appendChild(div);
       })
     }).fail(function(response) {
-      $('.container').flash('Sorry, something went wrong. Please try again.', { class: 'alert' });
+      $('#flash').flash('Sorry, something went wrong. Please try again.', { class: 'alert' });
     });
   });
   recorder.initStream();
