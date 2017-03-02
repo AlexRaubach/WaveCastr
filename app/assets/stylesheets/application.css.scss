@@ -295,7 +295,17 @@ body {
   background-color: rgb(165, 157, 140);
 }
 
-#episode-list {
+ .episode-title {
+  color: #FFFFFF;
+}
+
+ .episode-title:hover {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+small {
+  color: rgb(165, 157, 140)
 }
 
 .episode.panel.panel-default {
