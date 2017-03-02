@@ -53,7 +53,19 @@ body {
 
 
 /*********************************************************Header*********************************************************/
+.nav {
+  font-size: 20px;
+}
 
+.nav li a{
+  color: #99AAAA;
+}
+
+.right {
+  position: relative;
+  right:-160px;
+  margin-bottom: 20px;
+}
 .header logo {
   position: relative;
   top: -20px;
@@ -65,7 +77,9 @@ body {
   text-shadow: 1px 0 #212223;
   font-size: 60px;
   text-decoration: none;
-  margin-top: 10px;
+  margin-top: 20px;
+  position: relative;
+  bottom: -20px;
 }
 
 .header h1 a:visited {
@@ -291,7 +305,5 @@ body {
   border-color: rgb(165, 157, 140);
   background-color: rgb(165, 157, 140);
 }
-
-
 
 
