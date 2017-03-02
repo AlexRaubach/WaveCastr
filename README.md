@@ -10,7 +10,7 @@ Every participant will need a recent version of Chrome / Firefox, a microphone, 
 
 First, the host makes an [account](https://wavecastr.herokuapp.com/users/sign_up) or logs in. Then the host create a new episode and shares the link with the other participants.
 
-After everyone has arrived, the host activates the microphones which prompts users to grant microphone permissions. Simply start recording when everyone is ready. When the podcast is over, the host just presses the stop recording button and all audio files are upload to the cloud.
+After everyone has arrived, the host activates the microphones which prompts users to grant microphone permissions. Simply start recording when everyone is ready. When the podcast is over, the host just presses the stop recording button and all audio files are uploaded to the cloud.
 
 ## Built With
 
