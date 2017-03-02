@@ -1,22 +1,27 @@
 <div class="header">
 
-
-    <img src="/Wellen-lineart-800px.png" alt="WaveCastr" height="80" class="logo .img-responsive">
-    <h1><a href="/">WaveCastr</a> </h1>
-    <ul class="nav nav-pills pull-right">
-      <% if user_signed_in? %>
-        <li><%= link_to current_user.name, user_path(current_user) %></li>
-        <li>
-        <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-        </li>
-      <% else %>
-        <li>
-          <%= link_to('Register', new_user_registration_path)  %>
-        </li>
-        <li>
-        <%= link_to('Login', new_user_session_path)  %>
-        </li>
-      <% end %>
-    </ul>
+  <div class="row">
+    <div class="col-md-6 right">  
+      <img src="/Wellen-lineart-800px.png" alt="WaveCastr" height="80" class="logo .img-responsive">
+      <h1><a href="/">WaveCastr</a> </h1>
+    </div> 
+    <div class="col-md-6 pull-right"> 
+      <ul class="nav nav-pills pull-right">
+        <% if user_signed_in? %>
+          <li><%= link_to current_user.name, user_path(current_user) %></li>
+          <li>
+          <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
+          </li>
+        <% else %>
+          <li>
+            <%= link_to('Register', new_user_registration_path)  %>
+          </li>
+          <li>
+          <%= link_to('Login', new_user_session_path)  %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>    
 
 </div>
