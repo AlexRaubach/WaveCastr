@@ -63,6 +63,7 @@ body {
   right:60px;
   top: 40px;
   color: #F9F9F9;
+  padding: 5px 10px;
 }
 
 .nav li a:hover{
@@ -276,6 +277,7 @@ body {
   background-color: rgb(165, 157, 140);
 }
 
+
 /**********************************************************************Episodes List Page**********************************************************************/
 #new-episode-div,
 #episode-list {
@@ -317,6 +319,41 @@ small {
 
 #new-episode-modal-btn,
 #present-new-episode-modal:focus {outline:0;}
+
+/******** Signup **************/
+.signup-container{
+  color: #99AAAA;
+  display: inline-block;
+  border-color: rgba(33, 34, 35, .8);
+  background-color: rgba(33, 34, 35, .8);
+  border-radius: 5px;
+}
+
+.signup-container form {
+  padding: 50px;
+}
+.signup-container label {
+  font-size: 18px;
+}
+
+.signup-container h2 {
+  font-size: 26px;
+  text-align: center;
+}
+
+.signup-container input[type=submit] {
+  background-color: #a59d8c;
+  color: #fff;
+  margin-top: 8px;
+  border-color: #a59d8c;
+  border-radius: 5px;
+}
+
+.login-link a {
+  padding: 10px;
+}
+
+
 
 /**********New Episode Modal**********/
 #new-episode-modal-btn {
