@@ -425,7 +425,11 @@ body {
   font-size: 26px;
 }
 
-
+.signup-container input[type=submit] {
+  background-color: #a59d8c;
+  color: #fff;
+  margin-top: 8px;
+}
 
 .login-link a {
   padding: 10px;
