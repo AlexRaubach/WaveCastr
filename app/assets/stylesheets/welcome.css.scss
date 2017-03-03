@@ -2,6 +2,10 @@
   color: white;
 }
 
+.text-gold {
+  color: #C7B185;
+}
+
 #over-line-header {
   margin-bottom: 0px;
   border-bottom: 1px solid #C7B185;
@@ -11,6 +15,14 @@
   margin-top: 10px;
 }
 
+#blurbs {
+  margin-top: 100px;
+}
+
+.blurb {
+  text-align: center;
+}
+
 .footer{
   margin-top:200px;
 }
@@ -18,9 +30,3 @@
   color: #C7B185;
 }
 
-#welcome-description {
-  color: #99AAAA;
-  margin-top: 100px;
-  background-color: rgba(33, 34, 35, 0.8);
-
-}
