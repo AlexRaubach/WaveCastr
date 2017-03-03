@@ -58,20 +58,26 @@ body {
 
 
 /*********************************************************Header*********************************************************/
+.header {
+  margin: 10px 0 30px;
+}
+
 .header .navbar {
   background-color: transparent;
   border: none;
 }
 
 .header .h1  {
-  color: #9d9d9d;
+  color: #99AAAA;
+  margin-top: 0;
   display: inline-block;
   vertical-align: middle;
-  font-size: 4em;
+  font-size: 4.7em;
 }
 
 .header a {
   text-decoration: none;
+  font-size: 1.5em;
 }
 
 /************************************Episode Page************************************/

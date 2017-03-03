@@ -7,22 +7,22 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span> 
 				</button>
-        <img src="/Wellen-lineart-800px.png" alt="WaveCastr" height="80" class="navbar-left">
+        <img src="/Wellen-lineart-800px.png" alt="WaveCastr" height="80">
         <a class="h1" href="/">WaveCastr</a>
       </div>
       <div class="collapse navbar-collapse" id="navbar-menu">
-        <ul class="nav navbar-nav navbar-right">
+        <ul class="nav navbar-right nav-pills">
           <% if user_signed_in? %>
-            <li><%= link_to current_user.name, user_path(current_user), class: 'btn btn-default navbar-btn' %></li>
+            <li><%= link_to current_user.name, user_path(current_user), class: 'text-gold' %></li>
             <li>
-              <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: 'btn btn-default navar-btn') %>
+              <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: 'text-gold') %>
             </li>
           <% else %>
             <li>
-              <%= link_to('Register', new_user_registration_path, class: 'btn btn-default navbar-btn') %>
+              <%= link_to('Register', new_user_registration_path, class: 'btn nav-btn btn-default text-gold') %>
             </li>
             <li>
-            <%= link_to('Login', new_user_session_path, class: 'btn btn-default navbar-btn')  %>
+            <%= link_to('Login', new_user_session_path, class: 'btn nav-btn btn-default text-gold') %>
             </li>
           <% end %>
         </ul>
