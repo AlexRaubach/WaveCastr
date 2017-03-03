@@ -1,25 +1,32 @@
 <div class="header">
-  <div class="navbar navbar-default">
+  <div class="navbar navbar-inverse">
     <div class="container-fluid">
       <div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span> 
+				</button>
         <img src="/Wellen-lineart-800px.png" alt="WaveCastr" height="80" class="navbar-left">
         <a class="h1" href="/">WaveCastr</a>
       </div>
-      <ul class="nav navbar-nav navbar-right">
-        <% if user_signed_in? %>
-          <li><%= link_to current_user.name, user_path(current_user) %></li>
-          <li>
-            <%= link_to('Logout', destroy_user_session_path, :method => :delete) %>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to('Register', new_user_registration_path)  %>
-          </li>
-          <li>
-          <%= link_to('Login', new_user_session_path)  %>
-          </li>
-        <% end %>
-      </ul>
+      <div class="collapse navbar-collapse" id="navbar-menu">
+        <ul class="nav navbar-nav navbar-right">
+          <% if user_signed_in? %>
+            <li><%= link_to current_user.name, user_path(current_user), class: 'btn btn-default navbar-btn' %></li>
+            <li>
+              <%= link_to('Logout', destroy_user_session_path, :method => :delete, class: 'btn btn-default navar-btn') %>
+            </li>
+          <% else %>
+            <li>
+              <%= link_to('Register', new_user_registration_path, class: 'btn btn-default navbar-btn') %>
+            </li>
+            <li>
+            <%= link_to('Login', new_user_session_path, class: 'btn btn-default navbar-btn')  %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
