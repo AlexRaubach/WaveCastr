@@ -9,10 +9,12 @@
 #over-line-header {
   margin-bottom: 0px;
   border-bottom: 1px solid #C7B185;
+  font-size: 3.2em;
 }
 
 #under-line-header {
   margin-top: 10px;
+  font-size: 3.2em;
 }
 
 #blurbs {
@@ -21,6 +23,11 @@
 
 .blurb {
   text-align: center;
+}
+
+.blurb p {
+  margin: 20px auto;
+  width: 75%;
 }
 
 .footer{
