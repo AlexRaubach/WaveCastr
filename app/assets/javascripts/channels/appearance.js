@@ -14,17 +14,17 @@ App.appearance = App.cable.subscriptions.create({channel: "AppearancesChannel", 
         });
         break;
       case 'ready':
-        $('#guest-' + data.guest_id).find('.status-dot').removeClass('waiting').addClass('ready');
+        $('#guest-' + data.guest_id).find('.fa-user').removeClass('waiting').addClass('ready');
         break;
       case 'error':
-        $('#guest-' + data.guest_id).find('.status-dot').removeClass('waiting').addClass('error');
+        $('#guest-' + data.guest_id).find('.fa-user').removeClass('waiting').addClass('error');
     }
   },
 
   renderGuest: function(data) {
     return '<div id="guest-' + data.guest_id + '" class="guest">' +
               '<div>' + 
-                '<div class="status-dot waiting"></div> ' +
+                '<i class="fa fa-user fa-2x waiting" aria-hidden="true"></i> ' +
                 '<h3>' + data.guest + '</h3>' + 
               '</div>' +
             '</div>';
