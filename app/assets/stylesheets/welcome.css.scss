@@ -30,10 +30,34 @@
   width: 75%;
 }
 
+#get-started-button {
+  margin-top: 50px;
+}
+
+#get-started-button a {
+  background-color: #a59d8c;
+  border-color: #a59d8c;
+}
+
 .footer{
   margin-top:200px;
 }
+
 .footer p {
   color: #C7B185;
+}
+
+@media (max-width: 600px) {
+  #tag-line h1 {
+    text-align: center;
+  }
+
+  .header {
+    font-size: .75em;
+  }
+
+  .header img {
+    height: 60px;
+  }
 }
 
