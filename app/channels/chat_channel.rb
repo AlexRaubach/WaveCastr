@@ -1,17 +1,13 @@
 class ChatChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "appearances_#{params[:lobby]}"
+    stream_from "chat_#{params[:lobby]}"
   end
 
   def unsubscribed
-    puts "Leaving"
   end
 
   def send(data)
-    puts data
-    if guest
-      ActionCable.server.broadcast "chat_#{params[:lobby]}",
-        message: "#{guest.name}: #{data['message']}"
-    end
+    ActionCable.server.broadcast "chat_#{params[:lobby]}",
+      message: "#{data['guest']}: #{data['message']}"
   end
 end
