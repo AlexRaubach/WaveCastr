@@ -12,15 +12,15 @@ div.status-dot {
   padding: 4px;
 }
 
-.status-dot.ready {
-  background-color: #006400;
+.ready {
+  color: #006400;
 }
 
-.status-dot.waiting {
-  background-color: #DAA520;
+.waiting {
+  color: #DAA520;
 }
 
-.status-dot.error {
-  background-color: #8B0000;
+.error {
+  color: #8B0000;
 }
 

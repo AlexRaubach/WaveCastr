@@ -1,6 +1,6 @@
 <div id="host" class="guest">
   <div>
-    <div class="status-dot ready"></div>
+    <i class="fa fa-user-circle-o fa-2x" aria-hidden="true"></i>
     <h3 <%= 'id=current_user' if user_signed_in? && current_user.host?(@episode) %>><%= host.name %></h3>
   </div>
 </div>
