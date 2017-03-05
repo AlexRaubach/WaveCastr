@@ -6,7 +6,7 @@ class ChatChannel < ApplicationCable::Channel
   def unsubscribed
   end
 
-  def send(data)
+  def chat(data)
     ActionCable.server.broadcast "chat_#{params[:lobby]}",
       message: "#{data['guest']}: #{data['message']}"
   end
