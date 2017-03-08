@@ -38,13 +38,13 @@ function initRecording() {
     encoderPath: "/recorderjs/encoderWorker.min.js" });
 
   recorder.addEventListener( "start", function(e){
-    addToChatBox('Recorder is started');
+    App.chat.addMessageToChat('SYSTEM: <i>Recorder has started</i>');
     init.disabled = start.disabled = true;
     stopButton.disabled = false;
   });
 
   recorder.addEventListener( "stop", function(e){
-    addToChatBox('Recorder is stopped');
+    App.chat.addMessageToChat('SYSTEM: <i>Recorder has stopped</i>');
     init.disabled = false;
     stopButton.disabled = start.disabled = true;
   });
@@ -59,6 +59,7 @@ function initRecording() {
 
     App.appearance.perform("update", {status: 'ready'});
     addToChatBox('Audio stream is ready.');
+    App.chat.addMessageToChat('SYSTEM: <i>Audio stream ready</i>');
   });
 
   recorder.addEventListener( "dataAvailable", function(e){

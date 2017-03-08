@@ -4,6 +4,9 @@
 
 A website for capturing high quality audio for podcasts or interviews. WaveCastr records from each participant's local machine and stores it in the cloud. Capturing the audio locally preserves the quality and having each participant's voice on a separate track makes it easy to produce great sounding podcasts with minimal setup.
 
+##ScreenShot
+<img src="https://github.com/Antigrapist/WaveCastr/blob/master/HostDemoScreenshot.png">
+
 ## Using WaveCastr
 
 Every participant will need a recent version of Chrome / Firefox, a microphone, headphones and a voip program (Skype, Google Hangouts etc).
@@ -23,8 +26,6 @@ After everyone has arrived, the host activates the microphones which prompts use
 * [Redis](https://redis.io/) -- Data store for Action Cable
 
 * [Recorderjs](https://github.com/chris-rudmin/Recorderjs) -- JS library that captures user audio
-
-* [PubNub](https://www.pubnub.com/) -- Provides chat functionality
 
 * [Amazon S3](https://aws.amazon.com/s3/) -- Stores audio files
 
@@ -48,5 +49,3 @@ Features and bug fixes are always welcome.
 ## License
 
 WaveCastr is released under a [GNU General Public License v3.0](/license.txt).
-
-[Microphone on stage](https://www.flickr.com/photos/audiolucistore/11046609315/) provided by [audiolucistore](https://www.flickr.com/photos/audiolucistore/) under a [CC BY 2.0 license](https://creativecommons.org/licenses/by/2.0/)
