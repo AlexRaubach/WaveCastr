@@ -58,7 +58,6 @@ function initRecording() {
     start.disabled = false;
 
     App.appearance.perform("update", {status: 'ready'});
-    addToChatBox('Audio stream is ready.');
     App.chat.addMessageToChat('SYSTEM: <i>Audio stream ready</i>');
   });
 
