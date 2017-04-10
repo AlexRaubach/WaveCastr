@@ -23,7 +23,9 @@ class EpisodesController < ApplicationController
   end
 
   def destroy
-    Episode.find_by(sharable_link: params[:sharable_link]).destroy
+    episode = find_episode
+    delete_s3_objects(episode)
+    episode.destroy
     redirect_to user_path(current_user)
   end
 
@@ -36,6 +38,13 @@ class EpisodesController < ApplicationController
     def set_s3_direct_post(episode)
       @s3_direct_post = S3_BUCKET.presigned_post(
         key: "wavecastr/#{episode.host.name}/episode_#{episode.sharable_link}/#{SecureRandom.uuid}/${filename}", success_action_status: '201', acl: 'public-read')
+    end
+
+    def delete_s3_objects(episode)
+      prefix = "wavecastr/#{current_user.name}/episode_#{episode.sharable_link}"
+      S3_BUCKET.objects(prefix: prefix).each do |obj|
+        obj.delete
+      end 
     end
 
     def episode_params
