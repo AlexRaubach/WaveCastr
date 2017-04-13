@@ -34,8 +34,9 @@ function initRecording() {
       function (stream) {
         var mediaRecorder = new MediaRecorder(stream);
 
-        start.onClick = function () {
+        start.onclick = function () {
           mediaRecorder.start();
+          stop.disabled = false;
           console.log(mediaRecorder.state);
           console.log("recorder started");
           start.style.background = "red";
@@ -59,11 +60,54 @@ function initRecording() {
         mediaRecorder.onstop = function (e) {
           console.log("recorder stopped");
 
-          var trackName = "__" + $('#current_user').text() + '__' + new Date().toISOString() + ".wav";
-
           var blob = new Blob(chunks, {'type': 'audio/wav'})
+          var url = URL.createObjectURL(blob);
+          blob.name = "__" + $('#current_user').text() + '__' + new Date().toISOString() + ".wav";
           console.log(blob);
 
+          var link = document.createElement('a');
+          link.href = url;
+          link.download = blob.name;
+          link.innerHTML = link.download;
+
+          var div = document.createElement('div');
+          $(div).addClass('track panel panel-default');
+          div.appendChild(link);
+
+          $('#episode_track').fileupload({
+            url: $('.directUpload').data('url'),
+            type:            'POST',
+            autoUpload:       true,
+            formData: $('.directUpload').data('form-data'),
+            paramName: 'file',
+            dataType: 'XML',
+            replaceFileInput: false
+          });
+
+          $('#episode_track').fileupload('send', {
+            files: [blob]
+          })
+            .done(function(response){
+              var episodeSharableLink = window.location.pathname.replace(/\/episodes\//, '');
+              var xmlSerializer = new XMLSerializer();
+              var s3String = xmlSerializer.serializeToString(response);
+              var newTrackData = { sharable_link: episodeSharableLink, track: { s3_string: s3String } };
+
+              $.ajax({
+                url: "/tracks",
+                method: "POST",
+                data: newTrackData
+              })
+                .done(function(response){
+                  $('#flash').flash("Your recording was successfully saved.", { fadeOut: 2000 });
+                })
+                .fail(function(response){
+                  $('#flash').flash('Sorry, something went wrong. A local version of your recording is available under the control panel.', { class: 'alert' });
+                  localRecording.appendChild(div);
+                })
+            }).fail(function(response) {
+            $('#flash').flash('Sorry, something went wrong. Please try again.', { class: 'alert' });
+          });
         }
 
       },
