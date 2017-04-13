@@ -62,7 +62,7 @@ function initRecording() {
   });
 
   recorder.addEventListener( "dataAvailable", function(e){
-    var dataBlob = new Blob( [e.detail], { type: 'audio/wav' } );
+    var dataBlob = new Blob( [e.detail], { type: 'audio/ogg' } );
     dataBlob.name = "__" + $('#current_user').text() + '__' + new Date().toISOString() + ".ogg";
     var fileName = dataBlob.name;
     var url = URL.createObjectURL( dataBlob );

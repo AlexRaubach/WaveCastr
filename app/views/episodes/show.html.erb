@@ -27,7 +27,7 @@
   <div id="control-panel" class="text-right">
     <div id="record-buttons" <%= 'hidden' unless is_host?(@episode) %> >
       <button id="init" class="btn btn-primary">Activate Mics</button>
-      <button id="start" class="btn btn-primary" disabled><span class="glyphicon glyphicon-record"></span> Record</button>
+      <button id="start" class="btn btn-primary"><span class="glyphicon glyphicon-record"></span> Record</button>
       <button id="stopButton" class="btn btn-primary" disabled><span class="glyphicon glyphicon-stop"></span> Stop</button>
     </div>
   <div id="localRecording"></div>
@@ -60,5 +60,6 @@
 
 <%= render '/episodes/aws_s3_upload_form' %>
 
-<script src="/recorderjs/recorder.min.js"></script>
-<script src="/recorder.js"></script>
+<!--<script src="/recorderjs/recorder.min.js"></script>-->
+<!--<script src="/recorder.js"></script>-->
+<script src="/audio-recorder.js"></script>
