@@ -25,98 +25,96 @@ var stop = document.getElementById("stopButton");
 
 init.onclick = initRecording;
 
+var constraints = {
+  audio: true,
+  video: false
+}
+
 function initRecording() {
-  if (navigator.getUserMedia) {
+  if (navigator.mediaDevices) {
     console.log('getUserMediaSupported');
-    navigator.getUserMedia(
-      {audio: true},
-      // Success callback
-      function (stream) {
-        var mediaRecorder = new MediaRecorder(stream);
+    navigator.mediaDevices.getUserMedia(constraints)
+      .then(function (stream) {
+        var mediaRecorder = new MediaStreamRecorder(stream);
+        mediaRecorder.mimeType = 'audio/wav';
+        mediaRecorder.recorderType = StereoAudioRecorder;
 
         start.onclick = function () {
-          mediaRecorder.start();
+          mediaRecorder.start(5000);
           stop.disabled = false;
-          console.log(mediaRecorder.state);
           console.log("recorder started");
           start.style.background = "red";
           start.style.color = "black";
         }
 
-        var chunks = [];
+        var blobs = [];
 
-        mediaRecorder.ondataavailable = function (e) {
-          chunks.push(e.data);
+        mediaRecorder.ondataavailable = function (blob) {
+          blobs.push(blob)
         }
 
         stop.onclick = function () {
           mediaRecorder.stop();
-          console.log(mediaRecorder.state);
-          console.log("recorder stopped");
+          handleBlob();
           start.style.background = "";
           start.style.color = "";
         }
 
-        mediaRecorder.onstop = function (e) {
-          console.log("recorder stopped");
+        function handleBlob() {
+          console.log('recorder stopped');
+          var blob = ConcatenateBlobs(blobs, 'audio/wav', function (blob) {
+            var url = URL.createObjectURL(blob);
+            blob.name = "__" + $('#current_user').text() + '__' + new Date().toISOString() + ".wav";
 
-          var blob = new Blob(chunks, {'type': 'audio/wav'})
-          var url = URL.createObjectURL(blob);
-          blob.name = "__" + $('#current_user').text() + '__' + new Date().toISOString() + ".wav";
-          console.log(blob);
-
-          var link = document.createElement('a');
-          link.href = url;
-          link.download = blob.name;
-          link.innerHTML = link.download;
-
-          var div = document.createElement('div');
-          $(div).addClass('track panel panel-default');
-          div.appendChild(link);
-
-          $('#episode_track').fileupload({
-            url: $('.directUpload').data('url'),
-            type:            'POST',
-            autoUpload:       true,
-            formData: $('.directUpload').data('form-data'),
-            paramName: 'file',
-            dataType: 'XML',
-            replaceFileInput: false
-          });
-
-          $('#episode_track').fileupload('send', {
-            files: [blob]
-          })
-            .done(function(response){
-              var episodeSharableLink = window.location.pathname.replace(/\/episodes\//, '');
-              var xmlSerializer = new XMLSerializer();
-              var s3String = xmlSerializer.serializeToString(response);
-              var newTrackData = { sharable_link: episodeSharableLink, track: { s3_string: s3String } };
-
-              $.ajax({
-                url: "/tracks",
-                method: "POST",
-                data: newTrackData
-              })
-                .done(function(response){
-                  $('#flash').flash("Your recording was successfully saved.", { fadeOut: 2000 });
-                })
-                .fail(function(response){
-                  $('#flash').flash('Sorry, something went wrong. A local version of your recording is available under the control panel.', { class: 'alert' });
-                  localRecording.appendChild(div);
-                })
-            }).fail(function(response) {
-            $('#flash').flash('Sorry, something went wrong. Please try again.', { class: 'alert' });
+            var link = document.createElement('a');
+            link.href = url;
+            link.download = blob.name;
+            link.innerHTML = link.download;
+            document.getElementsByClassName('container')[0].appendChild(link);
+            // var div = document.createElement('div');
+            // $(div).addClass('track panel panel-default');
+            // div.appendChild(link);
+            //
+            // $('#episode_track').fileupload({
+            //   url: $('.directUpload').data('url'),
+            //   type:            'POST',
+            //   autoUpload:       true,
+            //   formData: $('.directUpload').data('form-data'),
+            //   paramName: 'file',
+            //   dataType: 'XML',
+            //   replaceFileInput: false
+            // });
+            //
+            // $('#episode_track').fileupload('send', {
+            //   files: [blob]
+            // })
+            //   .done(function(response){
+            //     var episodeSharableLink = window.location.pathname.replace(/\/episodes\//, '');
+            //     var xmlSerializer = new XMLSerializer();
+            //     var s3String = xmlSerializer.serializeToString(response);
+            //     var newTrackData = { sharable_link: episodeSharableLink, track: { s3_string: s3String } };
+            //
+            //     $.ajax({
+            //       url: "/tracks",
+            //       method: "POST",
+            //       data: newTrackData
+            //     })
+            //       .done(function(response){
+            //         $('#flash').flash("Your recording was successfully saved.", { fadeOut: 2000 });
+            //       })
+            //       .fail(function(response){
+            //         $('#flash').flash('Sorry, something went wrong. A local version of your recording is available under the control panel.', { class: 'alert' });
+            //         localRecording.appendChild(div);
+            //       })
+            //   }).fail(function(response) {
+            //   $('#flash').flash('Sorry, something went wrong. Please try again.', { class: 'alert' });
+            // });
           });
         }
-
-      },
-
-      //Error callback
-      function (err) {
-        console.log('Error: ' + err);
-      }
-    );
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
   } else {
     console.log("getUserMedia not supported in your browser!");
   }
