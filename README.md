@@ -33,7 +33,7 @@ After everyone has arrived, the host activates the microphones which prompts use
 
 ## Team Members
 
-* [Oliver Duncan](https://github.com/ollieshmollie)
+* [AJ Bond](https://github.com/olishmollie)
 
 * [Jonathan Hyun](https://github.com/jhyun94)
 
