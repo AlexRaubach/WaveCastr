@@ -79,8 +79,6 @@ var defaultBufSz = (function() {
 
 // save/delete recording
 function saveRecording(blob) {
-  console.log("Saving recording...");
-  console.log("Encoder: " + encoder);
   var url = URL.createObjectURL(blob);
   blob.name = "__" + $('#current_user').text() + '__' + new Date().toISOString() + "." + encoder;
 
@@ -112,29 +110,43 @@ function saveRecording(blob) {
       url: "/tracks",
       method: "POST",
       data: newTrackData
-    }).done(function(response){
+    }).done(function(){
       $flashDiv.flash("Your recording was successfully saved.", {
         fadeOut: 2000
       });
-    }).fail(function(response){
-      $flashDiv.flash('Sorry, something went wrong. A local version of your recording is available under the control panel.', {
+    }).fail(function(){
+      $flashDiv.flash(
+        'Sorry, something went wrong.\n\
+        A local version of your recording is available under the control panel, \
+        which you can send to the host as a back up.',
+      {
         class: 'alert'
       });
-
-      // Append local copy of recording to page
-      var link = document.createElement('a');
-      link.style.color = "#C7B185";
-      link.href = url;
-      link.download = blob.name;
-      link.innerHTML = link.download
-      $('#local-recording').append(link);
+      displayLocalRecording(blob, url);
     });
   }).fail(function() {
-    $flashDiv.flash('Sorry, something went wrong. Please try again.', { class: 'alert' });
+    $flashDiv.flash(
+      'Sorry, something went wrong.\n\
+      A local version of your recording is available under the control panel, \
+      which you can send to the host as a back up.',
+      {
+        class: 'alert'
+      });
+    displayLocalRecording(blob, url);
   });
 
   start.disabled = true;
   stopButton.disabled = true;
+}
+
+function displayLocalRecording(blob, url) {
+  var link = document.createElement('a');
+  link.style.color = "#C7B185";
+  link.href = url;
+  link.download = blob.name;
+  link.className = 'text-lg';
+  link.innerHTML = link.download
+  $('#local-recording').append(link);
 }
 
 // recording process
