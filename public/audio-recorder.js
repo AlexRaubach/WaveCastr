@@ -40,7 +40,7 @@ function initRecording() {
         mediaRecorder.recorderType = StereoAudioRecorder;
 
         start.onclick = function () {
-          mediaRecorder.start(5000);
+          mediaRecorder.start();
           stop.disabled = false;
           console.log("recorder started");
           start.style.background = "red";
@@ -62,7 +62,14 @@ function initRecording() {
 
         function handleBlob() {
           console.log('recorder stopped');
-          var blob = ConcatenateBlobs(blobs, 'audio/wav', function (blob) {
+          var sum = 0;
+          for (var i = 0; i < blobs.length; i++) {
+            console.log(blobs[i].size);
+            sum += blobs[i].size;
+          }
+            var blob = new Blob(blobs, { 'type': 'audio/wav' } )
+            console.log('Concatenated blob size: ' + blob.size);
+            console.log('Sum of blobs array: ' + sum);
             var url = URL.createObjectURL(blob);
             blob.name = "__" + $('#current_user').text() + '__' + new Date().toISOString() + ".wav";
 
@@ -109,7 +116,6 @@ function initRecording() {
             //   }).fail(function(response) {
             //   $('#flash').flash('Sorry, something went wrong. Please try again.', { class: 'alert' });
             // });
-          });
         }
       })
       .catch(function(err) {
