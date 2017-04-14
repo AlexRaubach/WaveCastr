@@ -1,3 +1,5 @@
+var $flashDiv = $('#flash');
+
 start.addEventListener( "click", function(){
   App.recorder.perform("receive", {command: 'start'});
 });
@@ -50,17 +52,17 @@ function initRecording() {
         microphone.connect(microphoneLevel);
 
         App.appearance.perform("update", {status: "ready"});
-        App.chat.addMessageToChat("SYSTEM: <i>Audio stream is ready</i>");
+        App.chat.addMessageToChat("SYSTEM: <i>Your audio stream is ready</i>");
         start.disabled = false;
       })
       .catch(function (error) {
         console.log(error);
         App.appearance.perform("update", {status: "error"});
-        $('#flash').flash("Sorry, could not get audio input");
+        $flashDiv.flash("Error: " + error.message);
       });
   } else {
     App.appearance.perform("update", {status: "error"});
-    $('#flash').flash("Sorry, recording features are not supported in your browser.", { class: 'alert' });
+    $flashDiv.flash("Sorry, recording features are not supported in your browser.", { class: 'alert' });
     console.log("getUserMedia not supported in your browser!");
   }
 }
@@ -76,13 +78,54 @@ function saveRecording(blob) {
   var url = URL.createObjectURL(blob);
   blob.name = "__" + $('#current_user').text() + '__' + new Date().toISOString() + ".wav";
 
-  // Append local copy of recording to page
-  var link = document.createElement('a');
-  link.style.color = "#C7B185";
-  link.href = url;
-  link.download = blob.name;
-  link.innerHTML = link.download
-  $('#localRecording').append(link);
+
+  // Initialize jQuery file upload
+  var $directUpload = $('.directUpload');
+  var $episodeTrack = $('#episode_track');
+
+  $episodeTrack.fileupload({
+    url: $directUpload.data('url'),
+    type:            'POST',
+    autoUpload:       true,
+    formData: $directUpload.data('form-data'),
+    paramName: 'file',
+    dataType: 'XML',
+    replaceFileInput: false
+  });
+
+  $episodeTrack.fileupload('send', {
+    files: [blob]
+  }).done(function(response){
+    var episodeSharableLink = window.location.pathname.replace(/\/episodes\//, '');
+    var xmlSerializer = new XMLSerializer();
+    var s3String = xmlSerializer.serializeToString(response);
+    var newTrackData = { sharable_link: episodeSharableLink, track: { s3_string: s3String } };
+
+    // Save s3 track info to our database
+    $.ajax({
+      url: "/tracks",
+      method: "POST",
+      data: newTrackData
+    }).done(function(response){
+      $flashDiv.flash("Your recording was successfully saved.", {
+        fadeOut: 2000
+      });
+    }).fail(function(response){
+      $flashDiv.flash('Sorry, something went wrong. A local version of your recording is available under the control panel.', {
+        class: 'alert'
+      });
+
+      // Append local copy of recording to page
+      var link = document.createElement('a');
+      link.style.color = "#C7B185";
+      link.href = url;
+      link.download = blob.name;
+      link.innerHTML = link.download
+      $('#localRecording').append(link);
+    });
+  }).fail(function(response) {
+    $flashDiv.flash('Sorry, something went wrong. Please try again.', { class: 'alert' });
+  });
 }
 
 // recording process
@@ -134,4 +177,3 @@ function stopRecording() {
   disableControlsOnRecord(false);
   stopRecordingProcess();
 }
-
