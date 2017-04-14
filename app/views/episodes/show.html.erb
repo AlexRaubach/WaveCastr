@@ -30,8 +30,14 @@
       <button id="start" class="btn btn-primary" disabled><span class="glyphicon glyphicon-record"></span> Record</button>
       <button id="stopButton" class="btn btn-primary" disabled><span class="glyphicon glyphicon-stop"></span> Stop</button>
     </div>
-  <div id="localRecording"></div>
+    <form id="encoding-options">
+      <div class="radio">
+        <label class="text-white encoding" for="mp3"><input type="radio" name="encoding" id="mp3" disabled checked>mp3</label>
+        <label class="text-white encoding" for="wav"><input type="radio" name="encoding" id="wav" disabled>wav</label>
+      </div>
+    </form>
   </div>
+  <div id="local-recording"></div>
 </div>
 <!-- End Control Panel -->
 
@@ -60,5 +66,4 @@
 
 <%= render '/episodes/aws_s3_upload_form' %>
 
-<script src="/recorderjs/recorder.min.js"></script>
-<script src="/recorder.js"></script>
+<script src="/record.js"></script>

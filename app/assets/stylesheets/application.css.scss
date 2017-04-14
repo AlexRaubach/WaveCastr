@@ -85,7 +85,7 @@ body {
 /*Control Panel*/
 #control-panel {
   text-align: center;
-  margin: 50px;
+  margin: 50px 50px 25px;
 }
 
 #control-panel button {
@@ -99,7 +99,12 @@ body {
 #present-share-link-modal,
 #init:focus {outline:0;}
 
-#localRecording {
+.encoding {
+  margin-right: 20px;
+}
+
+#local-recording {
+  height: 30px;
   margin: 10px auto;
 }
 
