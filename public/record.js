@@ -35,14 +35,11 @@ var audioContext = new AudioContext;
 if (audioContext.createScriptProcessor === null)
   audioContext.createScriptProcessor = audioContext.createJavaScriptNode;
 
-var microphoneLevel = audioContext.createGain(),
+var microphone, // created on init
+  microphoneLevel = audioContext.createGain(),
   mixer = audioContext.createGain(),
   input = audioContext.createGain(),
   processor = undefined;      // created on recording
-
-microphoneLevel.gain.value = 1;
-microphoneLevel.connect(mixer);
-mixer.connect(input);
 
 $('#encoding-options').on('change', function() {
   encoder = $('#mp3').prop('checked') === true ? 'mp3' : 'wav';
@@ -53,7 +50,7 @@ function initRecording() {
   if (navigator.mediaDevices) {
     navigator.mediaDevices.getUserMedia({audio: true})
       .then(function (stream) {
-        var microphone = audioContext.createMediaStreamSource(stream);
+        microphone = audioContext.createMediaStreamSource(stream);
         microphone.connect(microphoneLevel);
 
         App.appearance.perform("update", {status: "ready"});
@@ -64,7 +61,7 @@ function initRecording() {
       .catch(function (error) {
         console.log(error);
         App.appearance.perform("update", {status: "error"});
-        $flashDiv.flash("Error: " + error.message);
+        $flashDiv.flash("Error: " + error.message, { class: 'alert' });
         start.disabled = true;
         disableEncoderOptions(true);
       });
@@ -154,9 +151,15 @@ function getBuffers(event) {
 
 function startRecordingProcess() {
   var bufSz = defaultBufSz;
+
+  microphoneLevel.gain.value = 1;
+  microphoneLevel.connect(mixer);
+  mixer.connect(input);
+
   processor = audioContext.createScriptProcessor(bufSz, 2, 2);
   input.connect(processor);
   processor.connect(audioContext.destination);
+
   worker.postMessage({
     command: 'start',
     encoder: encoder,
@@ -169,6 +172,9 @@ function startRecordingProcess() {
 }
 
 function stopRecordingProcess() {
+  microphone.disconnect();
+  microphoneLevel.disconnect();
+  mixer.disconnect();
   input.disconnect();
   processor.disconnect();
   worker.postMessage({ command: 'finish' });
