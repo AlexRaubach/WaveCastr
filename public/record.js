@@ -1,4 +1,5 @@
 var $flashDiv = $('#flash');
+var encoder = 'mp3'; // default
 
 start.addEventListener( "click", function(){
   App.recorder.perform("receive", {command: 'start'});
@@ -43,6 +44,10 @@ microphoneLevel.gain.value = 1;
 microphoneLevel.connect(mixer);
 mixer.connect(input);
 
+$('#encoding-options').on('change', function() {
+  encoder = $('#mp3').prop('checked') === true ? 'mp3' : 'wav';
+})
+
 // obtaining microphone input
 function initRecording() {
   if (navigator.mediaDevices) {
@@ -54,11 +59,14 @@ function initRecording() {
         App.appearance.perform("update", {status: "ready"});
         App.chat.addMessageToChat("SYSTEM: <i>Your audio stream is ready</i>");
         start.disabled = false;
+        disableEncoderOptions(false);
       })
       .catch(function (error) {
         console.log(error);
         App.appearance.perform("update", {status: "error"});
         $flashDiv.flash("Error: " + error.message);
+        start.disabled = true;
+        disableEncoderOptions(true);
       });
   } else {
     App.appearance.perform("update", {status: "error"});
@@ -75,8 +83,9 @@ var defaultBufSz = (function() {
 // save/delete recording
 function saveRecording(blob) {
   console.log("Saving recording...");
+  console.log("Encoder: " + encoder);
   var url = URL.createObjectURL(blob);
-  blob.name = "__" + $('#current_user').text() + '__' + new Date().toISOString() + ".wav";
+  blob.name = "__" + $('#current_user').text() + '__' + new Date().toISOString() + "." + encoder;
 
 
   // Initialize jQuery file upload
@@ -121,11 +130,14 @@ function saveRecording(blob) {
       link.href = url;
       link.download = blob.name;
       link.innerHTML = link.download
-      $('#localRecording').append(link);
+      $('#local-recording').append(link);
     });
-  }).fail(function(response) {
+  }).fail(function() {
     $flashDiv.flash('Sorry, something went wrong. Please try again.', { class: 'alert' });
   });
+
+  start.disabled = true;
+  stopButton.disabled = true;
 }
 
 // recording process
@@ -147,6 +159,7 @@ function startRecordingProcess() {
   processor.connect(audioContext.destination);
   worker.postMessage({
     command: 'start',
+    encoder: encoder,
     sampleRate: audioContext.sampleRate,
     numChannels: 2
   });
@@ -167,9 +180,15 @@ function disableControlsOnRecord(disabled) {
   start.disabled = disabled;
 }
 
+function disableEncoderOptions(disabled) {
+  mp3.disabled = disabled;
+  wav.disabled = disabled;
+}
+
 function startRecording() {
   disableControlsOnRecord(true);
   stopButton.disabled = false;
+  disableEncoderOptions(true);
   startRecordingProcess();
 }
 

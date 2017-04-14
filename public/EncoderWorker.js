@@ -1,4 +1,5 @@
 importScripts('WavAudioEncoder.js');
+importScripts('Mp3LameEncoder.min.js');
 
 var buffers, encoder;
 
@@ -6,7 +7,9 @@ self.onmessage = function(event) {
   var data = event.data;
   switch (data.command) {
     case 'start':
-      encoder = new WavAudioEncoder(data.sampleRate, data.numChannels);
+      encoder = data.encoder === 'mp3' ?
+        new Mp3LameEncoder(data.sampleRate, 128) :
+        new WavAudioEncoder(data.sampleRate, data.numChannels);
       buffers = [];
       break;
     case 'record':

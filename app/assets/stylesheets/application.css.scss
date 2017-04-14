@@ -99,7 +99,11 @@ body {
 #present-share-link-modal,
 #init:focus {outline:0;}
 
-#localRecording {
+.encoding {
+  margin-right: 20px;
+}
+
+#local-recording {
   height: 30px;
   margin: 10px auto;
 }
