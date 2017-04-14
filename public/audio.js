@@ -1,28 +1,38 @@
-// manually rewritten from CoffeeScript output
-// (see dev-coffee branch for original source)
+start.addEventListener( "click", function(){
+  App.recorder.perform("receive", {command: 'start'});
+});
+stopButton.addEventListener( "click", function(){
+  App.recorder.perform("receive", {command: 'stop'});
+});
+init.addEventListener( "click", function(){
+  App.recorder.perform("receive", {command: 'init'});
+});
 
-// navigator.getUserMedia shim
-navigator.getUserMedia =
-  navigator.getUserMedia ||
-  navigator.webkitGetUserMedia ||
-  navigator.mozGetUserMedia ||
-  navigator.msGetUserMedia;
+var startEvent = new Event('startRecording');
+var stopEvent = new Event('stopRecording');
+var initEvent = new Event('initRecording');
+
+document.addEventListener('startRecording', function(e) {
+  App.chat.addMessageToChat("SYSTEM: <i>Recording has started</i>");
+  startRecording();
+});
+document.addEventListener('stopRecording', function(e) {
+  App.chat.addMessageToChat("SYSTEM: <i>Recording has stopped</i>");
+  stopRecording();
+});
+document.addEventListener('initRecording', function(e) {
+  initRecording();
+});
 
 // URL shim
 window.URL = window.URL || window.webkitURL;
 
 // audio context + .createScriptProcessor shim
 var audioContext = new AudioContext;
-if (audioContext.createScriptProcessor == null)
+if (audioContext.createScriptProcessor === null)
   audioContext.createScriptProcessor = audioContext.createJavaScriptNode;
 
-// elements (jQuery objects)
-var $start = $('#start'),
-  $stop = $('#stopButton'),
-  $init = $('#init');
-
-var microphone = undefined,     // obtained by user click
-  microphoneLevel = audioContext.createGain(),
+var microphoneLevel = audioContext.createGain(),
   mixer = audioContext.createGain(),
   input = audioContext.createGain(),
   processor = undefined;      // created on recording
@@ -30,24 +40,30 @@ var microphone = undefined,     // obtained by user click
 microphoneLevel.gain.value = 1;
 microphoneLevel.connect(mixer);
 mixer.connect(input);
-// mixer.connect(audioContext.destination);
 
 // obtaining microphone input
-$init.click(function() {
-  if (navigator.mediaDevices)
-    navigator.mediaDevices.getUserMedia({ audio: true })
-      .then(function(stream) {
-        microphone = audioContext.createMediaStreamSource(stream);
+function initRecording() {
+  if (navigator.mediaDevices) {
+    navigator.mediaDevices.getUserMedia({audio: true})
+      .then(function (stream) {
+        var microphone = audioContext.createMediaStreamSource(stream);
         microphone.connect(microphoneLevel);
-      })
-      .catch(function(error) {
-        console.log(error);
-        window.alert("Could not get audio input.");
-      });
-});
 
-// encoding process selector
-var encodingProcess = 'separate';       // separate | background | direct
+        App.appearance.perform("update", {status: "ready"});
+        App.chat.addMessageToChat("SYSTEM: <i>Audio stream is ready</i>");
+        start.disabled = false;
+      })
+      .catch(function (error) {
+        console.log(error);
+        App.appearance.perform("update", {status: "error"});
+        $('#flash').flash("Sorry, could not get audio input");
+      });
+  } else {
+    App.appearance.perform("update", {status: "error"});
+    $('#flash').flash("Sorry, recording features are not supported in your browser.", { class: 'alert' });
+    console.log("getUserMedia not supported in your browser!");
+  }
+}
 
 var defaultBufSz = (function() {
   processor = audioContext.createScriptProcessor(undefined, 2, 2);
@@ -60,11 +76,13 @@ function saveRecording(blob) {
   var url = URL.createObjectURL(blob);
   blob.name = "__" + $('#current_user').text() + '__' + new Date().toISOString() + ".wav";
 
+  // Append local copy of recording to page
   var link = document.createElement('a');
+  link.style.color = "#C7B185";
   link.href = url;
   link.download = blob.name;
-  link.innerHTML = link.download;
-  document.getElementsByClassName('container')[0].appendChild(link);
+  link.innerHTML = link.download
+  $('#localRecording').append(link);
 }
 
 // recording process
@@ -84,58 +102,36 @@ function startRecordingProcess() {
   processor = audioContext.createScriptProcessor(bufSz, 2, 2);
   input.connect(processor);
   processor.connect(audioContext.destination);
-  if (encodingProcess === 'direct') {
-    encoder = new WavAudioEncoder(audioContext.sampleRate, 2);
-    processor.onaudioprocess = function(event) {
-      encoder.encode(getBuffers(event));
-    };
-  } else {
-    worker.postMessage({
-      command: 'start',
-      process: encodingProcess,
-      sampleRate: audioContext.sampleRate,
-      numChannels: 2
-    });
-    processor.onaudioprocess = function(event) {
-      worker.postMessage({ command: 'record', buffers: getBuffers(event) });
-    };
-  }
+  worker.postMessage({
+    command: 'start',
+    sampleRate: audioContext.sampleRate,
+    numChannels: 2
+  });
+  processor.onaudioprocess = function(event) {
+    worker.postMessage({ command: 'record', buffers: getBuffers(event) });
+  };
 }
 
-function stopRecordingProcess(finish) {
+function stopRecordingProcess() {
   input.disconnect();
   processor.disconnect();
-  if (encodingProcess === 'direct')
-    if (finish)
-      saveRecording(encoder.finish());
-    else
-      encoder.cancel();
-  else
-    worker.postMessage({ command: finish ? 'finish' : 'cancel' });
+  worker.postMessage({ command: 'finish' });
 }
 
 // recording buttons interface
 function disableControlsOnRecord(disabled) {
-  //TODO: disable controls on record
+  init.disabled = disabled;
+  start.disabled = disabled;
 }
 
 function startRecording() {
-  console.log('Recording started');
   disableControlsOnRecord(true);
+  stopButton.disabled = false;
   startRecordingProcess();
 }
 
-function stopRecording(finish) {
-  console.log('Recording ended');
+function stopRecording() {
   disableControlsOnRecord(false);
-  stopRecordingProcess(finish);
+  stopRecordingProcess();
 }
 
-$start.click(function() {
-  startRecording();
-  $stop.attr('disabled', false);
-});
-
-$stop.click(function() {
-  stopRecording(true);
-})
