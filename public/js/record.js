@@ -1,5 +1,7 @@
 var $flashDiv = $('#flash');
-var encoder = $('#encoder').text();
+var encoder = 'mp3'; // default
+var timerDiv = document.getElementById('timer');
+var timer = new Timer(timerDiv);
 
 start.addEventListener( "click", function(){
   App.recorder.perform("receive", {command: 'start'});
@@ -144,7 +146,7 @@ function displayLocalRecording(blob, url) {
 }
 
 // recording process
-var worker = new Worker('/EncoderWorker.js')
+var worker = new Worker('/js/EncoderWorker.js')
 
 worker.onmessage = function(event) { saveRecording(event.data.blob); };
 
@@ -156,6 +158,7 @@ function getBuffers(event) {
 }
 
 function startRecordingProcess() {
+  timer.start();
   var bufSz = defaultBufSz;
 
   microphoneLevel.gain.value = 1;
@@ -199,6 +202,7 @@ function startRecording() {
 }
 
 function stopRecording() {
+  timer.stop();
   disableControlsOnRecord(false);
   stopRecordingProcess();
 }

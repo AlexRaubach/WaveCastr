@@ -25,6 +25,7 @@
 <!-- Control Panel -->
 <div class="row">
   <div id="control-panel" class="text-right">
+    <div id="timer" class="text-lg"></div>
     <div id="record-buttons" <%= 'hidden' unless is_host?(@episode) %> >
       <button id="init" class="btn btn-primary">Activate Mics</button>
       <button id="start" class="btn btn-primary" disabled><span class="glyphicon glyphicon-record"></span> Record</button>
@@ -63,4 +64,5 @@
 
 <%= render '/episodes/aws_s3_upload_form' %>
 
-<script src="/record.js"></script>
+<script src="/js/Timer.js"></script>
+<script src="/js/record.js"></script>
