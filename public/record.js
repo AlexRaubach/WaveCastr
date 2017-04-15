@@ -1,5 +1,5 @@
 var $flashDiv = $('#flash');
-var encoder = 'mp3'; // default
+var encoder = $('#encoder').text();
 
 start.addEventListener( "click", function(){
   App.recorder.perform("receive", {command: 'start'});
@@ -41,10 +41,6 @@ var microphone, // created on init
   input = audioContext.createGain(),
   processor = undefined;      // created on recording
 
-$('#encoding-options').on('change', function() {
-  encoder = $('#mp3').prop('checked') === true ? 'mp3' : 'wav';
-})
-
 // obtaining microphone input
 function initRecording() {
   if (navigator.mediaDevices) {
@@ -56,14 +52,12 @@ function initRecording() {
         App.appearance.perform("update", {status: "ready"});
         App.chat.addMessageToChat("SYSTEM: <i>Your audio stream is ready</i>");
         start.disabled = false;
-        disableEncoderOptions(false);
       })
       .catch(function (error) {
         console.log(error);
         App.appearance.perform("update", {status: "error"});
         $flashDiv.flash("Error: " + error.message, { class: 'alert' });
         start.disabled = true;
-        disableEncoderOptions(true);
       });
   } else {
     App.appearance.perform("update", {status: "error"});
@@ -198,15 +192,9 @@ function disableControlsOnRecord(disabled) {
   start.disabled = disabled;
 }
 
-function disableEncoderOptions(disabled) {
-  mp3.disabled = disabled;
-  wav.disabled = disabled;
-}
-
 function startRecording() {
   disableControlsOnRecord(true);
   stopButton.disabled = false;
-  disableEncoderOptions(true);
   startRecordingProcess();
 }
 
