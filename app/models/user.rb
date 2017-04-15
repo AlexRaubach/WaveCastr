@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :episodes, foreign_key: :host_id
   has_many :tracks, as: :recordable
+  validates :name, uniqueness: true
 
   def host?(episode)
     episode.host_id == id

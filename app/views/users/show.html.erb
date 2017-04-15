@@ -1,7 +1,6 @@
 
 <div class="row">
-
-    <div id="new-episode-div">
+  <div id="new-episode-div">
     <button id="present-new-episode-modal" class="btn btn-primary btn-block" data-toggle="modal" data-target="#new-episode-modal">
       New Episode
     </button>
@@ -24,6 +23,10 @@
       <div class="modal-body">
         <%= form_for @episode do |f| %>
           <%= f.text_field :name, placeholder: "Episode name", class: "form-control input-lg" %>
+          <%= f.radio_button :encoder, 'mp3', :checked => true %>
+          <%= f.label :encoder, 'mp3', :value => 'mp3', :class => 'encoding' %>
+          <%= f.radio_button :encoder, 'wav' %>
+          <%= f.label :encoder, 'wav', :value => 'wav', :class => 'encoding' %>
         <% end %>
       </div>
       <div class="modal-footer">
