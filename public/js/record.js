@@ -1,5 +1,6 @@
 var $flashDiv = $('#flash');
-var encoder = $('#encoder').text();
+var encoder = 'mp3'; // default
+var timerDiv = document.getElementById('timer');
 
 start.addEventListener( "click", function(){
   App.recorder.perform("receive", {command: 'start'});
@@ -157,6 +158,7 @@ function getBuffers(event) {
 
 function startRecordingProcess() {
   var bufSz = defaultBufSz;
+  var timer = Timer.new()
 
   microphoneLevel.gain.value = 1;
   microphoneLevel.connect(mixer);
