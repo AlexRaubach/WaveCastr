@@ -150,7 +150,7 @@ function displayLocalRecording(blob, url) {
 }
 
 // recording process
-var worker = new Worker('/EncoderWorker.js')
+var worker = new Worker('/js/EncoderWorker.js')
 
 worker.onmessage = function(event) { saveRecording(event.data.blob); };
 
