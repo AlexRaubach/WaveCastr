@@ -111,6 +111,7 @@ function saveRecording(blob) {
       $flashDiv.flash("Your recording was successfully saved.", {
         fadeOut: 2000
       });
+      init.disabled = false;
     }).fail(function(){
       $flashDiv.flash(
         'Sorry, something went wrong.\n\
@@ -131,9 +132,6 @@ function saveRecording(blob) {
       });
     displayLocalRecording(blob, url);
   });
-
-  start.disabled = true;
-  stopButton.disabled = true;
 }
 
 function displayLocalRecording(blob, url) {
@@ -198,6 +196,12 @@ function disableControlsOnRecord(disabled) {
   start.disabled = disabled;
 }
 
+function disableAllControls() {
+  init.disabled = true;
+  start.disabled = true;
+  stopButton.disabled = true;
+}
+
 function startRecording() {
   disableControlsOnRecord(true);
   stopButton.disabled = false;
@@ -206,6 +210,6 @@ function startRecording() {
 
 function stopRecording() {
   timer.stop();
-  disableControlsOnRecord(false);
+  disableAllControls();
   stopRecordingProcess();
 }
