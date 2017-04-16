@@ -1,7 +1,8 @@
-var $flashDiv = $('#flash');
-var encoder = 'mp3'; // default
-var timerDiv = document.getElementById('timer');
-var timer = new Timer(timerDiv);
+var $flashDiv = $('#flash'),
+  $spinner = $('.spinner'),
+  encoder = $('#encoder').text(),
+  timerDiv = document.getElementById('timer'),
+  timer = new Timer(timerDiv);
 
 start.addEventListener( "click", function(){
   App.recorder.perform("receive", {command: 'start'});
@@ -79,7 +80,6 @@ function saveRecording(blob) {
   var url = URL.createObjectURL(blob);
   blob.name = "__" + $('#current_user').text() + '__' + new Date().toISOString() + "." + encoder;
 
-
   // Initialize jQuery file upload
   var $directUpload = $('.directUpload');
   var $episodeTrack = $('#episode_track');
@@ -111,6 +111,7 @@ function saveRecording(blob) {
       $flashDiv.flash("Your recording was successfully saved.", {
         fadeOut: 2000
       });
+      $spinner.hide();
       init.disabled = false;
     }).fail(function(){
       $flashDiv.flash(
@@ -141,7 +142,7 @@ function displayLocalRecording(blob, url) {
   link.download = blob.name;
   link.className = 'text-lg';
   link.innerHTML = link.download
-  $('#local-recording').append(link);
+  $('#local-recording').html(link);
 }
 
 // recording process
@@ -210,6 +211,7 @@ function startRecording() {
 
 function stopRecording() {
   timer.stop();
+  $spinner.show();
   disableAllControls();
   stopRecordingProcess();
 }
