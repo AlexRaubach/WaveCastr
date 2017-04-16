@@ -6,7 +6,6 @@ class EpisodesController < ApplicationController
   def show
     @guest = Guest.new
     set_s3_direct_post(@episode)
-    @chat_keys = [ENV['CHAT_SUBSCRIBE_KEY'], ENV['CHAT_PUBLISH_KEY']]
     if !current_user || !current_user.host?(@episode)
       render(partial: 'episodes/guest_page', layout: false)
     end
