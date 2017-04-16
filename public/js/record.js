@@ -158,6 +158,7 @@ function getBuffers(event) {
 }
 
 function startRecordingProcess() {
+  App.appearance.perform("update", {status: "recording"});
   timer.start();
   var bufSz = defaultBufSz;
 
@@ -181,6 +182,7 @@ function startRecordingProcess() {
 }
 
 function stopRecordingProcess() {
+  App.appearance.perform("update", {status: "stopping"});
   microphone.disconnect();
   microphoneLevel.disconnect();
   mixer.disconnect();

@@ -16,6 +16,12 @@ App.appearance = App.cable.subscriptions.create({channel: "AppearancesChannel", 
       case 'ready':
         $('#guest-' + data.guest_id).find('.fa-user').removeClass('waiting').addClass('ready');
         break;
+      case 'recording':
+        $('#guest-' + data.guest_id).find('.fa-user').removeClass('ready').addClass('recording');
+        break;
+      case 'stopping':
+        $('#guest-' + data.guest_id).find('.fa-user').removeClass('recording').addClass('ready');
+        break;            
       case 'error':
         $('#guest-' + data.guest_id).find('.fa-user').removeClass('waiting').addClass('error');
     }
