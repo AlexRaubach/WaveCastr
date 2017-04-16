@@ -1,8 +1,9 @@
 var $flashDiv = $('#flash'),
-  $spinner = $('.spinner'),
   encoder = $('#encoder').text(),
   timerDiv = document.getElementById('timer'),
-  timer = new Timer(timerDiv);
+  timer = new Timer(timerDiv),
+  localRecordingDiv = document.getElementById('local-recording'),
+  spinner = new SpinnerWrapper(localRecordingDiv);
 
 start.addEventListener( "click", function(){
   App.recorder.perform("receive", {command: 'start'});
@@ -44,7 +45,6 @@ var microphone, // created on init
   input = audioContext.createGain(),
   processor = undefined;      // created on recording
 
-// obtaining microphone input
 function initRecording() {
   if (navigator.mediaDevices) {
     navigator.mediaDevices.getUserMedia({audio: true})
@@ -80,10 +80,10 @@ function saveRecording(blob) {
   var url = URL.createObjectURL(blob);
   blob.name = "__" + $('#current_user').text() + '__' + new Date().toISOString() + "." + encoder;
 
-  // Initialize jQuery file upload
   var $directUpload = $('.directUpload');
   var $episodeTrack = $('#episode_track');
 
+  // Initialize jQuery file upload
   $episodeTrack.fileupload({
     url: $directUpload.data('url'),
     type:            'POST',
@@ -111,7 +111,7 @@ function saveRecording(blob) {
       $flashDiv.flash("Your recording was successfully saved.", {
         fadeOut: 2000
       });
-      $spinner.hide();
+      spinner.stop();
       init.disabled = false;
     }).fail(function(){
       $flashDiv.flash(
@@ -142,7 +142,7 @@ function displayLocalRecording(blob, url) {
   link.download = blob.name;
   link.className = 'text-lg';
   link.innerHTML = link.download
-  $('#local-recording').html(link);
+  localRecordingDiv.innerHTML = link;
 }
 
 // recording process
@@ -211,7 +211,7 @@ function startRecording() {
 
 function stopRecording() {
   timer.stop();
-  $spinner.show();
+  spinner.spin();
   disableAllControls();
   stopRecordingProcess();
 }
