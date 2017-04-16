@@ -48,6 +48,7 @@ function initRecording() {
   if (navigator.mediaDevices) {
     navigator.mediaDevices.getUserMedia({audio: true})
       .then(function (stream) {
+        timer.reset();
         microphone = audioContext.createMediaStreamSource(stream);
         microphone.connect(microphoneLevel);
 

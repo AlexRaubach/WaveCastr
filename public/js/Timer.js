@@ -20,16 +20,27 @@ var Timer = function(element) {
     return unitString(hours) + ':' + unitString(minutes) + ':' + unitString(seconds);
   }
 
+  function updateElement() {
+    element.innerText = timeString();
+  }
+
   element.innerText = timeString();
 
   this.start = function() {
     interval = setInterval(function() {
       seconds += 1;
-      element.innerText = timeString();
+      updateElement()
     }, 1000);
   }
 
   this.stop = function() {
     clearInterval(interval);
+  }
+
+  this.reset = function() {
+    seconds = 0;
+    minutes = 0;
+    hours = 0;
+    updateElement();
   }
 }
