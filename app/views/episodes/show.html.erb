@@ -32,9 +32,10 @@
       <button id="stopButton" class="btn btn-primary" disabled><span class="glyphicon glyphicon-stop"></span> Stop</button>
     </div>
   </div>
-  <div id="local-recording" class="text-center"></div>
+  <!-- Spinner -->
+  <div id="local-recording" class="text-center">
+  </div>
 </div>
-<!-- End Control Panel -->
 
 <!-- Track List -->
 <% if is_host?(@episode) %>
@@ -47,22 +48,18 @@
     </div>
   </div>
 <% end %>
-<!-- End Track List -->
 
 <!-- Modals -->
 <% if is_host?(@episode) %>
   <%= render '/episodes/modals/share_link' %>
 <% end %>
-
 <% if unregistered_guest?(@episode) %>
   <%= render '/episodes/modals/register_guest' %>
 <% end %>
-<!-- End Modals -->
 
 <!-- Encoder -->
 <div id="encoder" hidden><%= @episode.encoder %></div>
 
 <%= render '/episodes/aws_s3_upload_form' %>
 
-<script src="/js/Timer.js"></script>
 <script src="/js/record.js"></script>
