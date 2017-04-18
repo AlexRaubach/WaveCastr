@@ -40,11 +40,9 @@
 <!-- Track List -->
 <% if is_host?(@episode) %>
   <div class="row">
-    <div class="col-md-12" id="track-list">
+    <div class="col-md-12" id="track-list" <%= 'hidden' if @episode.tracks.empty? %> >
       <h1 class="page-header">Tracks</h1>
-      <% if is_host?(@episode) %>
-          <%= render @episode.tracks %>
-      <% end %>
+        <%= render @episode.tracks %>
     </div>
   </div>
 <% end %>
