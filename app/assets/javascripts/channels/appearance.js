@@ -3,27 +3,35 @@ $(document).ready(function() {
 var lobby = window.location.pathname.replace(/\/episodes\//, "");
 App.appearance = App.cable.subscriptions.create({channel: "AppearancesChannel", lobby: lobby}, {
   received: function(data) {
+    if ("guest" in obj) {
+      unless (data.status === 'signin') {
+        var avatar = $('#guest-' + data.guest_id).find('.fa-user')
+      }
+    } else {
+      var avatar = $('#host').find('.fa-user-circle-o')
+    };
+
     switch (data.status) {
       case 'signin':
         var guestTemplate = this.renderGuest(data);
         $(guestTemplate).hide().appendTo('#guest-list').fadeIn('slow');
         break;
       case 'signout':
-        $('#guest-' + data.guest_id).fadeOut('slow', function() {
+        avatar.fadeOut('slow', function() {
           $(this).remove();
         });
         break;
       case 'ready':
-        $('#guest-' + data.guest_id).find('.fa-user').removeClass('waiting').addClass('ready');
+        avatar.removeClass('waiting').addClass('ready');
         break;
       case 'recording':
-        $('#guest-' + data.guest_id).find('.fa-user').removeClass('ready').addClass('recording');
+        avatar.removeClass('ready').addClass('recording');
         break;
       case 'stopping':
-        $('#guest-' + data.guest_id).find('.fa-user').removeClass('recording').addClass('ready');
+        avatar.removeClass('recording').addClass('ready');
         break;            
       case 'error':
-        $('#guest-' + data.guest_id).find('.fa-user').removeClass('waiting').addClass('error');
+        avatar.removeClass('waiting').addClass('error');
     }
   },
 
