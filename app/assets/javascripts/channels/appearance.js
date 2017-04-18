@@ -3,8 +3,8 @@ $(document).ready(function() {
 var lobby = window.location.pathname.replace(/\/episodes\//, "");
 App.appearance = App.cable.subscriptions.create({channel: "AppearancesChannel", lobby: lobby}, {
   received: function(data) {
-    if ("guest" in obj) {
-      unless (data.status === 'signin') {
+    if ("guest" in data) {
+      if (data.status != 'signin') {
         var avatar = $('#guest-' + data.guest_id).find('.fa-user')
       }
     } else {
