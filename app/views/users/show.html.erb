@@ -22,7 +22,7 @@
       </div>
       <div class="modal-body">
         <%= form_for @episode do |f| %>
-          <%= f.text_field :name, placeholder: "Episode name", class: "form-control input-lg" %>
+          <%= f.text_field :name, placeholder: "Episode name", class: "form-control input-lg", autofocus: true %>
           <%= f.radio_button :encoder, 'mp3', :checked => true %>
           <%= f.label :encoder, 'mp3', :value => 'mp3', :class => 'encoding' %>
           <%= f.radio_button :encoder, 'wav' %>
