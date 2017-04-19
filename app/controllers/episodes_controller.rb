@@ -20,7 +20,7 @@ class EpisodesController < ApplicationController
       create_guest_from_current_user
       redirect_to episode_path(sharable_link: @episode.sharable_link)
     else
-      flash[:error] = @episode.errors.full_messages.first
+      flash[:alert] = @episode.errors.full_messages.first
       redirect_to user_path(current_user)
     end
   end
