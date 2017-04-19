@@ -5,8 +5,11 @@ App.appearance = App.cable.subscriptions.create({channel: "AppearancesChannel", 
   received: function(data) {
     switch (data.status) {
       case 'signin':
-        var guestTemplate = this.renderGuest(data);
-        $(guestTemplate).hide().appendTo('#guest-list').fadeIn('slow');
+        if (data.is_host) {
+          $(data.template).hide().prependTo('#guest-list').fadeIn('slow');
+        } else {
+          $(data.template).hide().appendTo('#guest-list').fadeIn('slow');
+        }
         break;
       case 'signout':
         $('#guest-' + data.guest_id).fadeOut('slow', function() {

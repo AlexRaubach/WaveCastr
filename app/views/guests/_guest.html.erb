@@ -1,6 +1,6 @@
 <div id="guest-<%= guest.id %>" class="guest">
   <div>
-    <i class="fa fa-user fa-2x <%= guest.status %>" aria-hidden="true"></i>
-    <h3 <%= 'id=current_user' if current_guest?(guest) %>><%= guest.name %></h3>
+    <i class="fa fa-user<%= '-circle-o' if guest.is_host %> fa-2x <%= guest.status %>" aria-hidden="true"></i>
+    <h3><%= guest.name %></h3>
   </div>
 </div>
