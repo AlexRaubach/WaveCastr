@@ -6,6 +6,9 @@ class EpisodesController < ApplicationController
   def show
     @guest = Guest.new
     set_s3_direct_post(@episode)
+    if @episode.host == current_user && !@episode.guest_ids.include?(cookies.signed['guest_id'])
+      create_guest_from_current_user
+    end
     if !current_user || !current_user.host?(@episode)
       render(partial: 'episodes/guest_page', layout: false)
     end
@@ -14,6 +17,7 @@ class EpisodesController < ApplicationController
   def create
     @episode = current_user.episodes.build(episode_params)
     if @episode.save
+      create_guest_from_current_user
       redirect_to episode_path(sharable_link: @episode.sharable_link)
     else
       flash[:error] = @episode.errors.full_messages.first
@@ -29,6 +33,11 @@ class EpisodesController < ApplicationController
   end
 
   private
+    def create_guest_from_current_user
+      guest = @episode.guests.create(name: current_user.name, is_host: true)
+      assign_guest_cookies(guest)
+    end
+
     def find_episode
       @episode = Episode.find_by(sharable_link: params[:sharable_link]) 
       @episode ? @episode : not_found

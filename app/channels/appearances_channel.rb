@@ -14,6 +14,7 @@ class AppearancesChannel < ApplicationCable::Channel
       ActionCable.server.broadcast("appearances_#{params[:lobby]}",
                                    guest: guest.name,
                                    guest_id: guest.id,
+                                   is_host: guest.is_host,
                                    status: guest.status)
     end
   end

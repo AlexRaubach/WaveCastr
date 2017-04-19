@@ -10,19 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170416191257) do
+ActiveRecord::Schema.define(version: 20170419031105) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "appearances", force: :cascade do |t|
+    t.string   "status",          limit: 10, default: "waiting"
+    t.integer  "appearable_id"
+    t.string   "appearable_type", limit: 50,                     null: false
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
+  end
+
   create_table "episodes", force: :cascade do |t|
-    t.string   "name",                     null: false
+    t.string   "name",                                     null: false
     t.text     "description"
-    t.string   "sharable_link", limit: 10, null: false
+    t.string   "sharable_link", limit: 10,                 null: false
     t.integer  "host_id"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.string   "encoder",       limit: 10, null: false
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
+    t.string   "encoder",       limit: 10, default: "mp3"
   end
 
   create_table "guests", force: :cascade do |t|
@@ -31,6 +39,7 @@ ActiveRecord::Schema.define(version: 20170416191257) do
     t.datetime "created_at",                                null: false
     t.datetime "updated_at",                                null: false
     t.string   "status",     limit: 10, default: "waiting"
+    t.boolean  "is_host",               default: false
   end
 
   create_table "tracks", force: :cascade do |t|
