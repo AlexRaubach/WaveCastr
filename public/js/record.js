@@ -78,7 +78,7 @@ var defaultBufSz = (function() {
 // save/delete recording
 function saveRecording(blob) {
   var url = URL.createObjectURL(blob);
-  blob.name = "__" + $('#current_user').text() + '__' + new Date().toISOString() + "." + encoder;
+  blob.name = "__" + $('#current_guest').text() + '__' + new Date().toISOString() + "." + encoder;
 
   var $directUpload = $('.directUpload');
   var $episodeTrack = $('#episode_track');

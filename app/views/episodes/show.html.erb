@@ -58,6 +58,11 @@
 <!-- Encoder -->
 <div id="encoder" hidden><%= @episode.encoder %></div>
 
+<!-- Current Guest -->
+<% if current_guest %>
+  <div id="current_guest" hidden><%= current_guest.name %></div>
+<% end %>
+
 <%= render '/episodes/aws_s3_upload_form' %>
 
 <script src="/js/record.js"></script>
