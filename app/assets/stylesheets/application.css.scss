@@ -283,14 +283,14 @@ small {
 /*************** login and signup  ***********/
 .user-form-container {
   color: #99AAAA;
-  display: inline-block;
+  padding: 5px;
   border-color: rgba(33, 34, 35, .8);
   background-color: rgba(33, 34, 35, .8);
   border-radius: 5px;
 }
 
 .user-form-container form {
-  padding: 50px;
+  padding: 20px;
 }
 
 .user-form-container label {
@@ -305,13 +305,14 @@ small {
 .user-form-container input[type=submit] {
   background-color: #a59d8c;
   color: #fff;
-  margin-top: 8px;
+  margin-top: 20px;
   border-color: #a59d8c;
   border-radius: 5px;
+  padding: 10px 20px;
 }
 
-.login-link a {
-  padding: 10px;
+.mb-0 {
+  margin-bottom: 0;
 }
 
 /**********New Episode Modal**********/
