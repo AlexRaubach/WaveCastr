@@ -9,8 +9,8 @@ RSpec.feature "New episodes", type: :feature do
     within('#new_user') do
       fill_in 'Email', with: user.email
       fill_in 'Password', with: user.password
+      click_on('Login')
     end
-    click_on('Log in')
   end
 
   scenario "user clicks on new episode and is presented with a modal form" do
