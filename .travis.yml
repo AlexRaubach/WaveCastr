@@ -12,6 +12,11 @@ before_script:
 bundler_args: --binstubs=./bundler_stubs
 
 addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
   code_climate:
     repo_token: a8c073236d40ffbe0134bd54c20eeb8815fe5b40385990291da93ceab90d9922
 
