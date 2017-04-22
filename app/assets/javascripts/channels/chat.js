@@ -20,18 +20,20 @@ App.chat = App.cable.subscriptions.create({channel: "ChatChannel", lobby: lobby}
   }
 });
 
-$('#send').on('click', function() {
-  var guest = $('#current_user').text();
-  var $input = $('#input');
-  if ($input.val().length === 0) { return }
+var $chatInput = $('#chat-input');
+var $chatSend = $('#chat-send')
 
-  App.chat.perform('chat', { guest: guest, message: $input.val() });
-  $input.val('');
+$chatSend.on('click', function() {
+  var guest = $('#current_guest').text();
+  if ($chatInput.val().length === 0) { return }
+
+  App.chat.perform('chat', { guest: guest, message: $chatInput.val() });
+  $chatInput.val('');
 });
 
-$('#input').on('keyup', function(e) {
+$chatInput.on('keyup', function(e) {
   if (e.keyCode === 13) {
-    $('#send').trigger('click');
+    $chatSend.trigger('click');
   }
 });
 

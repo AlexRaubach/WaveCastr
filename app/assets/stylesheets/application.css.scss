@@ -174,7 +174,7 @@ body {
   margin-right: auto;
 }
 
-#input {
+#chat-input {
   padding-left: 12px;
   width: 76%;
   border-radius: 5px;
@@ -182,9 +182,10 @@ body {
   border: 1px solid rgba(33, 34, 35, .8);
   color: rgba(190, 181, 166, 1);
 }
-#input:focus {outline:0;}
 
-#send {
+#chat-input:focus {outline:0;}
+
+#chat-send {
   border: 0px solid rgba(33, 34, 35, 1);
   border-radius: 5px;
   background-color: rgba(33, 34, 35, 1);
@@ -194,7 +195,7 @@ body {
   height: 33.99px;
 }
 
-#send:focus {outline:0;}
+#chat-send:focus {outline:0;}
 
 #chat-container {
   padding-left: 12px;

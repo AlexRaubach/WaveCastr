@@ -7,7 +7,6 @@
       </div> 
     <% end %>
     <div id="guest-list">
-      <!--      <%# <%= render partial: 'users/host', locals: { host: @episode.host } %> %> -->
       <%= render @episode.guests.order(is_host: :desc) %>
     </div>
   </div>
@@ -15,8 +14,8 @@
   <div class="col-md-9" id="right-container">
     <div id="chat-container"></div>
     <div id="input-box">
-      <input id="input" class="form-control pull-left" placeholder="Type your message here"/>
-      <button id="send" class="pull-right">Send</button>
+      <input id="chat-input" class="form-control pull-left" placeholder="Type your message here"/>
+      <button id="chat-send" class="pull-right">Send</button>
     </div>
   </div>
 </div>
