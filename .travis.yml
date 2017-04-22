@@ -11,6 +11,9 @@ before_script:
   - bundle exec rake db:test:prepare
 bundler_args: --binstubs=./bundler_stubs
 
-# addons:
-#     code_climate:
-#         repo_token: c19bd7e9c19353a6be1238cfc29006a20ded1615fcf62bd796d7c7329a18cebc
+addons:
+  code_climate:
+    repo_token: a8c073236d40ffbe0134bd54c20eeb8815fe5b40385990291da93ceab90d9922
+
+after_success:
+  - bundle exec codeclimate-test-reporter
