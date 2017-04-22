@@ -1,11 +1,13 @@
 # WaveCastr
 [![Build Status](https://travis-ci.org/olishmollie/WaveCastr.svg?branch=master)](https://travis-ci.org/olishmollie/WaveCastr)
-[![Code Climate](https://codeclimate.com/github/Antigrapist/WaveCastr/badges/gpa.svg)](https://codeclimate.com/github/Antigrapist/WaveCastr)
+[![Code Climate](https://codeclimate.com/github/olishmollie/WaveCastr/badges/gpa.svg)](https://codeclimate.com/github/olishmollie/WaveCastr)
 
 A website for capturing high quality audio for podcasts or interviews. WaveCastr records from each participant's local machine and stores it in the cloud. Capturing the audio locally preserves the quality and having each participant's voice on a separate track makes it easy to produce great sounding podcasts with minimal setup.
 
-##ScreenShot
+## Screen Shots
 <img src="three_window_demo.png">
+<img src="mid_recording.png">
+<img src="downloaded.png">
 
 ## Using WaveCastr
 
