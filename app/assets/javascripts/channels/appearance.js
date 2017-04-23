@@ -8,7 +8,6 @@ function subscribeToAppearances() {
       switch (data.status) {
         case 'signin':
           if (data.is_host) { return; }
-          console.log("Receiving guest template");
           if (data.is_host) {
             $guestTemplate.hide().prependTo('#guest-list').fadeIn('slow');
           } else {

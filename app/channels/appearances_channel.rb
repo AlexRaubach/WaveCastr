@@ -1,10 +1,11 @@
 class AppearancesChannel < ApplicationCable::Channel
   def subscribed
     stream_from "appearances_#{params[:lobby]}"
+    guest.appear
   end
 
   def unsubscribed
-    guest.destroy if guest
+    guest.destroy
   end
 
   def update(data)
