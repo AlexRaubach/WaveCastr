@@ -21,7 +21,7 @@ before_script:
   - bundle exec rake db:migrate
   - bundle exec rake db:test:prepare
 script:
-  - bundle exec rspec 
+  - xvfb-run bundle exec rspec 
 bundler_args: --binstubs=./bundler_stubs
 after_success:
   - bundle exec codeclimate-test-reporter
