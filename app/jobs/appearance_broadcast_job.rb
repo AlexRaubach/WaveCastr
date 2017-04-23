@@ -3,6 +3,7 @@ class AppearanceBroadcastJob < ApplicationJob
 
   def perform(guest)
     ActionCable.server.broadcast "appearances_#{guest.episode.sharable_link}",
+      guest_id: guest.id,
       is_host: guest.is_host,
       status: 'signin',
       template: render_guest(guest)
