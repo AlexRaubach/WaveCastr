@@ -2,7 +2,6 @@ class AppearanceBroadcastJob < ApplicationJob
   queue_as :default
 
   def perform(guest)
-    puts "Rendering guest to page"
     ActionCable.server.broadcast "appearances_#{guest.episode.sharable_link}",
       is_host: guest.is_host,
       status: 'signin',
