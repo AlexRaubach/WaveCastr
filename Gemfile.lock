@@ -67,12 +67,16 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    capybara-webkit (1.14.0)
+      capybara (>= 2.3.0, < 2.14.0)
+      json
     childprocess (0.6.1)
       ffi (~> 1.0, >= 1.0.11)
     codeclimate-test-reporter (1.0.8)
       simplecov (<= 0.13)
     coderay (1.1.1)
     concurrent-ruby (1.0.4)
+    database_cleaner (1.5.3)
     debug_inspector (0.0.2)
     devise (4.2.0)
       bcrypt (~> 3.0)
@@ -249,7 +253,9 @@ DEPENDENCIES
   bootstrap-sass
   byebug
   capybara
+  capybara-webkit
   codeclimate-test-reporter (~> 1.0.0)
+  database_cleaner
   devise
   factory_girl_rails
   faker
