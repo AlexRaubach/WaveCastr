@@ -5,9 +5,20 @@
 //= require_self
 //= require_tree ./channels
 
-(function() {
+lobby = (function () {
+  return window.location.pathname.replace(/\/episodes\//, "");
+})();
+
+function initiateActionCable() {
   this.App || (this.App = {});
 
   App.cable = ActionCable.createConsumer();
+  subscribeToAllChannels();
+};
 
-}).call(this);
+function subscribeToAllChannels() {
+  subscribeToAppearances();
+  subscribeToChat();
+  subscribeToRecorder();
+  subscribeToTracks();
+}
