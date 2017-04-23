@@ -27,22 +27,9 @@ After everyone has arrived, the host activates the microphones which prompts use
 
 * [Redis](https://redis.io/) -- Data store for Action Cable
 
-* [Recorderjs](https://github.com/chris-rudmin/Recorderjs) -- JS library that captures user audio
-
 * [Amazon S3](https://aws.amazon.com/s3/) -- Stores audio files
 
 * [Heroku](https://www.heroku.com/) -- Cloud hosting for the application
-
-## Team Members
-
-* [AJ Bond](https://github.com/olishmollie)
-
-* [Jonathan Hyun](https://github.com/jhyun94)
-
-* [Joshua Lucas](https://github.com/Mithridates01)
-
-* [Alex Raubach](https://github.com/Antigrapist)
-
 
 ## Contributing
 
