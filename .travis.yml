@@ -5,6 +5,8 @@ rvm:
   - 2.3.1
 env:
   - DB=postgresql
+before_install:
+  - export QMAKE=/usr/lib/x86_64-linux-gnu/qt5/bin/qmake
 addons:
   apt:
     sources:
@@ -12,16 +14,14 @@ addons:
     packages:
       - libqt5webkit5-dev
       - qtdeclarative5-dev
-script:
-  - bundle exec rspec 
+  code_climate:
+    repo_token: a8c073236d40ffbe0134bd54c20eeb8815fe5b40385990291da93ceab90d9922
 before_script:
   - bundle exec rake db:create RAILS_ENV=test
   - bundle exec rake db:migrate
   - bundle exec rake db:test:prepare
+script:
+  - bundle exec rspec 
 bundler_args: --binstubs=./bundler_stubs
-addons:
-  code_climate:
-    repo_token: a8c073236d40ffbe0134bd54c20eeb8815fe5b40385990291da93ceab90d9922
-
 after_success:
   - bundle exec codeclimate-test-reporter
