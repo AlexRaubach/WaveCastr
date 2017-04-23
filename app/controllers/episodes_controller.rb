@@ -7,7 +7,9 @@ class EpisodesController < ApplicationController
     @guest = Guest.new
     set_s3_direct_post(@episode)
     create_guest_from_current_user if guest_hosts?(@episode)
-    render(partial: 'episodes/guest_page', layout: false) if !guest_hosts?(@episode)
+    if !current_user || !current_user.host?(@episode)
+      render(partial: 'episodes/guest_page', layout: false)
+    end
   end
 
   def create
