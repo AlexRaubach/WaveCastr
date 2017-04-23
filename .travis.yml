@@ -1,19 +1,19 @@
-dist: trusty
 language: ruby
 rvm:
   - 2.3.1
 env:
   - DB=postgresql
 script:
-  - bundle exec rake spec
+  - xvfb-run bundle exec rspec spec
 before_script:
   - bundle exec rake db:create RAILS_ENV=test
   - bundle exec rake db:migrate
   - bundle exec rake db:test:prepare
 bundler_args: --binstubs=./bundler_stubs
-before_install:
-  - sudo apt-get -qq update
-  - sudo apt-get install libqt4-dev libqtwebkit-dev
+
+# before_install:
+#   - sudo apt-get -qq update
+#   - sudo apt-get install libqt4-dev libqtwebkit-dev
 
 addons:
   code_climate:
