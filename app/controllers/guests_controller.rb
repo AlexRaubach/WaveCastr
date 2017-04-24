@@ -3,7 +3,7 @@ class GuestsController < ApplicationController
     guest = Guest.new(guest_params)
     if guest.save
       cookies.signed[:guest_id] = guest.id
-      head :ok
+      render plain: guest.name, :status => :ok
     else
       head 422
     end

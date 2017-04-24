@@ -35,7 +35,7 @@ document.addEventListener('initRecording', function(e) {
 window.URL = window.URL || window.webkitURL;
 
 // audio context + .createScriptProcessor shim
-var audioContext = new AudioContext;
+var audioContext = new AudioContext();
 if (audioContext.createScriptProcessor === null)
   audioContext.createScriptProcessor = audioContext.createJavaScriptNode;
 

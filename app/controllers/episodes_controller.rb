@@ -6,9 +6,7 @@ class EpisodesController < ApplicationController
   def show
     @guest = Guest.new
     set_s3_direct_post(@episode)
-    if @episode.host == current_user && !@episode.guest_ids.include?(cookies.signed['guest_id'])
-      create_guest_from_current_user
-    end
+    create_guest_from_current_user if guest_hosts?(@episode)
     if !current_user || !current_user.host?(@episode)
       render(partial: 'episodes/guest_page', layout: false)
     end
@@ -33,6 +31,10 @@ class EpisodesController < ApplicationController
   end
 
   private
+    def guest_hosts?(episode)
+      episode.host == current_user && !episode.guest_ids.include?(cookies.signed['guest_id'])
+    end
+
     def create_guest_from_current_user
       guest = @episode.guests.create(name: current_user.name, is_host: true)
       assign_guest_cookies(guest)

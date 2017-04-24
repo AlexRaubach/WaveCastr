@@ -6,6 +6,7 @@
         <h4 class="modal-title">Register</h4>
       </div>
       <div class="modal-body">
+        <div id="modal-flash" style="height: 30px"></div>
         <%= form_for @guest do |f| %>
           <%= hidden_field :guest, :episode_id, value: @episode.id %>
           <%= f.text_field :name, placeholder: "Enter your name", class: "form-control input-lg", maxlength: 10 %>
@@ -18,24 +19,3 @@
   </div>
 </div>
 
-<script>
-  $('#register-guest-modal').on('shown.bs.modal', function() {
-    $('form input[type=text]').focus();
-  });
-
-  $(window).load(function() {
-    $('#register-guest-modal').modal('show');
-
-    $('#new_guest').on('submit', function(e) {
-      e.preventDefault();
-      var formData = $(this).serialize();
-      $.ajax({ data: formData, method: this.method, url: this.action })
-        .done(function(response) {
-          window.location.reload();
-        })
-        .fail(function(error) {
-          console.log(error);
-        });
-    });
-  });
-</script>

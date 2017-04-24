@@ -1,11 +1,13 @@
 # WaveCastr
-[![Build Status](https://travis-ci.org/Antigrapist/WaveCastr.svg?branch=master)](https://travis-ci.org/Antigrapist/WaveCastr)
-[![Code Climate](https://codeclimate.com/github/Antigrapist/WaveCastr/badges/gpa.svg)](https://codeclimate.com/github/Antigrapist/WaveCastr)
+[![Build Status](https://travis-ci.org/olishmollie/WaveCastr.svg?branch=master)](https://travis-ci.org/olishmollie/WaveCastr)
+[![Code Climate](https://codeclimate.com/github/olishmollie/WaveCastr/badges/gpa.svg)](https://codeclimate.com/github/olishmollie/WaveCastr)
 
 A website for capturing high quality audio for podcasts or interviews. WaveCastr records from each participant's local machine and stores it in the cloud. Capturing the audio locally preserves the quality and having each participant's voice on a separate track makes it easy to produce great sounding podcasts with minimal setup.
 
-##ScreenShot
-<img src="https://github.com/Antigrapist/WaveCastr/blob/master/HostDemoScreenshot.png">
+## Screen Shots
+<img src="three_window_demo.png">
+<img src="mid_recording.png">
+<img src="downloaded.png">
 
 ## Using WaveCastr
 
@@ -25,22 +27,9 @@ After everyone has arrived, the host activates the microphones which prompts use
 
 * [Redis](https://redis.io/) -- Data store for Action Cable
 
-* [Recorderjs](https://github.com/chris-rudmin/Recorderjs) -- JS library that captures user audio
-
 * [Amazon S3](https://aws.amazon.com/s3/) -- Stores audio files
 
 * [Heroku](https://www.heroku.com/) -- Cloud hosting for the application
-
-## Team Members
-
-* [AJ Bond](https://github.com/olishmollie)
-
-* [Jonathan Hyun](https://github.com/jhyun94)
-
-* [Joshua Lucas](https://github.com/Mithridates01)
-
-* [Alex Raubach](https://github.com/Antigrapist)
-
 
 ## Contributing
 

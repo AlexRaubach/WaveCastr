@@ -31,7 +31,7 @@ RSpec.describe EpisodesController, type: :controller do
       sign_in user
       post :create, params: { episode: { description: "My first one!" } }
       expect(response).to have_http_status 302 
-      expect(flash[:error]).to eq "Name can't be blank"
+      expect(flash[:alert]).to eq "Name can't be blank"
       expect(response.location).to eq user_url(user)
     end
   end

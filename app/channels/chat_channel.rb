@@ -8,6 +8,6 @@ class ChatChannel < ApplicationCable::Channel
 
   def chat(data)
     ActionCable.server.broadcast "chat_#{params[:lobby]}",
-      message: "#{data['guest']}: #{data['message']}"
+      message: "<i>#{data['guest']}:</i> #{data['message']}"
   end
 end
