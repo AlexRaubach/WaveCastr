@@ -21,7 +21,7 @@ $(window).load(function() {
       .done(function(response) {
         $registerGuestModal.modal('hide');
         document.getElementById('current_guest').innerText = response;
-        App.appearances.unsubscribe();
+        App.appearance.unsubscribe();
         initiateActionCable();
         subscribeToAllChannels();
       })
