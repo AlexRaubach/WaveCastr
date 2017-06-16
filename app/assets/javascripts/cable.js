@@ -13,7 +13,6 @@ function initiateActionCable() {
   this.App || (this.App = {});
 
   App.cable = ActionCable.createConsumer();
-  subscribeToAllChannels();
 };
 
 function subscribeToAllChannels() {

@@ -21,12 +21,17 @@ $(window).load(function() {
       .done(function(response) {
         $registerGuestModal.modal('hide');
         document.getElementById('current_guest').innerText = response;
+        App.appearance.unsubscribe();
         initiateActionCable();
+        subscribeToAllChannels();
       })
       .fail(function(error) {
         $registerGuestModal.modal('hide');
         $('#flash').flash('ERROR: ' + error);
       });
   });
+
+  initiateActionCable();
+  subscribeToAppearances();
 });
 

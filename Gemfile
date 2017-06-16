@@ -59,9 +59,9 @@ group :development do
 end
 
 group :test do
-  gem "simplecov"
-  gem "codeclimate-test-reporter", "~> 1.0.0"
-  gem "launchy"
+  gem 'simplecov'
+  gem 'codeclimate-test-reporter', "~> 1.0.0"
+  gem 'launchy'
   gem 'rspec-rails'
   gem 'database_cleaner'
   gem 'factory_girl_rails'
